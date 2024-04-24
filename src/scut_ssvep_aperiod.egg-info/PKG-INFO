@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: scut_ssvep_aperiod
+Version: 0.0.1
+Summary: aperiod extract and ssvep measure
+Author: didi
+Author-email: 3517725675@qq.com
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: fooof
+Requires-Dist: mne
+Requires-Dist: mne_icalabel
+Requires-Dist: scikit-learn
+Requires-Dist: scipy

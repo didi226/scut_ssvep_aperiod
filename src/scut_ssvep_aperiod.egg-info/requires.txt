@@ -1,0 +1,6 @@
+numpy
+fooof
+mne
+mne_icalabel
+scikit-learn
+scipy
