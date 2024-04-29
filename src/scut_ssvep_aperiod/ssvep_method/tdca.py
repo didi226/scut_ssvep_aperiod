@@ -335,13 +335,18 @@ def tdca_feature(X, templates, W, M, Ps, lagging_len, n_components, training=Fal
 
 
 class TDCA(CCABase):
-    def __init__(self, sfreq, ws, fres_list, n_harmonics,Nc=10):
+    def __init__(self, sfreq, ws, fres_list, n_harmonics,Nc=10,Nm=1, passband = [6, 14, 22, 30, 38],
+                 stopband = [4, 10, 16, 24, 32],highcut_pass =40,highcut_stop=50):
         super(TDCA, self).__init__(sfreq, ws, fres_list, n_harmonics)
-        self.Nm = 1
+        self.Nm = Nm
         self.Nc = Nc
         self.Nf = 4
         self.lagging_len = 0
         self.n_components = 3
+        self.passband = passband
+        self.stopband = stopband
+        self.highcut_pass = highcut_pass
+        self.highcut_stop = highcut_stop
 
 
 
@@ -355,16 +360,16 @@ class TDCA(CCABase):
         '''
         FB_X = np.zeros((self.Nm, X.shape[0], self.Nc, X.shape[-1]))
         nyq = self.sfreq / 2
-        passband = [14,40]
-        stopband = [4,18]
-        # passband = [6, 14, 22, 30, 38, 46, 54, 62, 70, 78]
-        # stopband = [4, 10, 16, 24, 32, 40, 48, 56, 64, 72]
-        highcut_pass, highcut_stop = 40, 50  #80 ,90
+        # passband = [6, 14, 22, 30, 38]
+        # stopband = [4, 10, 16, 24, 32]
+        # # passband = [6, 14, 22, 30, 38, 46, 54, 62, 70, 78]
+        # # stopband = [4, 10, 16, 24, 32, 40, 48, 56, 64, 72]
+        # highcut_pass, highcut_stop = 40, 50  #80 ,90
 
         gpass, gstop, Rp = 3, 40, 0.5
         for i in range(self.Nm):
-            Wp = [passband[i] / nyq, highcut_pass / nyq]
-            Ws = [stopband[i] / nyq, highcut_stop / nyq]
+            Wp = [self.passband[i] / nyq, self.highcut_pass / nyq]
+            Ws = [self.stopband[i] / nyq, self.highcut_stop / nyq]
             [N, Wn] = signal.cheb1ord(Wp, Ws, gpass, gstop)
             [B, A] = signal.cheby1(N, Rp, Wn, 'bandpass')
             data = signal.filtfilt(B, A, X, padlen=3 * (max(len(B), len(A)) - 1)).copy()
@@ -475,8 +480,12 @@ class TDCA(CCABase):
                 fb_weight = (fb_i + 1) ** (-1.25) + 0.25
                 sum_features[fb_i] = fb_weight * self.transform(self.FB_X_Test[fb_i], fb_i)
             sum_features = np.sum(sum_features, axis=0)
+        self.result_ex = sum_features
         pred_labels = self.classes_[np.argmax(sum_features, axis=-1)]
         return pred_labels
+
+    def calculate_ex(self):
+            return self.result_ex
 if __name__ == "__main__":
     from scut_ssvep_aperiod.load_dataset.dataset_lee import LoadDataLeeOne
     data_path = r"D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\session1\s1\sess01_subj01_EEG_SSVEP.mat"

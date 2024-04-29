@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 import datetime
 from fooof.bands import Bands
 from fooof.objs.utils import average_fg
-def reconstruct_signal(data, label, sfreq, method="remove_aperiodic", phase_invariance=2):
+from scipy.stats import linregress
+def reconstruct_signal(data, label, sfreq, method="remove_aperiodic", phase_invariance=2,freq_range=None):
 	"""
 	:param data:                      numpy array       shape(n_epoch, n_channels, n_times)
 	:param label:                     numpy array       shape(n_epoch,)
@@ -28,8 +29,8 @@ def reconstruct_signal(data, label, sfreq, method="remove_aperiodic", phase_inva
 	new_label = []
 	for i_data, i_label in zip(data, label):
 	    psd_temp = BuildPSDPeriod(i_data,sfreq)
-	    i_reconstruct_data = psd_temp.get_reconstructed_signal(freq_range = None, para_ = False,
-	                        method = method, phase_invariance = phase_invariance)
+	    i_reconstruct_data = psd_temp.get_reconstructed_signal(freq_range=freq_range, para_=False,
+	                        method=method, phase_invariance=phase_invariance)
 	    if not np.isnan(i_reconstruct_data).any() and not np.isinf(i_reconstruct_data).any():
 	        reconstruct_data.append(i_reconstruct_data)
 	        new_label.append(i_label)
@@ -48,9 +49,21 @@ class BuildPSDPeriod:
 		self.sfreq = sfreq
 		self.data = data
 		self.save_path_base = save_path_base
+	@staticmethod
+	def slope_estimate(spectrum, freqs, freq_range=None):
+		if freq_range is None:
+			idx_ = np.where(freqs>=0)
+		else:
+			idx_ = np.where((freq_range[0] <= freqs) & (freqs <= freq_range[1]))
+		freqs = np.log10(freqs[idx_])
+		spectrum = np.mean(spectrum[:, idx_], axis=0)
+		slope, intercept, r_value, p_value, stderr = linregress(freqs, spectrum)
+		error = stderr  # 标准误差
+		r_qua = r_value ** 2  # 判定系数
+		return error, r_qua
 
 	@staticmethod
-	def get_periodic_value(gaussian_values,fg,n_channel,freqs):
+	def get_periodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range=None):
 		"""
 		Args: 获取周期信号的值
 			gaussian_values:  narray          一个空矩阵用来放结果 shape (n_channel,n_freqs)
@@ -67,11 +80,15 @@ class BuildPSDPeriod:
 			for idx in i_channel_dx:
 				gaussian_values[i_channel, :] = aps1[idx, 1] * norm.pdf(freqs, aps1[idx, 0],
 				                                                        aps1[idx, 2]) + gaussian_values[i_channel, :]
-		gaussian_values = np.power(10, gaussian_values)
+		if freq_range is not None:
+			gaussian_values = np.power(10, gaussian_values)
+		else:
+			idx_out_range = np.where((freq_range[0] > freqs) | (freqs > freq_range[1]))[0]
+			gaussian_values[:,idx_out_range]=spectrum_frequencies[:,idx_out_range]
 		return gaussian_values
 
 	@staticmethod
-	def remove_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies):
+	def remove_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range=None):
 		"""
 		Args: 获取去除周期信号的值
 			gaussian_values:  narray          一个空矩阵用来放结果 shape (n_channel,n_freqs)
@@ -85,14 +102,20 @@ class BuildPSDPeriod:
 		error = fg.group_results[0].error
 		r_squared = fg.group_results[0].r_squared
 		for i_channel in range(n_channel):
-			for idx in np.where(freqs > 0)[0]:
-				aperiodic_value = np.power(10, offset_ex_list[i_channel, 0] -
-				                    offset_ex_list[i_channel, 1] * np.log10(freqs[idx]))
-				gaussian_values[i_channel, idx] = spectrum_frequencies[i_channel, idx] - aperiodic_value
+			if freq_range is None:
+				for idx in np.where(freqs > 0)[0]:
+					aperiodic_value = np.power(10, offset_ex_list[i_channel, 0] -
+					                    offset_ex_list[i_channel, 1] * np.log10(freqs[idx]))
+					gaussian_values[i_channel, idx] = spectrum_frequencies[i_channel, idx] - aperiodic_value
+			else:
+				for idx in np.where((freq_range[0] <= freqs) & (freqs <= freq_range[1]))[0]:
+					aperiodic_value = np.power(10, offset_ex_list[i_channel, 0] -
+					                           offset_ex_list[i_channel, 1] * np.log10(freqs[idx]))
+					gaussian_values[i_channel, idx] = spectrum_frequencies[i_channel, idx] - aperiodic_value
 		return gaussian_values,error,r_squared
 
 	@staticmethod
-	def get_aperiodic_value(gaussian_values,fg,n_channel,freqs):
+	def get_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range=None):
 		"""
 		Args: 获取非周期信号的值
 			gaussian_values:  narray          一个空矩阵用来放结果 shape (n_channel,n_freqs)
@@ -102,12 +125,20 @@ class BuildPSDPeriod:
 		Returns:              narray          返回非周期信号对应的PSD矩阵 shape (n_channel,n_freqs)
 
 		"""
+
 		offset_ex_list = fg.get_params('aperiodic_params')
+		gaussian_values = spectrum_frequencies
 		for i_channel in range(n_channel):
-			for idx in np.where(freqs > 0)[0]:
-				aperiodic_value = np.power(10, offset_ex_list[i_channel, 0] - offset_ex_list[i_channel, 1] * np.log10(
-					freqs[idx]))
-				gaussian_values[i_channel, idx] = aperiodic_value
+			if freq_range is None:
+				for idx in np.where(freqs > 0)[0]:
+					aperiodic_value = np.power(10, offset_ex_list[i_channel, 0] - offset_ex_list[i_channel, 1] * np.log10(
+						freqs[idx]))
+					gaussian_values[i_channel, idx] = aperiodic_value
+			else:
+				for idx in np.where((freq_range[0] <= freqs) & (freqs <= freq_range[1]))[0]:
+					aperiodic_value = np.power(10, offset_ex_list[i_channel, 0] - offset_ex_list[i_channel, 1] * np.log10(
+						freqs[idx]))
+					gaussian_values[i_channel, idx] = aperiodic_value
 		return gaussian_values
 
 
@@ -144,7 +175,7 @@ class BuildPSDPeriod:
 			fm = FOOOF(peak_width_limits=(0.05,12),verbose=False)
 			fm.fit(greater_fres, np.squeeze(greater_spectrum_frequencies), freq_range = freq_range)
 			plot_spectra(fm.freqs, [fm.power_spectrum,fm.get_model('aperiodic') + fm.get_model('peak'),fm.get_model('aperiodic')],
-			             linestyle=['-', 'dashed','--'], colors = ['black','red','blue'],log_freqs=True, log_powers = True)
+			             linestyle=['-', 'dashed','--'], colors = ['black','red','blue'],log_freqs=False, log_powers = True)
 			if not os.path.exists(self.save_path_base[0]):
 				os.mkdir(self.save_path_base[0])
 			plt.savefig(os.path.join(self.save_path_base[0],self.save_path_base[1]))
@@ -153,11 +184,11 @@ class BuildPSDPeriod:
 		r_squared = 0
 		gaussian_values = np.zeros_like(spectrum_frequencies)
 		if method == "get_periodic":
-			gaussian_values = self.get_periodic_value(gaussian_values,fg,n_channel,freqs)
+			gaussian_values = self.get_periodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range)
 		if method == "remove_aperiodic":
 			gaussian_values,error,r_squared = self.remove_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies)
 		if method == "get_aperiodic":
-			gaussian_values = self.get_aperiodic_value(gaussian_values,fg,n_channel,freqs)
+			gaussian_values = self.get_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range)
 		### 将变换后的PSD对应到负的部分
 		for idx in np.where(freqs < 0)[0]:
 			fre__ = -freqs[idx]

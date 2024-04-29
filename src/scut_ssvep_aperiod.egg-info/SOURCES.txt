@@ -1,3 +1,4 @@
+README.md
 setup.py
 src/scut_ssvep_aperiod/__init__.py
 src/scut_ssvep_aperiod.egg-info/PKG-INFO
@@ -8,10 +9,12 @@ src/scut_ssvep_aperiod.egg-info/top_level.txt
 src/scut_ssvep_aperiod/fooof_parameter/__init__.py
 src/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.py
 src/scut_ssvep_aperiod/load_dataset/__init__.py
+src/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable.py
 src/scut_ssvep_aperiod/load_dataset/dataset_base.py
 src/scut_ssvep_aperiod/load_dataset/dataset_kalunga.py
 src/scut_ssvep_aperiod/load_dataset/dataset_lee.py
 src/scut_ssvep_aperiod/ssvep_aperiod/__init__.py
+src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_kalunga.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga.py

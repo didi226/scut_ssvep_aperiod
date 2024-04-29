@@ -78,12 +78,8 @@ class LoadDataTHWOne(LoadDataBase):
 			self.sample_rate_test = self.sample_rate_test/resample
 		train_epochs = EpochsArray(self.data_train, self.info)
 		test_epochs = EpochsArray(self.data_test, self.info)
-		if reconstruct_:
-			train_epochs = self.preprocess(train_epochs,pro_ica,None)
-			test_epochs = self.preprocess(test_epochs, pro_ica, None)
-		else:
-			train_epochs = self.preprocess(train_epochs, pro_ica, filter_para)
-			test_epochs = self.preprocess(test_epochs, pro_ica, filter_para)
+		train_epochs = self.preprocess(train_epochs, pro_ica, filter_para)
+		test_epochs = self.preprocess(test_epochs, pro_ica, filter_para)
 		self.data_test = test_epochs.get_data()
 		self.data_train = train_epochs.get_data()
 		arrays = [np.arange(3) for _ in range(5)]
@@ -99,7 +95,7 @@ class LoadDataTHWOne(LoadDataBase):
 
 
 	def get_data(self, pro_ica=True, filter_para=None, resample=None, reconstruct_=False,
-	             reconstruct_type=0, picks=['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
+	             reconstruct_type=0, freq_range=None, picks=['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
 		"""
 		get data after preprosess
 		:param pro_ica:                bool            whether to do ica in propresess
@@ -119,10 +115,12 @@ class LoadDataTHWOne(LoadDataBase):
 		name_base = os.path.basename(self.data_path).replace('.mat', '')
 		path_root = os.path.dirname(self.data_path)
 		save_path_name = (name_base +
-		                  f"pro_ica_{pro_ica}_filter_{filter_para}_resample_{resample}_reconstruct_{reconstruct_}_reconstruct_type{reconstruct_type}.npz")
+		                  f"pro_ica_{pro_ica}_filter_{filter_para}_resample_{resample}_reconstruct_{reconstruct_}"
+		                  f"_reconstruct_type{reconstruct_type}_freq_range{freq_range}.npz")
 		save_path = os.path.join(path_root, save_path_name)
 		if not os.path.exists(save_path):
-			save_name_before_reconstruct = (name_base + f"pro_ica_{pro_ica}_filter_{None}_resample_{resample}_reconstruct_{False}_reconstruct_type{None}.npz")
+			save_name_before_reconstruct = (name_base + f"pro_ica_{pro_ica}_filter_{filter_para}_resample_"
+			                             f"{resample}_reconstruct_{False}_reconstruct_type{None}_freq_range{None}.npz")
 			save_path_before_reconstruct = os.path.join(path_root, save_name_before_reconstruct)
 			if  reconstruct_ and os.path.exists(save_path_before_reconstruct):
 				self._load_data_from_npz(save_path_before_reconstruct)
@@ -134,9 +132,6 @@ class LoadDataTHWOne(LoadDataBase):
 
 				self.data_train, self.label_train = reconstruct_signal(self.data_train, self.label_train,
 				                self.sample_rate_train, method = reconstruct_, phase_invariance = reconstruct_type)
-				if filter_para is not None:
-					self.data_test = filter_data(self.data_test, self.sample_rate_test, filter_para[0], filter_para[1])
-					self.data_train = filter_data(self.data_train, self.sample_rate_train, filter_para[0], filter_para[1])
 			np.savez(save_path, data_test = self.data_test, label_test = self.label_test,  n_epoch_test = self.n_epoch_test,
 			         n_channel_test = self.n_channel_test, sample_rate_test = self.sample_rate_test,
 			         data_train = self.data_train, label_train = self.label_train, n_epoch_train = self.n_epoch_train,

@@ -1,16 +1,21 @@
 
 from scut_ssvep_aperiod.ssvep_method.ssvep_methd_base import SSVEPMethodBase
 from scut_ssvep_aperiod.fooof_parameter.decode_rebuild import BuildPSDPeriod
+from scipy.stats import linregress
 import numpy as np
 import math
 class PSDA(SSVEPMethodBase):
-	def __init__(self, sfreq, ws, fres_list, n_harmonics, psd_type = "Ordinary", psd_channel = "ave", psda_type = "direct_compare"):
+	def __init__(self, sfreq, ws, fres_list, n_harmonics, psd_type = "Ordinary",
+	             psd_channel = "ave", psda_type = "direct_compare",freq_range=None,figure_=False,save_path_base=["__","__"]):
 		super(PSDA, self).__init__(sfreq, ws, fres_list)
 		self.n_harmonics = n_harmonics
 		self.psd_type = psd_type
 		self.psd_channel = psd_channel
 		self.psda_type = psda_type
 		self.deltaf = 1/ws
+		self.freq_range = freq_range
+		self.figure_ = figure_
+		self.save_path_base = save_path_base
 	def classify(self, data):
 		n_trials = data.shape[0]
 		pred_label = np.zeros((n_trials))
@@ -20,11 +25,35 @@ class PSDA(SSVEPMethodBase):
 			PSD_temp = BuildPSDPeriod(i_data, self.sfreq)
 			spectrum, freqs = PSD_temp.data_to_fft(psd_type = self.psd_type)
 			psd_classify = PSDA_SSVEP(spectrum, freqs, self.fres_list, psd_channel=self.psd_channel, harmonic=self.n_harmonics,
-			                          sfreq=self.sfreq, n_times=self.ws*self.sfreq, deltaf=self.deltaf)
+			                          sfreq=self.sfreq, n_times=self.ws*self.sfreq, deltaf=self.deltaf,freq_range=self.freq_range,
+			                          figure_ = self.figure_,save_path_base=[self.save_path_base,f'{i}.svg'])
 			pred_label[i], error[i], r_squa[i] = psd_classify.psda_classify(psda_type = self.psda_type)
-		return pred_label
+		return pred_label,error,r_squa
+	def slope_estimation(self,data):
+		n_trials = data.shape[0]
+		pred_label = np.zeros((n_trials))
+		error = np.zeros((n_trials))
+		r_squa = np.zeros((n_trials))
+		for i, i_data in enumerate(data):
+			PSD_temp = BuildPSDPeriod(i_data, self.sfreq)
+			spectrum, freqs = PSD_temp.data_to_fft(psd_type=self.psd_type)
+			error[i], r_squa[i] = PSD_temp.slope_estimate(spectrum, freqs,self.freq_range)
+		return error,r_squa
+	def calculate_snr(self,data):
+		n_trials = data.shape[0]
+		pred_label = np.zeros((n_trials))
+		psd_ex = np.zeros((n_trials,self.n_event))
+		for i, i_data in enumerate(data):
+			PSD_temp = BuildPSDPeriod(i_data, self.sfreq)
+			spectrum, freqs = PSD_temp.data_to_fft(psd_type = self.psd_type)
+			psd_classify = PSDA_SSVEP(spectrum, freqs, self.fres_list, psd_channel=self.psd_channel, harmonic=self.n_harmonics,
+			                          sfreq=self.sfreq, n_times=self.ws*self.sfreq, deltaf=self.deltaf,freq_range=self.freq_range,
+			                          figure_ = self.figure_,save_path_base=[self.save_path_base,f'{i}.svg'])
+			psd_ex[i], _,_ = psd_classify.psda_ex(psda_type = self.psda_type)
+		return psd_ex
 class PSDA_SSVEP:
-	def __init__(self, data_psd, frequence, fre_doi, psd_channel="ave", harmonic=4,sfreq=250, n_times=1000, deltaf=0.25, save_path_base=["__","__"]):
+	def __init__(self, data_psd, frequence, fre_doi, psd_channel="ave", harmonic=4,sfreq=250, n_times=1000,
+	             deltaf=0.25, freq_range=None,figure_=False, save_path_base=["__","__"]):
 		self.data_psd = data_psd
 		self.frequence = frequence
 		self.fre_doi = fre_doi
@@ -36,6 +65,8 @@ class PSDA_SSVEP:
 		self.n_times = n_times
 		self.deltaf = deltaf
 		self.save_path_base = save_path_base
+		self.freq_range = freq_range
+		self.figure_ = figure_
 
 	@staticmethod
 	def estimate_psd_value(data_psd_i_channel, frequence, i_fre):
@@ -172,7 +203,7 @@ class PSDA_SSVEP:
 		data_psd_channel = np.mean(self.data_fft, axis=0)
 		data_build_psd_channel = BuildPSDPeriod(np.array([0, 1, 2, 3])[None, :], self.sfreq,save_path_base = self.save_path_base)
 		data_psd_channel,error,r_squa = data_build_psd_channel.get_period_psd(data_psd_channel[None, :], self.frequence,
-		                                    freq_range = None, method = "remove_aperiodic", figure_ = False)
+		                                    freq_range = self.freq_range, method = "remove_aperiodic", figure_ = self.figure_)
 		data_psd_channel =  np.squeeze(data_psd_channel)
 		del data_build_psd_channel
 		for i, i_fre in enumerate(self.fre_doi):
@@ -186,7 +217,7 @@ class PSDA_SSVEP:
 		indicators_values = np.zeros((self.n_fre))
 		data_psd_channel = np.mean(self.data_fft, axis=0)
 		data_build_psd_channel = BuildPSDPeriod(np.array([0, 1, 2, 3])[None, :], self.sfreq,self.save_path_base)
-		data_psd_channel,_,_= data_build_psd_channel.get_period_psd(data_psd_channel[None, :], self.frequence, freq_range=None,
+		data_psd_channel,_,_= data_build_psd_channel.get_period_psd(data_psd_channel[None, :], self.frequence, freq_range=self.freq_range,
 		                                                         method = "get_aperiodic")
 		data_psd_channel =  np.squeeze(data_psd_channel)
 		del data_build_psd_channel

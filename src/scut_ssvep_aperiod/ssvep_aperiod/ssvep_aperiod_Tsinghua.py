@@ -4,7 +4,7 @@ from scut_ssvep_aperiod.utils.common_function import cal_acc
 import pandas as pd
 import numpy as np
 import os
-def ssvep_classify(form_path, pro_ica=True, filter_para=None, reconstruct_=False, reconstruct_type=0, classify_method="cca", psda_type="snr_hqy"):
+def ssvep_classify(form_path, pro_ica=True, filter_para=None, reconstruct_=False, reconstruct_type=0, classify_method="cca", psda_type="snr_hqy",freq_range=None):
 	"""
 	:param form_path:              str             path of form (subject_id---root_directory---file_name)
 	:param info_path:              str             path of info (mat file for infromation to data)
@@ -32,24 +32,26 @@ def ssvep_classify(form_path, pro_ica=True, filter_para=None, reconstruct_=False
 		data_path = os.path.join(root_directory[0], file_name[0])
 		datasetone = LoadDataTHWOne(data_path)
 		train_data, train_label,test_data, test_label  = datasetone.get_data(pro_ica = pro_ica, filter_para = filter_para,
-                                                            resample = None, reconstruct_ = reconstruct_, reconstruct_type = reconstruct_type)
+                                                            resample = None, reconstruct_ = reconstruct_, reconstruct_type = reconstruct_type,freq_range=freq_range)
 		if classify_method == "psda":
 			ssvep_method = PSDA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs, 3,psd_type = "Ordinary",
-			                    psd_channel = "ave", psda_type = psda_type)
-			predict_label = ssvep_method.classify(test_data)
+			                    psd_channel = "ave", psda_type = psda_type,freq_range=[7,45])
+			predict_label,_,_ = ssvep_method.classify(test_data)
 		if classify_method == "cca":
 			ccaoriginal_classify = CCACommon(sfreq = datasetone.sample_rate_test, ws = datasetone.window_time,
 			                                 fres_list = datasetone.freqs, n_harmonics = 3)
 			predict_label = ccaoriginal_classify.classify(test_data, ica_ = False)
 		if classify_method == "fbcca":
-			ssvep_method = FBCCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs, 3)
+			ssvep_method = FBCCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs,
+			                     3,8,6,[10, 14, 22, 30, 38,43],  [7, 10, 16, 24, 32,37],45,50)
 			predict_label = ssvep_method.classify(test_data)
 		if classify_method == "trca":
 			ssvep_method = TRCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs)
 			ssvep_method.train(train_data, train_label)
 			predict_label = ssvep_method.classifier(test_data)
 		if classify_method == "tdca":
-			ssvep_method = TDCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs,3,8)
+			ssvep_method = TDCA(datasetone.sample_rate_test, datasetone.window_time,
+			                    datasetone.freqs,3,8,6, [10, 14, 22, 30, 38,43],  [7, 10, 16, 24, 32,37],45,50)
 			ssvep_method.train(train_data, train_label)
 			predict_label = ssvep_method.classifier(test_data)
 		acc = cal_acc(Y_true = test_label, Y_pred = predict_label)
@@ -61,45 +63,52 @@ def ssvep_classify(form_path, pro_ica=True, filter_para=None, reconstruct_=False
 if __name__ == "__main__":
 	form_path_lee = "D:\data\ssvep_dataset\Tsinghua_dataset_ssvep_wearable\ssvep_lee_sub_info.xlsx"
 	data = {}
-	ssvep_classify(form_path_lee, pro_ica = True, filter_para=[6, 45], reconstruct_=False, reconstruct_type = None)
-	# ssvep_classify(form_path_lee, pro_ica = True, filter_para = [6, 45], reconstruct_ = "remove_aperiodic", reconstruct_type = 0)
-	# ssvep_classify(form_path_lee, pro_ica = True, filter_para = [6, 45], reconstruct_ = "get_aperiodic", reconstruct_type = 0)
-	# ssvep_classify(form_path_lee, pro_ica = True, filter_para = [6, 45], reconstruct_ =  "get_periodic", reconstruct_type = 0)
-
-	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[6, 45], reconstruct_=False, reconstruct_type=None, classify_method="psda", psda_type="snr_hqy")
+	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[7, 45], reconstruct_=False,
+	                     reconstruct_type=None, classify_method="psda", psda_type="snr_hqy",freq_range=None)
 	data['psda_original'] = acc
-	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[6, 45], reconstruct_=False, reconstruct_type=None, classify_method="psda", psda_type="snr_hqy_ave_get")
+	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[7, 45], reconstruct_=False,
+	                     reconstruct_type=None, classify_method="psda", psda_type="snr_hqy_ave_get",freq_range=None)
 	data['psda_ap'] = acc
-	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[6, 45], reconstruct_=False, reconstruct_type=None, classify_method="psda", psda_type="snr_hqy_ave_re")
+	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[7, 45], reconstruct_=False,
+	                     reconstruct_type=None, classify_method="psda", psda_type="snr_hqy_ave_re",freq_range=None)
 	data['psda_pe'] = acc
 
 
-	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[6, 45], reconstruct_=False, reconstruct_type=None, classify_method="cca")
+	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_=False, reconstruct_type=None, classify_method="cca",freq_range=None)
 	data['cca_original'] = acc
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="cca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="cca",freq_range=[7,45])
 	data['cca_ap'] = acc
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_="remove_aperiodic", reconstruct_type=0, classify_method="cca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_="remove_aperiodic", reconstruct_type=2, classify_method="cca",freq_range=[7,45])
 	data['cca_pe'] = acc
 	#
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_=False,reconstruct_type=None, classify_method="fbcca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_=False,reconstruct_type=None, classify_method="fbcca",freq_range=None)
 	data['fbcca_original'] = acc
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="fbcca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="fbcca",freq_range=[7,45])
 	data['fbcca_ap'] = acc
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_="remove_aperiodic", reconstruct_type=0, classify_method="fbcca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_="remove_aperiodic", reconstruct_type=2, classify_method="fbcca",freq_range=[7,45])
 	data['fbcca_pe'] = acc
 	# #
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_=False, reconstruct_type=None, classify_method="trca")
-	data['trca_original'] = acc
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="trca")
-	data['trca_ap'] = acc
-	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[6, 45], reconstruct_="remove_aperiodic", reconstruct_type=0, classify_method="trca")
-	data['trca_pe'] = acc
+	# acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45], reconstruct_=False, reconstruct_type=None, classify_method="trca")
+	# data['trca_original'] = acc
+	# acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45], reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="trca")
+	# data['trca_ap'] = acc
+	# acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[7, 45], reconstruct_="remove_aperiodic", reconstruct_type=0, classify_method="trca")
+	# data['trca_pe'] = acc
 
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_=False,reconstruct_type=None, classify_method="tdca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_=False,reconstruct_type=None, classify_method="tdca",freq_range=None)
 	data['tdca_original'] = acc
-	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[6, 45], reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="tdca")
+	acc = ssvep_classify(form_path_lee,  pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_="get_aperiodic", reconstruct_type=0, classify_method="tdca",freq_range=[7,45])
 	data['tdca_ap'] = acc
-	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[6, 45], reconstruct_="remove_aperiodic", reconstruct_type=0, classify_method="tdca")
+	acc = ssvep_classify(form_path_lee, pro_ica=True, filter_para=[7, 45],
+	                     reconstruct_="remove_aperiodic", reconstruct_type=2, classify_method="tdca",freq_range=[7,45])
 	data['tdca_pe'] = acc
 	df = pd.DataFrame(data)
 	df.to_excel('output_Tstinghua.xlsx', index=False)

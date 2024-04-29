@@ -53,7 +53,7 @@ class LoadDataLeeOne(LoadDataBase):
 		self.sample_rate_train = int(loaded_data['sample_rate_train'])
 
 	def _load_data_from_structure(self, file_data, pro_ica = True, filter_para = None, resample = None,
-	             reconstruct_ = False, picks = ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
+	                              picks = ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
 		"""
 		read data from the structure in .mat
 		:param file_data:
@@ -83,10 +83,7 @@ class LoadDataLeeOne(LoadDataBase):
 		n_epoch = t.shape[0]
 		n_channel = min(x.shape[0], len(picks))
 		combine_raw = RawArray(x, self.info)
-		if reconstruct_:
-			combine_raw = self.preprocess(combine_raw, pro_ica, None)
-		else:
-			combine_raw = self.preprocess(combine_raw, pro_ica, filter_para)
+		combine_raw = self.preprocess(combine_raw, pro_ica, filter_para)
 		x = combine_raw.get_data(picks = picks)
 		# 分割数据
 		split_data = np.zeros((n_epoch, n_channel, sig_len))
@@ -101,7 +98,7 @@ class LoadDataLeeOne(LoadDataBase):
 		return split_data, label, n_epoch, n_channel, sample_rate
 
 
-	def _load_data_from_mat (self, pro_ica=True, filter_para=None, resample=None, reconstruct_=False, picks=['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
+	def _load_data_from_mat (self, pro_ica=True, filter_para=None, resample=None, picks=['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
 		"""
 		Load dataset from mat file
 		:param pro_ica:                bool            whether to do ica in propresess
@@ -120,12 +117,12 @@ class LoadDataLeeOne(LoadDataBase):
 		file_data_test = sio.loadmat(self.data_path)['EEG_SSVEP_test']
 		file_data_train = sio.loadmat(self.data_path)['EEG_SSVEP_train']
 		self.data_test, self.label_test, self.n_epoch_test, self.n_channel_test, self.sample_rate_test = self._load_data_from_structure(file_data_test,
-		        pro_ica = pro_ica, filter_para = filter_para, resample = resample, reconstruct_ = reconstruct_, picks = picks)
+		        pro_ica = pro_ica, filter_para = filter_para, resample = resample, picks = picks)
 		self.data_train, self.label_train, self.n_epoch_train, self.n_channel_train, self.sample_rate_train = self._load_data_from_structure(file_data_train,
-				pro_ica = pro_ica, filter_para = filter_para, resample = resample, reconstruct_ = reconstruct_, picks = picks)
+				pro_ica = pro_ica, filter_para = filter_para, resample = resample, picks = picks)
 
 	def get_data(self, pro_ica=True, filter_para=None, resample=None, reconstruct_=False,
-	             reconstruct_type=0, picks=['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
+	             reconstruct_type=0, freq_range=None, picks=['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
 		"""
 		get data after preprosess
 		:param pro_ica:                bool            whether to do ica in propresess
@@ -144,25 +141,23 @@ class LoadDataLeeOne(LoadDataBase):
 		self.event_dict = {"12 Hz": 1, "8.57 Hz": 2, "6.67 Hz": 3, "5.45Hz": 4}
 		name_base = os.path.basename(self.data_path).replace('EEG_SSVEP.mat', '')
 		path_root = os.path.dirname(self.data_path)
-		save_path_name = (name_base +
-		                  f"pro_ica_{pro_ica}_filter_{filter_para}_resample_{resample}_reconstruct_{reconstruct_}_reconstruct_type{reconstruct_type}.npz")
+		save_path_name = (name_base + f"pro_ica_{pro_ica}_filter_{filter_para}_resample_{resample}_reconstruct_"
+		                  f"{reconstruct_}_reconstruct_type{reconstruct_type}_freq_range{freq_range}.npz")
 		save_path = os.path.join(path_root, save_path_name)
 		if not os.path.exists(save_path):
-			save_name_before_reconstruct = (name_base + f"pro_ica_{pro_ica}_filter_{None}_resample_{resample}_reconstruct_{False}_reconstruct_type{None}.npz")
+			save_name_before_reconstruct = (name_base + f"pro_ica_{pro_ica}_filter_{filter_para}_resample_"
+			                     f"{resample}_reconstruct_{False}_reconstruct_type{None}_freq_range{None}.npz")
 			save_path_before_reconstruct = os.path.join(path_root, save_name_before_reconstruct)
 			if  reconstruct_ and os.path.exists(save_path_before_reconstruct):
 				self._load_data_from_npz(save_path_before_reconstruct)
 			else:
-				self._load_data_from_mat(pro_ica, filter_para, resample, reconstruct_, picks)
+				self._load_data_from_mat(pro_ica, filter_para, resample, picks)
 			if reconstruct_:
 				self.data_test, self.label_test = reconstruct_signal(self.data_test, self.label_test,
 				                self.sample_rate_test, method = reconstruct_, phase_invariance = reconstruct_type)
 
 				self.data_train, self.label_train = reconstruct_signal(self.data_train, self.label_train,
 				                self.sample_rate_train, method = reconstruct_, phase_invariance = reconstruct_type)
-				if filter_para is not None:
-					self.data_test = filter_data(self.data_test, self.sample_rate_test, filter_para[0], filter_para[1])
-					self.data_train = filter_data(self.data_train, self.sample_rate_train, filter_para[0], filter_para[1])
 			np.savez(save_path, data_test = self.data_test, label_test = self.label_test,  n_epoch_test = self.n_epoch_test,
 			         n_channel_test = self.n_channel_test, sample_rate_test = self.sample_rate_test,
 			         data_train = self.data_train, label_train = self.label_train, n_epoch_train = self.n_epoch_train,
