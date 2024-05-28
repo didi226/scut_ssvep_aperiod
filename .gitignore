@@ -1,0 +1,16 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+*.pdf
+*.png
+*.xlsx
+*.gz
+*whl
+src/scut_ssvep_aperiod/predict_resting_state
+src/scut_ssvep_aperiod/ssvep_aperiod
+src/scut_ssvep_aperiod/fooof_parameter
