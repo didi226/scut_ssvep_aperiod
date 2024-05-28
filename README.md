@@ -26,12 +26,13 @@ ssvep_method = PSDA(datasetone.sample_rate_test, datasetone.window_time, dataset
 predict_label,_,_ = ssvep_method.classify(test_data)
 
 ssvep_method = CCACommon(sfreq = datasetone.sample_rate_test, ws = datasetone.window_time,fres_list = datasetone.freqs, n_harmonics = 3)
-predict_label = ssvep_method.classify(test_data, ica_ = False)
+predict_label = ssvep_method.classify(test_data)
 
 ssvep_method = FBCCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs, 3)
 predict_label = ssvep_method.classify(test_data)
 
-ssvep_method = TRCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs, [3.4,40])ssvep_method.train(train_data, train_label)
+ssvep_method = TRCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs)
+ssvep_method.train(train_data, train_label)
 predict_label = ssvep_method.classifier(test_data)
 
 ssvep_method = TDCA(datasetone.sample_rate_test ,4,datasetone.freqs)
