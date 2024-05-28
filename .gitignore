@@ -12,5 +12,5 @@ gen
 *.gz
 *whl
 src/scut_ssvep_aperiod/predict_resting_state
-src/scut_ssvep_aperiod/ssvep_aperiod
-src/scut_ssvep_aperiod/fooof_parameter
+src/scut_ssvep_aperiod/ssvep_aperiod/
+src/scut_ssvep_aperiod/fooof_parameter/
