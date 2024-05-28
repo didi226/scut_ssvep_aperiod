@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scut_ssvep_aperiod.predict_resting_state.resting_state_feature &mdash; scut_ssvep_aperiod 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            scut_ssvep_aperiod
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">scut_ssvep_aperiod</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scut_ssvep_aperiod.predict_resting_state.resting_state_feature</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scut_ssvep_aperiod.predict_resting_state.resting_state_feature</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.load_dataset.dataset_kalunga</span> <span class="kn">import</span> <span class="n">LoadDataKalungaOne</span>
+<span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.load_dataset.dataset_lee</span> <span class="kn">import</span> <span class="n">LoadDataLeeOne</span>
+<span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.ssvep_method</span> <span class="kn">import</span> <span class="n">CCACommon</span><span class="p">,</span><span class="n">TRCA</span><span class="p">,</span><span class="n">FBCCA</span><span class="p">,</span><span class="n">TDCA</span><span class="p">,</span><span class="n">PSDA</span>
+<span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.utils.common_function</span> <span class="kn">import</span> <span class="n">cal_acc</span>
+<span class="kn">from</span> <span class="nn">scuteegfe.mne_features_wrapper.feature_wrapper</span> <span class="kn">import</span> <span class="n">Feature</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<div class="viewcode-block" id="resting_state_feature">
+<a class="viewcode-back" href="../../../scut_ssvep_aperiod.predict_resting_state.html#scut_ssvep_aperiod.predict_resting_state.resting_state_feature.resting_state_feature">[docs]</a>
+<span class="k">def</span> <span class="nf">resting_state_feature</span><span class="p">(</span><span class="n">form_path</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	:param form_path:              str             path of form (subject_id---root_directory---file_name)</span>
+<span class="sd">	:param info_path:              str             path of info (mat file for infromation to data)</span>
+<span class="sd">	:param pro_ica:                bool            whether to do ica in propresess</span>
+<span class="sd">	:param filter_para:            None/list       Default None  no filters</span>
+<span class="sd">	                                               [low_freq, high_freq]</span>
+<span class="sd">	:return:</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">info_form</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">form_path</span><span class="p">)</span>
+	<span class="n">unique_subject_ids</span> <span class="o">=</span> <span class="n">info_form</span><span class="p">[</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+	<span class="n">acc_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_subject_ids</span><span class="p">))</span>
+	<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">unique_subject_ids</span><span class="p">:</span>
+		<span class="n">subject_rows</span> <span class="o">=</span> <span class="n">info_form</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">info_form</span><span class="p">[</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">subject_id</span><span class="p">]</span>
+		<span class="n">root_directory</span> <span class="o">=</span> <span class="n">subject_rows</span><span class="p">[</span><span class="s1">&#39;root_directory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="n">file_name</span> <span class="o">=</span> <span class="n">subject_rows</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_directory</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+		<span class="n">datasetone</span> <span class="o">=</span> <span class="n">LoadDataLeeOne</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="n">info_path</span> <span class="o">=</span> <span class="n">info_path</span><span class="p">)</span>
+		<span class="n">pre_data_train</span><span class="p">,</span> <span class="n">post_data_train</span><span class="p">,</span> <span class="n">pre_data_test</span><span class="p">,</span> <span class="n">post_data_test</span> <span class="o">=</span> <span class="p">(</span>
+			<span class="n">datasetone</span><span class="o">.</span><span class="n">get_data_resting_state</span><span class="p">(</span><span class="n">pro_ica</span> <span class="o">=</span> <span class="n">pro_ica</span><span class="p">,</span> <span class="n">filter_para</span> <span class="o">=</span> <span class="n">filter_para</span><span class="p">,</span> <span class="n">resample</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+		<span class="n">feature_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_directory</span><span class="p">,</span> <span class="s1">&#39;feature&#39;</span><span class="p">)</span>
+		<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">pre_data_train</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">post_data_train</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">pre_data_test</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">post_data_test</span><span class="p">[</span><span class="kc">None</span><span class="p">,:]])</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">feature_directory</span><span class="p">):</span>
+			<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">feature_directory</span><span class="p">)</span>
+		<span class="n">save_file_path_psd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feature_directory</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;psd.npz&quot;</span><span class="p">)</span>
+		<span class="n">fea1</span> <span class="o">=</span> <span class="n">Feature</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>  <span class="n">selected_funcs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pow_freq_bands&#39;</span><span class="p">],</span>
+		               <span class="n">funcs_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">({</span><span class="s1">&#39;pow_freq_bands__freq_bands&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]],</span>
+                            <span class="s1">&#39;pow_freq_bands__normalize&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;pow_freq_bands__log&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}))</span>
+		<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_file_path_psd</span><span class="p">,</span> <span class="n">fea1</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+		<span class="n">dict_fre_band</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gamma_alpha&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">]]),</span> <span class="s2">&quot;gamma_theta&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">]]),</span>
+		                 <span class="s2">&quot;beta_theta&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">]]),</span> <span class="s2">&quot;beta_alpha&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">]])}</span>
+		<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dict_fre_band</span><span class="p">:</span>
+			<span class="n">value</span> <span class="o">=</span> <span class="n">dict_fre_band</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+			<span class="n">save_file_path_pac</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feature_directory</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s2">&quot;pac.npz&quot;</span><span class="p">)</span>
+			<span class="n">fea2</span> <span class="o">=</span> <span class="n">Feature</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+			               <span class="n">selected_funcs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pac_connectivity&#39;</span><span class="p">],</span>
+			               <span class="n">funcs_params</span><span class="o">=</span><span class="nb">dict</span><span class="p">({</span><span class="s1">&#39;pac_connectivity__sfreq&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+			                                 <span class="s1">&#39;pac_connectivity__band&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span>
+			                                 <span class="s1">&#39;pac_connectivity__approach_pac&#39;</span><span class="p">:</span> <span class="s2">&quot;max&quot;</span><span class="p">}))</span>
+			<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_file_path_pac</span><span class="p">,</span> <span class="n">fea2</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+		<span class="n">fea3</span> <span class="o">=</span> <span class="n">Feature</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+		               <span class="n">selected_funcs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;aperiodic_periodic_offset_exponent_cf&#39;</span><span class="p">],</span>
+		               <span class="n">funcs_params</span><span class="o">=</span><span class="nb">dict</span><span class="p">({</span><span class="s1">&#39;aperiodic_periodic_offset_exponent_cf__sfreq&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+		                                 <span class="s1">&#39;aperiodic_periodic_offset_exponent_cf__freq_range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">]}))</span>
+		<span class="n">save_file_path_aperiodic</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feature_directory</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span>  <span class="s2">&quot;aperiodic.npz&quot;</span><span class="p">)</span>
+		<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_file_path_aperiodic</span><span class="p">,</span> <span class="n">fea3</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+
+
+
+	<span class="k">return</span> <span class="n">acc_all</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+	<span class="n">form_path_lee</span> <span class="o">=</span> <span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\ssvep_lee_sub_info.xlsx&quot;</span>
+	<span class="n">info_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\info_ssvep_lee_dataset.mat&quot;</span>
+	<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+	<span class="n">resting_state_feature</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span><span class="n">info_path</span><span class="p">,</span><span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Di Chen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

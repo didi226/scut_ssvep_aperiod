@@ -50,6 +50,7 @@ class TRCA(CCABase):
 
     def train(self,train_data,train_label):
         """
+
         :param train_data:  shape (n_trials, n_channels, n_times)
         :param train_label: shape (n_trials,)
         :param fres_list:   list len(n_event)
@@ -75,6 +76,7 @@ class TRCA(CCABase):
 
     def filter_bank(self, X):
         '''
+        
         Parameters
         ----------
         X: Input EEG signals (n_trials, n_channels, n_points)

@@ -39,7 +39,8 @@ def isPD(B):
 
 
 def nearestPD(A):
-    """Find the nearest positive-definite matrix to input.
+    """
+    Find the nearest positive-definite matrix to input.
 
     Parameters
     ----------
@@ -51,15 +52,10 @@ def nearestPD(A):
     A3 : ndarray
         positive-definite matrix to A
 
-    Notes
-    -----
-    A Python/Numpy port of John D'Errico's `nearestSPD` MATLAB code [1]_, which
-    origins at [2]_.
-
     References
     ----------
-    .. [1] https://www.mathworks.com/matlabcentral/fileexchange/42885-nearestspd
-    .. [2] N.J. Higham, "Computing a nearest symmetric positive semidefinite matrix" (1988):
+    ..  https://www.mathworks.com/matlabcentral/fileexchange/42885-nearestspd
+    ..  N.J. Higham, "Computing a nearest symmetric positive semidefinite matrix" (1988):
            https://doi.org/10.1016/0024-3795(88)90223-6
     """
 
@@ -98,14 +94,12 @@ def nearestPD(A):
 
 
 def robust_pattern(W, Cx, Cs):
-    """Transform spatial filters to spatial patterns based on paper [1]_.
-        Referring to the method mentioned in article [1],the constructed spatial filter only shows how to combine
+    """
+        Transform spatial filters to spatial patterns based on paper.
+        Referring to the method mentioned in article,the constructed spatial filter only shows how to combine
         information from different channels to extract signals of interest from EEG signals, but if our goal is
         neurophysiological interpretation or visualization of weights, activation patterns need to be constructed
         from the obtained spatial filters.
-
-    update log:
-        2023-12-10 by Leyi Jia <18020095036@163.com>, Add code annotation
 
     Parameters
     ----------
@@ -123,7 +117,7 @@ def robust_pattern(W, Cx, Cs):
 
     References
     ----------
-    .. [1] Haufe, Stefan, et al. "On the interpretation of weight vectors of linear models in multivariate neuroimaging.
+    .. Haufe, Stefan, et al. "On the interpretation of weight vectors of linear models in multivariate neuroimaging.
            Neuroimage 87 (2014): 96-110.
     """
     # use linalg.solve instead of inv, makes it more stable
@@ -135,7 +129,7 @@ def robust_pattern(W, Cx, Cs):
 
 def xiang_dsp_kernel(X, y):
     """
-    DSP: Discriminal Spatial Patterns, only for two classes[1]_.
+    DSP: Discriminal Spatial Patterns, only for two classes.
     Import train data to solve spatial filters with DSP,
     finds a projection matrix that maximize the between-class scatter matrix and
     minimize the within-class scatter matrix. Currently only support for two types of data.
@@ -170,7 +164,7 @@ def xiang_dsp_kernel(X, y):
 
     References
     ----------
-    .. [1] Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in
+    .. Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in
         a finger movement task." IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
     """
     X, y = np.copy(X), np.copy(y)
@@ -216,7 +210,7 @@ def xiang_dsp_kernel(X, y):
 
 def xiang_dsp_feature(W, M, X, n_components):
     """
-    Return DSP features in paper [1]_.
+    Return DSP features in paper.
 
     Author: Swolf <swolfforever@gmail.com>
 
@@ -246,13 +240,10 @@ def xiang_dsp_feature(W, M, X, n_components):
         n_components should less than half of the number of channels
 
     Notes
-    -----
-    1. instead of meaning of filtered signals in paper [1]_., we directly return filtered signals.
-
     References
     ----------
-    .. [1] Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in
-        a finger movement task." IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
+    Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in
+    a finger movement task." IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
     """
     W, M, X = np.copy(W), np.copy(M), np.copy(X)
     max_components = W.shape[1]
@@ -309,6 +300,7 @@ def lagging_aug(X, n_samples, lagging_len, P, training):
 
 def tdca_feature(X, templates, W, M, Ps, lagging_len, n_components, training=False):
     '''
+    get feature of tdca
     Parameters
     ----------
     X: Input EEG signals (n_trials, n_channels, n_points)
@@ -352,6 +344,7 @@ class TDCA(CCABase):
 
     def filter_bank(self, X):
         '''
+
         Parameters
         ----------
         X: Input EEG signals (n_trials, n_channels, n_points)

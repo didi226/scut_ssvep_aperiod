@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scut_ssvep_aperiod.fooof_parameter package &mdash; scut_ssvep_aperiod 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            scut_ssvep_aperiod
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">scut_ssvep_aperiod.fooof_parameter package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.fooof_parameter.decode_rebuild">scut_ssvep_aperiod.fooof_parameter.decode_rebuild module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.calculate_fft"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.calculate_fft()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.data_to_fft"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.data_to_fft()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_aperiodic_value"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.get_aperiodic_value()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_period_psd"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.get_period_psd()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_periodic_value"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.get_periodic_value()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_reconstructed_signal"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.get_reconstructed_signal()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.remove_aperiodic_value"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.remove_aperiodic_value()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.slope_estimate"><code class="docutils literal notranslate"><span class="pre">BuildPSDPeriod.slope_estimate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.reconstruct_signal"><code class="docutils literal notranslate"><span class="pre">reconstruct_signal()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.fooof_parameter">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">scut_ssvep_aperiod</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">scut_ssvep_aperiod.fooof_parameter package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/scut_ssvep_aperiod.fooof_parameter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scut-ssvep-aperiod-fooof-parameter-package">
+<h1>scut_ssvep_aperiod.fooof_parameter package<a class="headerlink" href="#scut-ssvep-aperiod-fooof-parameter-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-scut_ssvep_aperiod.fooof_parameter.decode_rebuild">
+<span id="scut-ssvep-aperiod-fooof-parameter-decode-rebuild-module"></span><h2>scut_ssvep_aperiod.fooof_parameter.decode_rebuild module<a class="headerlink" href="#module-scut_ssvep_aperiod.fooof_parameter.decode_rebuild" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.fooof_parameter.decode_rebuild.</span></span><span class="sig-name descname"><span class="pre">BuildPSDPeriod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['__',</span> <span class="pre">'__']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.calculate_fft">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.calculate_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.calculate_fft" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param data<span class="colon">:</span></dt>
+<dd class="field-odd"><p>narray   shape (n_channel, n_times) Multi-channel time-domain data</p>
+</dd>
+<dt class="field-even">param sfreq<span class="colon">:</span></dt>
+<dd class="field-even"><p>int      sfreq  sampling frequency</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>spectrum_frequencies narray   shape (n_channel，n_freqs)   The amplitude matrix after FFT</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>spectrum_phase       narray   shape (n_channel，n_freqs)   The phase matrix after FFT
+freqs                narray   shape (n_freqs)              Corresponding frequency point matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.data_to_fft">
+<span class="sig-name descname"><span class="pre">data_to_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psd_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Ordinary'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.data_to_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.data_to_fft" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psd_type</strong> – str          Calculate the type of PSD:  “Ordinary”             Original PSD
+“get_periodic”         periodic signal PSD
+“remove_aperiodic”     remove aperiod signal PSD
+“get_aperiodic”        aperiod signal PSD</p></li>
+<li><p><strong>freq_range</strong> – None/list    The default None is determined by foof fitting in the frequency range list, for example [2,50]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>gaussian_values  narray   shape (n_channel,n_fres)
+freqs            narray   shape (n_fres)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_aperiodic_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_aperiodic_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gaussian_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum_frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.get_aperiodic_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_aperiodic_value" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Obtain the value of aperiodic signals</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param gaussian_values<span class="colon">:</span></dt>
+<dd class="field-odd"><p>narray                  An empty matrix is used to hold the results shape (n_channel,n_freqs)</p>
+</dd>
+<dt class="field-even">param fg<span class="colon">:</span></dt>
+<dd class="field-even"><p>FOOOF fitting class</p>
+</dd>
+<dt class="field-odd">param n_channel<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int                      Number of channels</p>
+</dd>
+<dt class="field-even">param freqs<span class="colon">:</span></dt>
+<dd class="field-even"><p>narray          Frequency point matrix      shape(n_freqs)</p>
+</dd>
+<dt class="field-odd">param spectrum_frequencies<span class="colon">:</span></dt>
+<dd class="field-odd"><p>narray                 Spectrum  for FFT</p>
+</dd>
+<dt class="field-even">param freq_range<span class="colon">:</span></dt>
+<dd class="field-even"><p>list                    freq range for FOOOF fitting for example [2,50]</p>
+</dd>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_period_psd">
+<span class="sig-name descname"><span class="pre">get_period_psd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spectrum_frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'remove_aperiodic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.get_period_psd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_period_psd" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spectrum_frequencies</strong> – narray     Ordinary PSD  shape   (n_channel,n_freqs)</p></li>
+<li><p><strong>freqs</strong> – narray     Frequency points corresponding to ordinary PSD   shape   (n_freqs)</p></li>
+<li><p><strong>freq_range</strong> – None/list  The default None is determined by foof fitting to the frequency range list, for example [2,50]</p></li>
+<li><p><strong>method</strong> – str        “remove_aperiodic”  Remove aperiodic signals
+“get_periodic”      Obtaining periodic signals
+“get_aperiodic”     Obtaining non periodic signals</p></li>
+<li><p><strong>figure</strong> – bool        True: plot fooof fit for psd
+False: don not plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+<p>gaussian_values                   narray       shape   (n_channel,n_freqs) A new PSD matrix corresponding to the method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_periodic_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_periodic_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gaussian_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum_frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.get_periodic_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_periodic_value" title="Link to this definition"></a></dt>
+<dd><p>Obtain the value of the periodic signal
+:param gaussian_values:     narray                  An empty matrix is used to hold the results shape (n_channel,n_freqs)
+:param fg:                  FOOOF fitting class
+:param n_channel:           int                     Number of channels
+:param freqs:               narray                  Frequency point matrix      shape(n_freqs)
+:param spectrum_frequencies:narray                  Spectrum  for FFT
+:param freq_range:          list                    freq range for FOOOF fitting for example [2,50]
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_reconstructed_signal">
+<span class="sig-name descname"><span class="pre">get_reconstructed_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">para_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'get_periodic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_invariance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.get_reconstructed_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_reconstructed_signal" title="Link to this definition"></a></dt>
+<dd><p>Obtain the periodic components of the signal or remove the aperiodic components of the signal
+:param freq_range:        None/list    The default None is determined by foof fitting in the frequency range list, for example [2,50]
+:param <a href="#id1"><span class="problematic" id="id2">para_</span></a>:             bool         Discard parameters
+:param method:            str          “get_periodic”         periodic signal PSD</p>
+<blockquote>
+<div><p>“remove_aperiodic”     remove aperiod signal PSD
+“get_aperiodic”        aperiod signal PSD</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.remove_aperiodic_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_aperiodic_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gaussian_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum_frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.remove_aperiodic_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.remove_aperiodic_value" title="Link to this definition"></a></dt>
+<dd><p>Obtain the value of removing aperiodic signals
+:param gaussian_values:         narray                 An empty matrix is used to hold the results shape (n_channel,n_freqs)
+:param fg:                      FOOOF fitting class
+:param n_channel:               int                    Number of channels
+:param freqs:                   narray                 Frequency point matrix      shape(n_freqs)
+:param spectrum_frequencies:    narray                 Spectrum  for FFT
+:param freq_range:              list                    freq range for FOOOF fitting for example [2,50]
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.slope_estimate">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slope_estimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#BuildPSDPeriod.slope_estimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.slope_estimate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.fooof_parameter.decode_rebuild.reconstruct_signal">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.fooof_parameter.decode_rebuild.</span></span><span class="sig-name descname"><span class="pre">reconstruct_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'remove_aperiodic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_invariance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/fooof_parameter/decode_rebuild.html#reconstruct_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.reconstruct_signal" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – numpy array       shape(n_epoch, n_channels, n_times)</p></li>
+<li><p><strong>label</strong> – numpy array       shape(n_epoch,)</p></li>
+<li><p><strong>sfreq</strong> – float             the sfreq of the signal</p></li>
+<li><p><strong>method</strong> – str               method of reconstruction
+“remove_aperiodic” —- reconstruct time signals and remove_aperiodic
+“get_periodic” —- reconstruct time signals and get_periodic
+“get_aperiodic” —- reconstruct time signals and get_aperiodic</p></li>
+<li><p><strong>phase_invariance</strong> – int                0 —- with original phase
+2 —- with 0 phase</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+<p>reconstruct_data                  numpy array       shape(n_epoch, n_channels, n_times)
+new_label                         numpy array       shape(n_epoch,)</p>
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.fooof_parameter">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-scut_ssvep_aperiod.fooof_parameter" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Di Chen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

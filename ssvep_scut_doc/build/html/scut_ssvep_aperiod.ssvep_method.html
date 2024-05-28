@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scut_ssvep_aperiod.ssvep_method package &mdash; scut_ssvep_aperiod 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            scut_ssvep_aperiod
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">scut_ssvep_aperiod.ssvep_method package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method.cca">scut_ssvep_aperiod.ssvep_method.cca module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon"><code class="docutils literal notranslate"><span class="pre">CCACommon</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.calculate_ex"><code class="docutils literal notranslate"><span class="pre">CCACommon.calculate_ex()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.cca_classify"><code class="docutils literal notranslate"><span class="pre">CCACommon.cca_classify()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.cca_ex"><code class="docutils literal notranslate"><span class="pre">CCACommon.cca_ex()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.classify"><code class="docutils literal notranslate"><span class="pre">CCACommon.classify()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method.fbcca">scut_ssvep_aperiod.ssvep_method.fbcca module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA"><code class="docutils literal notranslate"><span class="pre">FBCCA</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.calculate_ex"><code class="docutils literal notranslate"><span class="pre">FBCCA.calculate_ex()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.classify"><code class="docutils literal notranslate"><span class="pre">FBCCA.classify()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.filter_bank"><code class="docutils literal notranslate"><span class="pre">FBCCA.filter_bank()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method.psda">scut_ssvep_aperiod.ssvep_method.psda module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA"><code class="docutils literal notranslate"><span class="pre">PSDA</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA.calculate_snr"><code class="docutils literal notranslate"><span class="pre">PSDA.calculate_snr()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA.classify"><code class="docutils literal notranslate"><span class="pre">PSDA.classify()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA.slope_estimation"><code class="docutils literal notranslate"><span class="pre">PSDA.slope_estimation()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.calculate_snr()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr_hqy"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.calculate_snr_hqy()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.estimate_psd_value"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.estimate_psd_value()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_original"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.psd_original()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.psd_snr()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.psd_snr_hqy()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy_ave_re"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.psd_snr_hqy_ave_re()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_classify"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.psda_classify()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_ex"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.psda_ex()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.snr_hqy_ave_get"><code class="docutils literal notranslate"><span class="pre">PSDA_SSVEP.snr_hqy_ave_get()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method.ssvep_methd_base">scut_ssvep_aperiod.ssvep_method.ssvep_methd_base module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase"><code class="docutils literal notranslate"><span class="pre">CCABase</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.find_correlation"><code class="docutils literal notranslate"><span class="pre">CCABase.find_correlation()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.get_reference_signal"><code class="docutils literal notranslate"><span class="pre">CCABase.get_reference_signal()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase"><code class="docutils literal notranslate"><span class="pre">SSVEPMethodBase</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method.tdca">scut_ssvep_aperiod.ssvep_method.tdca module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA"><code class="docutils literal notranslate"><span class="pre">TDCA</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.calculate_ex"><code class="docutils literal notranslate"><span class="pre">TDCA.calculate_ex()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.classifier"><code class="docutils literal notranslate"><span class="pre">TDCA.classifier()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.filter_bank"><code class="docutils literal notranslate"><span class="pre">TDCA.filter_bank()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.train"><code class="docutils literal notranslate"><span class="pre">TDCA.train()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.transform"><code class="docutils literal notranslate"><span class="pre">TDCA.transform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.isPD"><code class="docutils literal notranslate"><span class="pre">isPD()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.lagging_aug"><code class="docutils literal notranslate"><span class="pre">lagging_aug()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.nearestPD"><code class="docutils literal notranslate"><span class="pre">nearestPD()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.proj_ref"><code class="docutils literal notranslate"><span class="pre">proj_ref()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.robust_pattern"><code class="docutils literal notranslate"><span class="pre">robust_pattern()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.tdca_feature"><code class="docutils literal notranslate"><span class="pre">tdca_feature()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_feature"><code class="docutils literal notranslate"><span class="pre">xiang_dsp_feature()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_kernel"><code class="docutils literal notranslate"><span class="pre">xiang_dsp_kernel()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method.trca">scut_ssvep_aperiod.ssvep_method.trca module</a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA"><code class="docutils literal notranslate"><span class="pre">TRCA</span></code></a><ul>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.classifier"><code class="docutils literal notranslate"><span class="pre">TRCA.classifier()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.filter_bank"><code class="docutils literal notranslate"><span class="pre">TRCA.filter_bank()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.get_w"><code class="docutils literal notranslate"><span class="pre">TRCA.get_w()</span></code></a></li>
+<li><a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.train"><code class="docutils literal notranslate"><span class="pre">TRCA.train()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scut_ssvep_aperiod.ssvep_method">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">scut_ssvep_aperiod</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">scut_ssvep_aperiod.ssvep_method package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/scut_ssvep_aperiod.ssvep_method.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scut-ssvep-aperiod-ssvep-method-package">
+<h1>scut_ssvep_aperiod.ssvep_method package<a class="headerlink" href="#scut-ssvep-aperiod-ssvep-method-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method.cca">
+<span id="scut-ssvep-aperiod-ssvep-method-cca-module"></span><h2>scut_ssvep_aperiod.ssvep_method.cca module<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method.cca" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.cca.CCACommon">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.cca.</span></span><span class="sig-name descname"><span class="pre">CCACommon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_harmonics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/cca.html#CCACommon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase" title="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCABase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.cca.CCACommon.calculate_ex">
+<span class="sig-name descname"><span class="pre">calculate_ex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ica_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/cca.html#CCACommon.calculate_ex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.calculate_ex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.cca.CCACommon.cca_classify">
+<span class="sig-name descname"><span class="pre">cca_classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ica_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/cca.html#CCACommon.cca_classify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.cca_classify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.cca.CCACommon.cca_ex">
+<span class="sig-name descname"><span class="pre">cca_ex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ica_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/cca.html#CCACommon.cca_ex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.cca_ex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.cca.CCACommon.classify">
+<span class="sig-name descname"><span class="pre">classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ica_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/cca.html#CCACommon.classify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.classify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method.fbcca">
+<span id="scut-ssvep-aperiod-ssvep-method-fbcca-module"></span><h2>scut_ssvep_aperiod.ssvep_method.fbcca module<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method.fbcca" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.fbcca.</span></span><span class="sig-name descname"><span class="pre">FBCCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_harmonics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passband</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[6,</span> <span class="pre">14,</span> <span class="pre">22,</span> <span class="pre">30,</span> <span class="pre">38]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopband</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">10,</span> <span class="pre">16,</span> <span class="pre">24,</span> <span class="pre">32]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_cut_pass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_cut_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/fbcca.html#FBCCA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase" title="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCABase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.calculate_ex">
+<span class="sig-name descname"><span class="pre">calculate_ex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/fbcca.html#FBCCA.calculate_ex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.calculate_ex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.classify">
+<span class="sig-name descname"><span class="pre">classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/fbcca.html#FBCCA.classify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.classify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.filter_bank">
+<span class="sig-name descname"><span class="pre">filter_bank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eeg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/fbcca.html#FBCCA.filter_bank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.filter_bank" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method.psda">
+<span id="scut-ssvep-aperiod-ssvep-method-psda-module"></span><h2>scut_ssvep_aperiod.ssvep_method.psda module<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method.psda" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.psda.</span></span><span class="sig-name descname"><span class="pre">PSDA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_harmonics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psd_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Ordinary'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psd_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ave'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psda_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct_compare'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['__',</span> <span class="pre">'__']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase" title="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSVEPMethodBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA.calculate_snr">
+<span class="sig-name descname"><span class="pre">calculate_snr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA.calculate_snr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA.calculate_snr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA.classify">
+<span class="sig-name descname"><span class="pre">classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA.classify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA.classify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA.slope_estimation">
+<span class="sig-name descname"><span class="pre">slope_estimation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA.slope_estimation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA.slope_estimation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.psda.</span></span><span class="sig-name descname"><span class="pre">PSDA_SSVEP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_psd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fre_doi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psd_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ave'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmonic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sfreq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltaf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['__',</span> <span class="pre">'__']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr">
+<span class="sig-name descname"><span class="pre">calculate_snr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_psd_channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_fre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltaf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.calculate_snr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr_hqy">
+<span class="sig-name descname"><span class="pre">calculate_snr_hqy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_psd_channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_fre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltaf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.calculate_snr_hqy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr_hqy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.estimate_psd_value">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">estimate_psd_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_psd_i_channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i_fre</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.estimate_psd_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.estimate_psd_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_original">
+<span class="sig-name descname"><span class="pre">psd_original</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.psd_original"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_original" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr">
+<span class="sig-name descname"><span class="pre">psd_snr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.psd_snr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy">
+<span class="sig-name descname"><span class="pre">psd_snr_hqy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.psd_snr_hqy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy_ave_re">
+<span class="sig-name descname"><span class="pre">psd_snr_hqy_ave_re</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.psd_snr_hqy_ave_re"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy_ave_re" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_classify">
+<span class="sig-name descname"><span class="pre">psda_classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psda_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct_compare'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.psda_classify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_classify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_ex">
+<span class="sig-name descname"><span class="pre">psda_ex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psda_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct_compare'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.psda_ex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_ex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.snr_hqy_ave_get">
+<span class="sig-name descname"><span class="pre">snr_hqy_ave_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/psda.html#PSDA_SSVEP.snr_hqy_ave_get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.snr_hqy_ave_get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method.ssvep_methd_base">
+<span id="scut-ssvep-aperiod-ssvep-method-ssvep-methd-base-module"></span><h2>scut_ssvep_aperiod.ssvep_method.ssvep_methd_base module<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method.ssvep_methd_base" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.</span></span><span class="sig-name descname"><span class="pre">CCABase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_harmonics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base.html#CCABase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase" title="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSVEPMethodBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.find_correlation">
+<span class="sig-name descname"><span class="pre">find_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base.html#CCABase.find_correlation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.find_correlation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.get_reference_signal">
+<span class="sig-name descname"><span class="pre">get_reference_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base.html#CCABase.get_reference_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.get_reference_signal" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.</span></span><span class="sig-name descname"><span class="pre">SSVEPMethodBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base.html#SSVEPMethodBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method.tdca">
+<span id="scut-ssvep-aperiod-ssvep-method-tdca-module"></span><h2>scut_ssvep_aperiod.ssvep_method.tdca module<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method.tdca" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.TDCA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">TDCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_harmonics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passband</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[6,</span> <span class="pre">14,</span> <span class="pre">22,</span> <span class="pre">30,</span> <span class="pre">38]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopband</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">10,</span> <span class="pre">16,</span> <span class="pre">24,</span> <span class="pre">32]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highcut_pass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highcut_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lagging_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#TDCA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase" title="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCABase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.TDCA.calculate_ex">
+<span class="sig-name descname"><span class="pre">calculate_ex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#TDCA.calculate_ex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.calculate_ex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.TDCA.classifier">
+<span class="sig-name descname"><span class="pre">classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#TDCA.classifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.classifier" title="Link to this definition"></a></dt>
+<dd><section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<p>X: Input EEG signals (n_trials, n_channels, n_points)
+Returns:  labels (n_trials, )
+——-</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.TDCA.filter_bank">
+<span class="sig-name descname"><span class="pre">filter_bank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#TDCA.filter_bank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.filter_bank" title="Link to this definition"></a></dt>
+<dd><section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>X: Input EEG signals (n_trials, n_channels, n_points)
+Returns: Output EEG signals of filter banks FB_X (n_fb, n_trials, n_channels, n_points)
+——-</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.TDCA.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#TDCA.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.train" title="Link to this definition"></a></dt>
+<dd><section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>X: Input EEG signals (n_trials, n_channels, n_points)
+y: Input labels (n_trials,)
+Yf: Sin-Cosine reference signals (n_freq, 2 * num_harmonics, n_points)
+Returns
+——-</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.TDCA.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fb_i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#TDCA.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.transform" title="Link to this definition"></a></dt>
+<dd><section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>X: Input EEG signals (n_trials, n_channels, n_points)
+Returns: rhos (n_trials, n_freq)
+——-</p>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.isPD">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">isPD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#isPD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.isPD" title="Link to this definition"></a></dt>
+<dd><p>Returns true when input matrix is positive-definite, via Cholesky decompositon method.</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>B<span class="classifier">ndarray</span></dt><dd><p>Any matrix, shape (N, N)</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if B is positve-definite.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Use numpy.linalg rather than scipy.linalg. In this case, scipy.linalg has unpredictable behaviors.</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.lagging_aug">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">lagging_aug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lagging_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#lagging_aug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.lagging_aug" title="Link to this definition"></a></dt>
+<dd><section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>X: Input EEG signals (n_trials, n_channels, n_points)
+n_samples: number of delayed sample points
+lagging_len: lagging length
+P: Projection matrix(n_points, n_points)
+training: True -&gt; training, False -&gt; testing
+Returns: Augmented EEG signals (n_trials, (lagging_len + 1) * n_channels, n_samples)
+——-</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.nearestPD">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">nearestPD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#nearestPD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.nearestPD" title="Link to this definition"></a></dt>
+<dd><p>Find the nearest positive-definite matrix to input.</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>A<span class="classifier">ndarray</span></dt><dd><p>Any square matrxi, shape (N, N)</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>A3<span class="classifier">ndarray</span></dt><dd><p>positive-definite matrix to A</p>
+</dd>
+</dl>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading"></a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.proj_ref">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">proj_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Yf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#proj_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.proj_ref" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Yf</strong> – Sin-Cosine reference signals (n_freq, 2 * num_harmonics, n_points)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.robust_pattern">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">robust_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#robust_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.robust_pattern" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Transform spatial filters to spatial patterns based on paper.
+Referring to the method mentioned in article,the constructed spatial filter only shows how to combine
+information from different channels to extract signals of interest from EEG signals, but if our goal is
+neurophysiological interpretation or visualization of weights, activation patterns need to be constructed
+from the obtained spatial filters.</p>
+</div></blockquote>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>W<span class="classifier">ndarray</span></dt><dd><p>Spatial filters, shape (n_channels, n_filters).</p>
+</dd>
+<dt>Cx<span class="classifier">ndarray</span></dt><dd><p>Covariance matrix of eeg data, shape (n_channels, n_channels).</p>
+</dd>
+<dt>Cs<span class="classifier">ndarray</span></dt><dd><p>Covariance matrix of source data, shape (n_channels, n_channels).</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Returns<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>A<span class="classifier">ndarray</span></dt><dd><p>Spatial patterns, shape (n_channels, n_patterns), each column is a spatial pattern.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>References<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.tdca_feature">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">tdca_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">templates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lagging_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#tdca_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.tdca_feature" title="Link to this definition"></a></dt>
+<dd><p>get feature of tdca
+Parameters
+———-
+X: Input EEG signals (n_trials, n_channels, n_points)
+templates: EEG template signals (n_freq, n_channels, n_points)
+W: Spatial filters (n_channels, n_filters)
+M: Common templates for all categories (n_channels, n_points)
+Ps: Projection matrix (n_freq, n_channels, n_points)
+lagging_len: lagging length
+n_components: number of components
+training: True -&gt; training, False -&gt; testing</p>
+<section id="returns-correlation-coefficient-vector-rhos-n-freq">
+<h3>Returns: Correlation coefficient vector: rhos (n_freq, )<a class="headerlink" href="#returns-correlation-coefficient-vector-rhos-n-freq" title="Link to this heading"></a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_feature">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">xiang_dsp_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#xiang_dsp_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_feature" title="Link to this definition"></a></dt>
+<dd><p>Return DSP features in paper.</p>
+<p>Author: Swolf &lt;<a class="reference external" href="mailto:swolfforever&#37;&#52;&#48;gmail&#46;com">swolfforever<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p>Created on: 2021-1-07</p>
+<p>Update log:</p>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>W<span class="classifier">ndarray</span></dt><dd><p>spatial filters from csp_kernel, shape (n_channels, n_filters)</p>
+</dd>
+<dt>M<span class="classifier">ndarray</span></dt><dd><p>common template for all classes, shape (n_channel, n_samples)</p>
+</dd>
+<dt>X<span class="classifier">ndarray</span></dt><dd><p>eeg test data, shape (n_trials, n_channels, n_samples)</p>
+</dd>
+<dt>n_components<span class="classifier">int, optional</span></dt><dd><p>length of the spatial filters, first k components to use, by default 1</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>features: ndarray</dt><dd><p>features, shape (n_trials, n_components, n_samples)</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h3>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>n_components should less than half of the number of channels</p>
+</dd>
+</dl>
+<p>Notes
+References
+———-
+Liao, Xiang, et al. “Combining spatial filters for the classification of single-trial EEG in
+a finger movement task.” IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_kernel">
+<span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.tdca.</span></span><span class="sig-name descname"><span class="pre">xiang_dsp_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/tdca.html#xiang_dsp_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_kernel" title="Link to this definition"></a></dt>
+<dd><p>DSP: Discriminal Spatial Patterns, only for two classes.
+Import train data to solve spatial filters with DSP,
+finds a projection matrix that maximize the between-class scatter matrix and
+minimize the within-class scatter matrix. Currently only support for two types of data.</p>
+<p>Author: Swolf &lt;<a class="reference external" href="mailto:swolfforever&#37;&#52;&#48;gmail&#46;com">swolfforever<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<p>Created on: 2021-1-07</p>
+<p>Update log:</p>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>X<span class="classifier">ndarray</span></dt><dd><p>EEG train data assuming removing mean, shape (n_trials, n_channels, n_samples)</p>
+</dd>
+<dt>y<span class="classifier">ndarray</span></dt><dd><p>labels of EEG data, shape (n_trials, )</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>W<span class="classifier">ndarray</span></dt><dd><p>spatial filters, shape (n_channels, n_filters)</p>
+</dd>
+<dt>D<span class="classifier">ndarray</span></dt><dd><p>eigenvalues in descending order</p>
+</dd>
+<dt>M<span class="classifier">ndarray</span></dt><dd><p>mean value of all classes and trials, i.e. common mode signals, shape (n_channel, n_samples)</p>
+</dd>
+<dt>A<span class="classifier">ndarray</span></dt><dd><p>spatial patterns, shape (n_channels, n_filters)</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Notes<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>the implementation removes regularization on within-class scatter matrix Sw.</p>
+</section>
+<section id="id16">
+<h3>References<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method.trca">
+<span id="scut-ssvep-aperiod-ssvep-method-trca-module"></span><h2>scut_ssvep_aperiod.ssvep_method.trca module<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method.trca" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.trca.TRCA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scut_ssvep_aperiod.ssvep_method.trca.</span></span><span class="sig-name descname"><span class="pre">TRCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfreq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fres_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_harmonics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/trca.html#TRCA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase" title="scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCABase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.trca.TRCA.classifier">
+<span class="sig-name descname"><span class="pre">classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/trca.html#TRCA.classifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.classifier" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.trca.TRCA.filter_bank">
+<span class="sig-name descname"><span class="pre">filter_bank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/trca.html#TRCA.filter_bank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.filter_bank" title="Link to this definition"></a></dt>
+<dd><section id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p>X: Input EEG signals (n_trials, n_channels, n_points)
+Returns: Output EEG signals of filter banks FB_X (n_fb, n_trials, n_channels, n_points)
+——-</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.trca.TRCA.get_w">
+<span class="sig-name descname"><span class="pre">get_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/trca.html#TRCA.get_w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.get_w" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scut_ssvep_aperiod.ssvep_method.trca.TRCA.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scut_ssvep_aperiod/ssvep_method/trca.html#TRCA.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scut_ssvep_aperiod.ssvep_method.trca.TRCA.train" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data</strong> – shape (n_trials, n_channels, n_times)</p></li>
+<li><p><strong>train_label</strong> – shape (n_trials,)</p></li>
+<li><p><strong>fres_list</strong> – list len(n_event)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-scut_ssvep_aperiod.ssvep_method">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-scut_ssvep_aperiod.ssvep_method" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Di Chen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -13,6 +13,7 @@ from scut_ssvep_aperiod.ssvep_method.ssvep_methd_base import CCABase
 class CCACommon(CCABase):
 	def __init__(self, sfreq, ws, fres_list, n_harmonics):
 		"""
+
 		:param Fs:
 		:param ws:
 		:param fres_list:
