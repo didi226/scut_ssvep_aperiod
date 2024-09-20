@@ -13,12 +13,18 @@ src/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable.py
 src/scut_ssvep_aperiod/load_dataset/dataset_base.py
 src/scut_ssvep_aperiod/load_dataset/dataset_kalunga.py
 src/scut_ssvep_aperiod/load_dataset/dataset_lee.py
+src/scut_ssvep_aperiod/predict_resting_state/__init__.py
+src/scut_ssvep_aperiod/predict_resting_state/corr_feature_acc.py
+src/scut_ssvep_aperiod/predict_resting_state/feature_acc.py
+src/scut_ssvep_aperiod/predict_resting_state/load_dataset_erp.py
+src/scut_ssvep_aperiod/predict_resting_state/resting_state_feature.py
 src/scut_ssvep_aperiod/ssvep_aperiod/__init__.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_kalunga.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee.py
+src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee_parameter.py
 src/scut_ssvep_aperiod/ssvep_method/__init__.py
 src/scut_ssvep_aperiod/ssvep_method/cca.py
 src/scut_ssvep_aperiod/ssvep_method/fbcca.py
@@ -28,3 +34,4 @@ src/scut_ssvep_aperiod/ssvep_method/tdca.py
 src/scut_ssvep_aperiod/ssvep_method/trca.py
 src/scut_ssvep_aperiod/utils/__init__.py
 src/scut_ssvep_aperiod/utils/common_function.py
+src/scut_ssvep_aperiod/utils/ttest_analysis.py

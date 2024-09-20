@@ -42,4 +42,12 @@ predict_label = ssvep_method.classifier(test_data)
 
 ## Cite 
 
-The related article has not yet been published.
+```
+@article{chen2024aperiodic,
+  title={Aperiodic Component Analysis in Quantification of Steady-State Visually Evoked Potentials},
+  author={Chen, Di and Song, Zhiqing and Du, Yang and Chen, Sicong and Zhang, Xin and Li, Yuanqing and Huang, Qiyun},
+  journal={IEEE Transactions on Biomedical Engineering},
+  year={2024},
+  publisher={IEEE}
+}
+```

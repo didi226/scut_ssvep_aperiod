@@ -367,7 +367,8 @@ class TDCA(CCABase):
             [B, A] = signal.cheby1(N, Rp, Wn, 'bandpass')
             data = signal.filtfilt(B, A, X, padlen=3 * (max(len(B), len(A)) - 1)).copy()
             FB_X[i, :, :, :] = data
-
+        if self.Nm == 1:
+            FB_X = X [None,:]
         return FB_X
     # def filter_bank(self, X):
     #     '''

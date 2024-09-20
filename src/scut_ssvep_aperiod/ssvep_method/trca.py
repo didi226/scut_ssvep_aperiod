@@ -14,7 +14,7 @@ class TRCA(CCABase):
         super(TRCA, self).__init__(sfreq, ws, fres_list,n_harmonics)
         self.filter_=filter_
         ##trca没有谐波的概念
-    def get_w(self,train_data):
+    def get_w(self,train_data,train_label):
         temp_data = [None] * self.n_event
         temp_X =[]
         for i, i_stimu in enumerate(self.fres_list):
@@ -65,7 +65,7 @@ class TRCA(CCABase):
         w_all =[]
         temp_x_all=[]
         for i_train_data in  train_data:
-            W,temp_X = self.get_w(i_train_data)
+            W,temp_X = self.get_w(i_train_data,train_label)
             w_all.append(W)
             temp_x_all.append(temp_X)
         w_all = np.array(w_all)
@@ -76,7 +76,7 @@ class TRCA(CCABase):
 
     def filter_bank(self, X):
         '''
-        
+
         Parameters
         ----------
         X: Input EEG signals (n_trials, n_channels, n_points)
@@ -118,7 +118,7 @@ class TRCA(CCABase):
         coefficients = np.zeros([self.n_filter,self.n_event])
         result = np.zeros([n_test_trials], np.int32)
         for test_idx in range(n_test_trials):
-            for i_filter,w_filter in enumerate(self.weight):
+            for i_filter,w_filter in enumerate(self.weight): #w_filter 针对某个带通滤波的W
                 test_trial = test_data[i_filter, test_idx, :, :]
                 for i, w in enumerate(w_filter):
                     w = w[None, :]

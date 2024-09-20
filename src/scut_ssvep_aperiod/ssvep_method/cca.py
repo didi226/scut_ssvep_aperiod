@@ -41,7 +41,7 @@ class CCACommon(CCABase):
 		for i, i_data in enumerate(test_data):
 			label[i] = self.cca_classify(i_data, ica_)
 		return label
-	def calculate_ex(self,test_data,ica_=False):
+	def calculate_ex(self,test_data,ica_ = False):
 		ex = np.zeros((test_data.shape[0],self.n_event ))
 		for i, i_data in enumerate(test_data):
 			ex[i,:] = self.cca_ex(i_data, ica_)
