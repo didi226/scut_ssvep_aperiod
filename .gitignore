@@ -10,6 +10,5 @@ gen
 *.png
 *.xlsx
 *.gz
-*whl
 *.png
 src/scut_ssvep_aperiod/predict_resting_state
