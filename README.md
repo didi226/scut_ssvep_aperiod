@@ -3,8 +3,12 @@
 ## Description
 
 - Four traditional SSVEP detection methods: Power Spectral Density Analysis (PSDA), Canonical Correlation Analysis (CCA), Filter Bank Canonical Correlation Analysis (FBCCA), and Task-Related Component Analysis (TDCA).
+
 - A method for extracting periodic and aperiodic components from time-domain signals.
+
 - Quantification of the influence of periodic and aperiodic components on SSVEP.
+
+  You can get more information about this package from [Document ](https://scut-ssvep-aperiod.readthedocs.io/en/latest/).
 
 ## Installation
 
