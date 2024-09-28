@@ -12,8 +12,6 @@
 
 ## Installation
 
-You can either git clone this whole repo by:
-
 ```
 pip install scut_ssvep_aperiod
 ```
