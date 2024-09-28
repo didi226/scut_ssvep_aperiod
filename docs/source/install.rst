@@ -21,7 +21,7 @@ or conda.
 Installation via Conda
 ----------------------
 
-To install Sleep-Semantic-Segmentation using conda in a virtual environment,
+To install Scut Ssvep Aperiod using conda in a virtual environment,
 simply run the following at the root of the repository:
 
 .. code-block:: bash
