@@ -8,6 +8,17 @@ import os
 
 
 def average_by_label(test_data, test_label,unique_labels):
+	"""
+	Average the data by unique label.
+
+	Args:
+		test_data (np.ndarray): The test data with shape (samples, channels, timepoints).
+		test_label (np.ndarray): Array of labels corresponding to the test data.
+		unique_labels (list): List of unique labels for averaging the data.
+
+	Returns:
+		np.ndarray: Averaged data with shape (len(unique_labels), channels, timepoints).
+	"""
 	averaged_data_dict = {}
 	for label in unique_labels:
 		indices = np.where(test_label == label)
@@ -21,6 +32,16 @@ def average_by_label(test_data, test_label,unique_labels):
 		averaged_data[i] = averaged_data_dict[label]
 	return averaged_data
 def difference_of_two_max(mylist,i):
+	"""
+	Calculate the difference ratio between the max value and the second max value in a list.
+
+	Args:
+		mylist (list): List of numerical values.
+		i (int): Index to compare the difference from the top two maximum values.
+
+	Returns:
+		float: Difference ratio between the value at index `i` and the second highest value.
+	"""
 	enumerated_list = list(enumerate(mylist))
 	sorted_list = sorted(enumerated_list, key=lambda x: x[1], reverse=True)
 	top_two_positions = [index for index, value in sorted_list[:2]]
@@ -32,25 +53,22 @@ def difference_of_two_max(mylist,i):
 def ssvep_classify(form_path, info_path, pro_ica=True, filter_para=None, reconstruct_=False, reconstruct_type=0,
                    classify_method="cca", psda_type="snr_hqy",freq_range=None):
 	"""
+	SSVEP (Steady-State Visual Evoked Potential) classification and SNR calculation.
 
-	:param form_path:              str             path of form (subject_id---root_directory---file_name)
-	:param info_path:              str             path of info (mat file for infromation to data)
-	:param pro_ica:                bool            whether to do ica in propresess
-	:param filter_para:            None/list       Default None  no filters
-	                                               [low_freq, high_freq]
-	:param reconstruct_type:    int               the type of reconstruction
-	                                              0 ---- with original phase
-                                                  2 ---- with 0 phase
-    :param classify_method:     str               "psda"
-                                                  "cca"
-                                                  "fbcca"
-                                                  "trca"
-                                                  "tdca"
-	:param psda_type:           str               "snr_hqy_ave_re"
-	                                              "snr_hqy"
-	                                              "snr_hqy_ave_get"
+	Args:
+		form_path (str): Path to the form file (Excel file with subject info).
+		info_path (str): Path to the information file (MAT file for data).
+		pro_ica (bool): Whether to apply ICA in preprocessing. Defaults to True.
+		filter_para (None or list): Filter parameters, e.g., [low_freq, high_freq]. Defaults to None (no filter).
+		reconstruct_ (bool): Whether to apply reconstruction. Defaults to False.
+		reconstruct_type (int): Type of reconstruction (0 = with original phase, 2 = with 0 phase). Defaults to 0.
+		classify_method (str): Classification method, options include "psda", "cca", "fbcca", "trca", "tdca". Defaults to "cca".
+		psda_type (str): PSDA method type, options include "snr_hqy_ave_re", "snr_hqy", "snr_hqy_ave_get". Defaults to "snr_hqy".
+		freq_range (None or list): Frequency range for analysis. Defaults to None.
 
-	:return:
+	Returns:
+		np.ndarray: SNR values for each subject and frequency.
+		np.ndarray: Difference of SNR values between the top two frequencies.
 	"""
 	info_form = pd.read_excel(form_path)
 	unique_subject_ids = info_form['subject_id'].unique()

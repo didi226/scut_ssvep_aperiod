@@ -13,7 +13,7 @@ You can either git clone this whole repo by:
 ```
 git clone https://github.com/didi226/scut_ssvep_aperiod.git
 cd scut_ssvep_aperiod/dist
-pip install scut_ssvep_aperiod-0.0.1-py3-none-any.whl
+pip install scut_ssvep_aperiod
 ```
 
 ## Usage

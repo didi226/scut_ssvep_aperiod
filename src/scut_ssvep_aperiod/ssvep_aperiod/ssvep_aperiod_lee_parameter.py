@@ -6,6 +6,16 @@ import pandas as pd
 import numpy as np
 import os
 def cal_error_label_mean(test_label,error):
+	"""
+	Calculate the mean error for each label category.
+
+	Args:
+		test_label (np.ndarray): Array of true labels.
+		error (np.ndarray): Array of errors corresponding to predictions.
+
+	Returns:
+		np.ndarray: Mean error for each of the 4 label categories.
+	"""
 	average_errors =np.zeros((4))
 	for i in range(4):
 	    indices = np.where(test_label == i)
@@ -16,25 +26,28 @@ def cal_error_label_mean(test_label,error):
 def ssvep_classify_parameters(form_path, info_path, pro_ica=True, filter_para=None, reconstruct_=False, reconstruct_type=0,
                    classify_method="cca", psda_type="snr_hqy",freq_range=None):
 	"""
+	Classifies SSVEP data using different classification methods.
 
-	:param form_path:              str             path of form (subject_id---root_directory---file_name)
-	:param info_path:              str             path of info (mat file for infromation to data)
-	:param pro_ica:                bool            whether to do ica in propresess
-	:param filter_para:            None/list       Default None  no filters
-	                                               [low_freq, high_freq]
-	:param reconstruct_type:    int               the type of reconstruction
-	                                              0 ---- with original phase
-                                                  2 ---- with 0 phase
-    :param classify_method:     str               "psda"
-                                                  "cca"
-                                                  "fbcca"
-                                                  "trca"
-                                                  "tdca"
-	:param psda_type:           str               "snr_hqy_ave_re"
-	                                              "snr_hqy"
-	                                              "snr_hqy_ave_get"
+	Args:
+		form_path (str): Path to the Excel file containing form data (subject_id, root_directory, file_name).
+		info_path (str): Path to the info file (MAT file with data information).
+		pro_ica (bool, optional): Whether to perform ICA during preprocessing. Defaults to True.
+		filter_para (list, optional): List specifying filter parameters [low_freq, high_freq]. Defaults to None (no filtering).
+		reconstruct_ (bool, optional): Whether to reconstruct the data. Defaults to False.
+		reconstruct_type (int, optional): Type of reconstruction. Defaults to 0 (with original phase).
+										  2 indicates reconstruction with 0 phase.
+		classify_method (str, optional): Classification method to use. Options are:
+										 "psda", "cca", "fbcca", "trca", "tdca". Defaults to "cca".
+		psda_type (str, optional): PSDA type, used when classify_method is "psda".
+								   Options include "snr_hqy_ave_re", "snr_hqy", "snr_hqy_ave_get". Defaults to "snr_hqy".
+		freq_range (list, optional): Frequency range for filtering. Defaults to None.
 
-	:return:
+	Returns:
+		tuple:
+			error_all (np.ndarray): Array of average classification errors for each subject and label category.
+			r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.
+			error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.
+			r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.
 	"""
 	info_form = pd.read_excel(form_path)
 	unique_subject_ids = info_form['subject_id'].unique()

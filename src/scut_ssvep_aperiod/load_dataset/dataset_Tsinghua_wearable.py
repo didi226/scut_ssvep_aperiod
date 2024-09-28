@@ -11,17 +11,16 @@ from einops import rearrange
 class LoadDataTHWOne(LoadDataBase):
 	def __init__(self, data_path):
 		"""
-		:param data_path:  str       path of data
-		:param info_path:  str       path of info file(.mat)
+		Initializes the LoadDataTHWOne class.
+
+		Args:
+			data_path (str): Path of the data.
 		"""
 		super(LoadDataTHWOne, self).__init__(data_path=data_path)
 		self.window_time = 2
 		self._get_info()
 	def _get_info(self):
-		"""
-		get info
-		:return:
-		"""
+		"""Retrieves information about the dataset, including sample rate and channel names."""
 		self.sample_rate = 250
 		self.ch_names = ['POz', 'PO3', 'PO4', 'PO5', 'PO6', 'Oz', 'O1', 'O2']
 		self.ch_types = 8 * ['eeg']
@@ -30,9 +29,10 @@ class LoadDataTHWOne(LoadDataBase):
 		self.info.set_montage("standard_1020")
 	def _load_data_from_npz(self, path):
 		"""
-		Load the data from a npz file (preprosess)
-		:param path:              str            path to the npz file
-		:return:
+		Loads the data from a .npz file after preprocessing.
+
+		Args:
+			path (str): Path to the .npz file.
 		"""
 		loaded_data = np.load(path)
 		self.data_test = loaded_data['data_test']
@@ -51,19 +51,21 @@ class LoadDataTHWOne(LoadDataBase):
 
 	def _load_data_from_mat(self, pro_ica=True, filter_para=None, resample=None, reconstruct_=False, picks=['POz', 'PO3', 'PO4', 'PO5', 'PO6', 'Oz', 'O1', 'O2']):
 		"""
-		Load dataset from mat file
-		:param pro_ica:                bool            whether to do ica in propresess
-		:param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param reconstruct_:           None/str         Default None  no reconstruct
-	                                                   "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                                   "get_periodic" ---- reconstruct time signals and get_periodic
-	                                                   "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-		:param picks:                  list             channels to select
-		                                                Default ['POz', 'PO3', 'PO4', 'PO5', 'PO6', 'Oz', 'O1', 'O2']
-		:return:
+		Loads dataset from a .mat file.
+
+		Args:
+			pro_ica (bool): Whether to perform ICA in preprocessing.
+			filter_para (None or list): Filter parameters; default is None (no filters).
+				Can be a list [low_freq, high_freq].
+			resample (None or int): Factor of resampling; default is None (no resample).
+			reconstruct_ (None or str): Type of reconstruction; options include:
+				- "remove_aperiodic": reconstruct signals and remove aperiodic component.
+				- "get_periodic": reconstruct signals to get periodic component.
+				- "get_aperiodic": reconstruct signals to get aperiodic component.
+			picks (list): Channels to select; default is the list of channels specified.
+
+		Returns:
+			None
 		"""
 		file_data_test = np.squeeze(sio.loadmat(self.data_path)['data'][:,int(0.64*self.sample_rate):int(2.64*self.sample_rate),0,5:,:3])
 		file_data_train = np.squeeze(sio.loadmat(self.data_path)['data'][:,int(0.64*self.sample_rate):int(2.64*self.sample_rate),0,:5,:3])
@@ -97,19 +99,23 @@ class LoadDataTHWOne(LoadDataBase):
 	def get_data(self, pro_ica=True, filter_para=None, resample=None, reconstruct_=False,
 	             reconstruct_type=0, freq_range=None, picks = ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']):
 		"""
-		get data after preprosess
-		:param pro_ica:                bool            whether to do ica in propresess
-		:param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param reconstruct_:           None/str         Default None  no reconstruct
-	                                                   "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                                   "get_periodic" ---- reconstruct time signals and get_periodic
-	                                                   "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-		:param picks:                  list             channels to select
-		                                                Default ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']
-		:return:
+		Retrieves data after preprocessing.
+
+		Args:
+			pro_ica (bool): Whether to perform ICA in preprocessing.
+			filter_para (None or list): Filter parameters; default is None (no filters).
+				Can be a list [low_freq, high_freq].
+			resample (None or int): Factor of resampling; default is None (no resample).
+			reconstruct_ (None or str): Type of reconstruction; options include:
+				- "remove_aperiodic": reconstruct signals and remove aperiodic component.
+				- "get_periodic": reconstruct signals to get periodic component.
+				- "get_aperiodic": reconstruct signals to get aperiodic component.
+			reconstruct_type (int): Phase invariance type for reconstruction.
+			freq_range (None): Frequency range; default is None.
+			picks (list): Channels to select; default is the specified list of channels.
+
+		Returns:
+			tuple: Processed training and testing data and labels.
 		"""
 		self.event_dict = {"9.25 Hz": 0, "11.25 Hz": 1, "13.25 Hz": 2}
 		name_base = os.path.basename(self.data_path).replace('.mat', '')

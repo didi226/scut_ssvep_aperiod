@@ -11,19 +11,25 @@ from fooof.objs.utils import average_fg
 from scipy.stats import linregress
 def reconstruct_signal(data, label, sfreq, method="remove_aperiodic", phase_invariance=2,freq_range=None):
 	"""
-	:param data:                      numpy array       shape(n_epoch, n_channels, n_times)
-	:param label:                     numpy array       shape(n_epoch,)
-	:param sfreq:                     float             the sfreq of the signal
-	:param method:                    str               method of reconstruction
-	                                                    "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                                    "get_periodic" ---- reconstruct time signals and get_periodic
-	                                                    "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-	:param phase_invariance:          int                0 ---- with original phase
-                                                         2 ---- with 0 phase
+	Reconstruct signals by extracting periodic and aperiodic components from time series data.
 
-	:return:
-	reconstruct_data                  numpy array       shape(n_epoch, n_channels, n_times)
-	new_label                         numpy array       shape(n_epoch,)
+	Args:
+		data (numpy.ndarray): Time series data of shape (n_epoch, n_channels, n_times).
+		label (numpy.ndarray): Labels of shape (n_epoch,).
+		sfreq (float): Sampling frequency of the signal.
+		method (str): Reconstruction method. Options:
+			"remove_aperiodic": Reconstruct time signal and remove aperiodic components.
+			"get_periodic": Reconstruct time signal and extract periodic components.
+			"get_aperiodic": Reconstruct time signal and extract aperiodic components.
+		phase_invariance (int): Phase invariance option:
+			0: Use original phase.
+			2: Use zero phase.
+		freq_range (list, optional): Frequency range for reconstruction.
+
+	Returns:
+		tuple: A tuple containing:
+			- numpy.ndarray: Reconstructed data of shape (n_epoch, n_channels, n_times).
+			- numpy.ndarray: New labels of shape (n_epoch,).
 	"""
 	reconstruct_data = []
 	new_label = []
@@ -41,9 +47,12 @@ def reconstruct_signal(data, label, sfreq, method="remove_aperiodic", phase_inva
 class BuildPSDPeriod:
 	def __init__(self,data,sfreq,save_path_base=["__","__"]):
 		"""
-		:param data:  narray     shape(n_channel, n_times)
-		:param sfreq: int        sampling frequency
-		:param save_path_base:
+		Initialize the power spectral density (PSD) construction class.
+
+		Args:
+			data (numpy.ndarray): Multi-channel time-domain data of shape (n_channel, n_times).
+			sfreq (int): Sampling frequency.
+			save_path_base (list): Base name for save path.
 		"""
 		self.n_channel, self.n_times = data.shape
 		self.sfreq = sfreq
@@ -51,6 +60,19 @@ class BuildPSDPeriod:
 		self.save_path_base = save_path_base
 	@staticmethod
 	def slope_estimate(spectrum, freqs, freq_range=None):
+		"""
+		Estimate the slope and R² value of a given spectrum.
+
+		Args:
+			spectrum (numpy.ndarray): Spectrum data.
+			freqs (numpy.ndarray): Corresponding frequency points.
+			freq_range (list, optional): Frequency range for estimation.
+
+		Returns:
+			tuple: A tuple containing:
+				- float: Standard error.
+				- float: R² value.
+		"""
 		if freq_range is None:
 			idx_ = np.where(freqs>=0)
 		else:
@@ -65,14 +87,18 @@ class BuildPSDPeriod:
 	@staticmethod
 	def get_periodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range=None):
 		"""
-		Obtain the value of the periodic signal
-		:param gaussian_values:     narray                  An empty matrix is used to hold the results shape (n_channel,n_freqs)
-		:param fg:                  FOOOF fitting class
-		:param n_channel:           int                     Number of channels
-		:param freqs:               narray                  Frequency point matrix      shape(n_freqs)
-		:param spectrum_frequencies:narray                  Spectrum  for FFT
-		:param freq_range:          list                    freq range for FOOOF fitting for example [2,50]
-		:return:
+		Get the values of periodic signals.
+
+		Args:
+		    gaussian_values (numpy.ndarray): Empty matrix for storing results, shape (n_channel, n_freqs).
+		    fg (FOOOF): FOOOF fitting class.
+		    n_channel (int): Number of channels.
+		    freqs (numpy.ndarray): Corresponding frequency points, shape (n_freqs).
+		    spectrum_frequencies (numpy.ndarray): FFT spectrum, shape (n_channel, n_freqs).
+		    freq_range (list, optional): Frequency range for FOOOF fitting.
+
+		Returns:
+		    numpy.ndarray: Updated periodic signal values.
 		"""
 		aps1 = fg.get_params('gaussian_params')
 		gaussian_list = aps1[:, 3]
@@ -91,14 +117,21 @@ class BuildPSDPeriod:
 	@staticmethod
 	def remove_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range=None):
 		"""
-		Obtain the value of removing aperiodic signals
-		:param gaussian_values:         narray                 An empty matrix is used to hold the results shape (n_channel,n_freqs)
-		:param fg:                      FOOOF fitting class
-		:param n_channel:               int                    Number of channels
-		:param freqs:                   narray                 Frequency point matrix      shape(n_freqs)
-		:param spectrum_frequencies:    narray                 Spectrum  for FFT
-		:param freq_range:              list                    freq range for FOOOF fitting for example [2,50]
-		:return:
+		Get the values after removing aperiodic signals.
+
+		Args:
+			gaussian_values (numpy.ndarray): Empty matrix for storing results, shape (n_channel, n_freqs).
+			fg (FOOOF): FOOOF fitting class.
+			n_channel (int): Number of channels.
+			freqs (numpy.ndarray): Corresponding frequency points, shape (n_freqs).
+			spectrum_frequencies (numpy.ndarray): FFT spectrum, shape (n_channel, n_freqs).
+			freq_range (list, optional): Frequency range for FOOOF fitting.
+
+		Returns:
+			tuple: A tuple containing:
+				- numpy.ndarray: Updated values after removing aperiodic signals.
+				- float: Standard error.
+				- float: R² value.
 		"""
 		offset_ex_list = fg.get_params('aperiodic_params')
 		error = fg.group_results[0].error
@@ -119,14 +152,18 @@ class BuildPSDPeriod:
 	@staticmethod
 	def get_aperiodic_value(gaussian_values,fg,n_channel,freqs,spectrum_frequencies,freq_range=None):
 		"""
-	    Obtain the value of aperiodic signals
-		:param gaussian_values:       narray                  An empty matrix is used to hold the results shape (n_channel,n_freqs)
-		:param fg:                    FOOOF fitting class
-		:param n_channel:             int                      Number of channels
-		:param freqs:                 narray          Frequency point matrix      shape(n_freqs)
-		:param spectrum_frequencies:  narray                 Spectrum  for FFT
-		:param freq_range:            list                    freq range for FOOOF fitting for example [2,50]
-		:return:
+		Get the values of aperiodic signals.
+
+		Args:
+			gaussian_values (numpy.ndarray): Empty matrix for storing results, shape (n_channel, n_freqs).
+			fg (FOOOF): FOOOF fitting class.
+			n_channel (int): Number of channels.
+			freqs (numpy.ndarray): Corresponding frequency points, shape (n_freqs).
+			spectrum_frequencies (numpy.ndarray): FFT spectrum, shape (n_channel, n_freqs).
+			freq_range (list, optional): Frequency range for FOOOF fitting.
+
+		Returns:
+			numpy.ndarray: Updated aperiodic signal values.
 		"""
 		offset_ex_list = fg.get_params('aperiodic_params')
 		gaussian_values = spectrum_frequencies

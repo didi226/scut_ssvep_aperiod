@@ -1,4 +1,5 @@
 README.md
+pyproject.toml
 setup.py
 src/scut_ssvep_aperiod/__init__.py
 src/scut_ssvep_aperiod.egg-info/PKG-INFO
@@ -13,14 +14,8 @@ src/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable.py
 src/scut_ssvep_aperiod/load_dataset/dataset_base.py
 src/scut_ssvep_aperiod/load_dataset/dataset_kalunga.py
 src/scut_ssvep_aperiod/load_dataset/dataset_lee.py
-src/scut_ssvep_aperiod/predict_resting_state/__init__.py
-src/scut_ssvep_aperiod/predict_resting_state/corr_feature_acc.py
-src/scut_ssvep_aperiod/predict_resting_state/feature_acc.py
-src/scut_ssvep_aperiod/predict_resting_state/load_dataset_erp.py
-src/scut_ssvep_aperiod/predict_resting_state/resting_state_feature.py
 src/scut_ssvep_aperiod/ssvep_aperiod/__init__.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua.py
-src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_kalunga.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga.py
 src/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee.py

@@ -1,0 +1,717 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee &#8212; SSVEP-APERIOD 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css?v=572af1d6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=5ae071a5"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script>let toggleHintShow = 'Click to expand';</script>
+    <script>let toggleHintHide = 'Click to collapse';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee';</script>
+    <link rel="icon" href="../../../_static/logo.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>   
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">This is a community-supported SSVEP measure and aperiod analysis for EEG or other time series signal. If you'd like to contribute, check out  <a href='https://github.com/didi226/scut_ssvep_aperiod'>our GitHub repository</a>. Your contributions are welcome! </div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo-dark.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">SSVEP-APERIOD Doc</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../example/index.html">
+    Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/didi226/scut_ssvep_aperiod" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../example/index.html">
+    Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/didi226/scut_ssvep_aperiod" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">scut_ssvep_a...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <h1>Source code for scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.load_dataset.dataset_kalunga</span> <span class="kn">import</span> <span class="n">LoadDataKalungaOne</span>
+<span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.load_dataset.dataset_lee</span> <span class="kn">import</span> <span class="n">LoadDataLeeOne</span>
+<span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.ssvep_method</span> <span class="kn">import</span> <span class="n">CCACommon</span><span class="p">,</span><span class="n">TRCA</span><span class="p">,</span><span class="n">FBCCA</span><span class="p">,</span><span class="n">TDCA</span><span class="p">,</span><span class="n">PSDA</span>
+<span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.utils.common_function</span> <span class="kn">import</span> <span class="n">cal_acc</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="average_by_label">
+<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.average_by_label">[docs]</a>
+<span class="k">def</span> <span class="nf">average_by_label</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_label</span><span class="p">,</span><span class="n">unique_labels</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Average the data by unique label.</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		test_data (np.ndarray): The test data with shape (samples, channels, timepoints).</span>
+<span class="sd">		test_label (np.ndarray): Array of labels corresponding to the test data.</span>
+<span class="sd">		unique_labels (list): List of unique labels for averaging the data.</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">		np.ndarray: Averaged data with shape (len(unique_labels), channels, timepoints).</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">averaged_data_dict</span> <span class="o">=</span> <span class="p">{}</span>
+	<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">unique_labels</span><span class="p">:</span>
+		<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">test_label</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span>
+		<span class="n">data_subset</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+		<span class="n">averaged_data_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data_subset</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">num_labels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">)</span>
+	<span class="n">n_channel</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+	<span class="n">n_times</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+	<span class="n">averaged_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">n_channel</span><span class="p">,</span> <span class="n">n_times</span><span class="p">))</span>
+	<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">):</span>
+		<span class="n">averaged_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">averaged_data_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">averaged_data</span></div>
+
+<div class="viewcode-block" id="difference_of_two_max">
+<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.difference_of_two_max">[docs]</a>
+<span class="k">def</span> <span class="nf">difference_of_two_max</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Calculate the difference ratio between the max value and the second max value in a list.</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		mylist (list): List of numerical values.</span>
+<span class="sd">		i (int): Index to compare the difference from the top two maximum values.</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">		float: Difference ratio between the value at index `i` and the second highest value.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">enumerated_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">mylist</span><span class="p">))</span>
+	<span class="n">sorted_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">enumerated_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+	<span class="n">top_two_positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sorted_list</span><span class="p">[:</span><span class="mi">2</span><span class="p">]]</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">top_two_positions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span>
+		<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">mylist</span><span class="p">[</span><span class="n">top_two_positions</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span><span class="o">/</span><span class="n">mylist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">mylist</span><span class="p">[</span><span class="n">top_two_positions</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span><span class="o">/</span><span class="n">mylist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="ssvep_classify">
+<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.ssvep_classify">[docs]</a>
+<span class="k">def</span> <span class="nf">ssvep_classify</span><span class="p">(</span><span class="n">form_path</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reconstruct_</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                   <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;cca&quot;</span><span class="p">,</span> <span class="n">psda_type</span><span class="o">=</span><span class="s2">&quot;snr_hqy&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	SSVEP (Steady-State Visual Evoked Potential) classification and SNR calculation.</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		form_path (str): Path to the form file (Excel file with subject info).</span>
+<span class="sd">		info_path (str): Path to the information file (MAT file for data).</span>
+<span class="sd">		pro_ica (bool): Whether to apply ICA in preprocessing. Defaults to True.</span>
+<span class="sd">		filter_para (None or list): Filter parameters, e.g., [low_freq, high_freq]. Defaults to None (no filter).</span>
+<span class="sd">		reconstruct_ (bool): Whether to apply reconstruction. Defaults to False.</span>
+<span class="sd">		reconstruct_type (int): Type of reconstruction (0 = with original phase, 2 = with 0 phase). Defaults to 0.</span>
+<span class="sd">		classify_method (str): Classification method, options include &quot;psda&quot;, &quot;cca&quot;, &quot;fbcca&quot;, &quot;trca&quot;, &quot;tdca&quot;. Defaults to &quot;cca&quot;.</span>
+<span class="sd">		psda_type (str): PSDA method type, options include &quot;snr_hqy_ave_re&quot;, &quot;snr_hqy&quot;, &quot;snr_hqy_ave_get&quot;. Defaults to &quot;snr_hqy&quot;.</span>
+<span class="sd">		freq_range (None or list): Frequency range for analysis. Defaults to None.</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">		np.ndarray: SNR values for each subject and frequency.</span>
+<span class="sd">		np.ndarray: Difference of SNR values between the top two frequencies.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">info_form</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">form_path</span><span class="p">)</span>
+	<span class="n">unique_subject_ids</span> <span class="o">=</span> <span class="n">info_form</span><span class="p">[</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+	<span class="n">acc_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_subject_ids</span><span class="p">))</span>
+	<span class="n">snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_subject_ids</span><span class="p">),</span><span class="mi">4</span><span class="p">))</span>
+	<span class="n">dif_snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_subject_ids</span><span class="p">),</span><span class="mi">4</span><span class="p">))</span>
+	<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">unique_subject_ids</span><span class="p">:</span>
+		<span class="n">subject_rows</span> <span class="o">=</span> <span class="n">info_form</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">info_form</span><span class="p">[</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">subject_id</span><span class="p">]</span>
+		<span class="n">root_directory</span> <span class="o">=</span> <span class="n">subject_rows</span><span class="p">[</span><span class="s1">&#39;root_directory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+		<span class="n">file_name</span> <span class="o">=</span> <span class="n">subject_rows</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+		<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_directory</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">file_name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+		<span class="n">datasetone</span> <span class="o">=</span> <span class="n">LoadDataLeeOne</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="n">info_path</span> <span class="o">=</span> <span class="n">info_path</span><span class="p">)</span>
+		<span class="n">test_data</span><span class="p">,</span> <span class="n">test_label</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span> <span class="o">=</span> <span class="n">datasetone</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">pro_ica</span><span class="o">=</span><span class="n">pro_ica</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="n">filter_para</span><span class="p">,</span>
+                                                            <span class="n">resample</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">reconstruct_</span><span class="o">=</span><span class="n">reconstruct_</span><span class="p">,</span>
+                                                            <span class="n">reconstruct_type</span><span class="o">=</span><span class="n">reconstruct_type</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="n">freq_range</span><span class="p">)</span>
+		<span class="n">test_data</span> <span class="o">=</span> <span class="n">test_data</span> <span class="p">[:,:</span><span class="mi">9</span><span class="p">,:]</span>
+		<span class="n">train_data</span> <span class="o">=</span> <span class="n">train_data</span> <span class="p">[:,:</span><span class="mi">9</span><span class="p">,:]</span>
+		<span class="n">test_data</span> <span class="o">=</span> <span class="n">average_by_label</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span><span class="n">test_label</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+		<span class="k">if</span> <span class="n">classify_method</span> <span class="o">==</span> <span class="s2">&quot;psda&quot;</span><span class="p">:</span>
+			<span class="n">save_path_base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\save_figure&quot;</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;subject</span><span class="si">{</span><span class="n">subject_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="c1">#绘图</span>
+			<span class="c1"># ssvep_method = PSDA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs, 3, psd_type=&quot;Ordinary&quot;, # &quot;remove_aperiodic&quot;</span>
+			<span class="c1">#                     psd_channel = &quot;ave&quot;, psda_type=psda_type,freq_range=[3,40],figure_=True,save_path_base=save_path_base) #&quot;snr_hqy_ave_re&quot;</span>
+			<span class="c1"># predict_label = ssvep_method.classify(test_data)</span>
+			<span class="c1">#计算SNR</span>
+			<span class="n">ssvep_method</span> <span class="o">=</span> <span class="n">PSDA</span><span class="p">(</span><span class="n">datasetone</span><span class="o">.</span><span class="n">sample_rate_test</span><span class="p">,</span> <span class="n">datasetone</span><span class="o">.</span><span class="n">window_time</span><span class="p">,</span> <span class="n">datasetone</span><span class="o">.</span><span class="n">freqs</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+			                    <span class="n">psd_type</span><span class="o">=</span><span class="s2">&quot;Ordinary&quot;</span><span class="p">,</span>  <span class="c1"># &quot;remove_aperiodic&quot;</span>
+			                    <span class="n">psd_channel</span><span class="o">=</span><span class="s2">&quot;ave&quot;</span><span class="p">,</span> <span class="n">psda_type</span><span class="o">=</span><span class="n">psda_type</span><span class="p">,</span> <span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">figure_</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+			                    <span class="n">save_path_base</span><span class="o">=</span><span class="n">save_path_base</span><span class="p">)</span>  <span class="c1"># &quot;snr_hqy_ave_re&quot;</span>
+			<span class="n">snr_temp</span> <span class="o">=</span> <span class="n">ssvep_method</span><span class="o">.</span><span class="n">calculate_snr</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">classify_method</span> <span class="o">==</span> <span class="s2">&quot;cca&quot;</span><span class="p">:</span>
+			<span class="n">ssvep_method</span> <span class="o">=</span> <span class="n">CCACommon</span><span class="p">(</span><span class="n">sfreq</span><span class="o">=</span><span class="n">datasetone</span><span class="o">.</span><span class="n">sample_rate_test</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="n">datasetone</span><span class="o">.</span><span class="n">window_time</span><span class="p">,</span>
+			                         <span class="n">fres_list</span><span class="o">=</span><span class="n">datasetone</span><span class="o">.</span><span class="n">freqs</span><span class="p">,</span> <span class="n">n_harmonics</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+			<span class="n">snr_temp</span> <span class="o">=</span> <span class="n">ssvep_method</span><span class="o">.</span><span class="n">calculate_ex</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">ica_</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">classify_method</span> <span class="o">==</span> <span class="s2">&quot;fbcca&quot;</span><span class="p">:</span>
+			<span class="n">ssvep_method</span> <span class="o">=</span> <span class="n">FBCCA</span><span class="p">(</span><span class="n">datasetone</span><span class="o">.</span><span class="n">sample_rate_test</span><span class="p">,</span> <span class="n">datasetone</span><span class="o">.</span><span class="n">window_time</span><span class="p">,</span> <span class="n">datasetone</span><span class="o">.</span><span class="n">freqs</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+			<span class="n">_</span> <span class="o">=</span> <span class="n">ssvep_method</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+			<span class="n">snr_temp</span> <span class="o">=</span> <span class="n">ssvep_method</span><span class="o">.</span><span class="n">calculate_ex</span><span class="p">()</span>
+		<span class="c1"># elif classify_method == &quot;trca&quot;:</span>
+		<span class="c1"># 	ssvep_method = TRCA(datasetone.sample_rate_test, datasetone.window_time, datasetone.freqs, [3.4,40])</span>
+		<span class="c1"># 	ssvep_method.train(train_data, train_label)</span>
+		<span class="c1"># 	predict_label = ssvep_method.classifier(test_data)</span>
+		<span class="k">elif</span> <span class="n">classify_method</span> <span class="o">==</span> <span class="s2">&quot;tdca&quot;</span><span class="p">:</span>
+			<span class="n">ssvep_method</span> <span class="o">=</span> <span class="n">TDCA</span><span class="p">(</span><span class="n">datasetone</span><span class="o">.</span><span class="n">sample_rate_test</span><span class="p">,</span><span class="mf">3.848</span><span class="p">,</span>
+			                    <span class="n">datasetone</span><span class="o">.</span><span class="n">freqs</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">38</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="c1"># datasetone.window_time</span>
+			<span class="n">ssvep_method</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+			<span class="n">_</span> <span class="o">=</span> <span class="n">ssvep_method</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+			<span class="n">snr_temp</span> <span class="o">=</span> <span class="n">ssvep_method</span><span class="o">.</span><span class="n">calculate_ex</span><span class="p">()</span>
+		<span class="k">del</span> <span class="n">ssvep_method</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+			<span class="n">snr</span><span class="p">[</span><span class="n">subject_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">snr_temp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+			<span class="n">dif_snr</span><span class="p">[</span><span class="n">subject_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">difference_of_two_max</span><span class="p">(</span><span class="n">snr_temp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
+
+
+	<span class="n">dif_snr</span> <span class="o">=</span> <span class="n">dif_snr</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+	<span class="n">snr</span> <span class="o">=</span> <span class="n">snr</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="form_path_lee">
+<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.form_path_lee">[docs]</a>
+	<span class="n">form_path_lee</span> <span class="o">=</span> <span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\ssvep_lee_sub_info.xlsx&quot;</span></div>
+
+	<span class="n">info_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\info_ssvep_lee_dataset.mat&quot;</span>
+	<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+	<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.45</span><span class="p">,</span><span class="mf">6.67</span><span class="p">,</span><span class="mf">8.57</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+	<span class="c1">##plot</span>
+	<span class="c1"># snr, dif_snr = ssvep_classify(form_path_lee, info_path, pro_ica=True, filter_para=[3, 40], reconstruct_=False,</span>
+	<span class="c1">#                      reconstruct_type=None, classify_method=&quot;psda&quot;, psda_type=&quot;snr_hqy_ave_re&quot;,freq_range=None)</span>
+	<span class="c1"># snr</span>
+	<span class="k">for</span> <span class="n">psda_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;snr_hqy&quot;</span><span class="p">,</span><span class="s2">&quot;snr_hqy_ave_re&quot;</span><span class="p">,</span><span class="s2">&quot;snr_hqy_ave_get&quot;</span><span class="p">]:</span>
+		<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\psda&quot;</span><span class="p">,</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">psda_type</span><span class="si">}</span><span class="s2">.xlsx&quot;</span><span class="p">)</span>
+		<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">reconstruct_</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+		                              <span class="n">reconstruct_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;psda&quot;</span><span class="p">,</span> <span class="n">psda_type</span><span class="o">=</span><span class="n">psda_type</span><span class="p">,</span> <span class="n">freq_range</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+		<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+			<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+		<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+			<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                     <span class="n">reconstruct_</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;cca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;cca_original.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span>
+	                     <span class="n">reconstruct_</span><span class="o">=</span><span class="s2">&quot;remove_aperiodic&quot;</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;cca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">40</span><span class="p">])</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;cca_pe.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span>
+	                     <span class="n">reconstruct_</span><span class="o">=</span><span class="s2">&quot;get_aperiodic&quot;</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;cca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">40</span><span class="p">])</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;cca_ap.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="c1">#</span>
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                              <span class="n">reconstruct_</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">reconstruct_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;fbcca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;fbcca_original.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                              <span class="n">reconstruct_</span><span class="o">=</span><span class="s2">&quot;remove_aperiodic&quot;</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;fbcca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;fbcca_pe.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                              <span class="n">reconstruct_</span><span class="o">=</span><span class="s2">&quot;get_aperiodic&quot;</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;fbcca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;fbcca_ap.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                              <span class="n">reconstruct_</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">reconstruct_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;tdca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;tdca_original.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                              <span class="n">reconstruct_</span><span class="o">=</span><span class="s2">&quot;remove_aperiodic&quot;</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;tdca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;tdca_pe.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+	<span class="n">snr</span><span class="p">,</span> <span class="n">dif_snr</span> <span class="o">=</span> <span class="n">ssvep_classify</span><span class="p">(</span><span class="n">form_path_lee</span><span class="p">,</span> <span class="n">info_path</span><span class="p">,</span> <span class="n">pro_ica</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filter_para</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+	                              <span class="n">reconstruct_</span><span class="o">=</span><span class="s2">&quot;get_aperiodic&quot;</span><span class="p">,</span> <span class="n">reconstruct_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">classify_method</span><span class="o">=</span><span class="s2">&quot;tdca&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+	<span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\15956\Desktop\ssvep_result\cca&quot;</span><span class="p">,</span> <span class="s2">&quot;tdca_ap.xlsx&quot;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
+	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">if_sheet_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+		<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dif_snr</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;dif_snr&#39;</span><span class="p">)</span>
+
+
+
+
+
+</pre></div>
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, SCUT EEG  Community.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

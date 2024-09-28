@@ -11,10 +11,32 @@ from mne.filter import filter_data
 from scipy import signal
 class TRCA(CCABase):
     def __init__(self, sfreq, ws, fres_list,n_harmonics,filter_=None):
+        """
+        Initializes the TRCA class.
+        TRCA does not have the concept of harmonics
+
+        Args:
+            sfreq (float): Sampling frequency.
+            ws (float): Window size.
+            fres_list (list): List of frequencies.
+            n_harmonics (int): Number of harmonics.
+            filter_ (tuple, optional): Filter parameters.
+        """
         super(TRCA, self).__init__(sfreq, ws, fres_list,n_harmonics)
-        self.filter_=filter_
-        ##trca没有谐波的概念
+        self.filter_ = filter_
+
     def get_w(self,train_data,train_label):
+        """
+        Computes the weight matrix for the TRCA method.
+
+        Args:
+            train_data (numpy.ndarray): Training data of shape (n_trials, n_channels, n_times).
+            train_label (numpy.ndarray): Labels for training data of shape (n_trials,).
+
+        Returns:
+            numpy.ndarray: Weight matrix W of shape (n_events, n_channels).
+            numpy.ndarray: Temporary matrix temp_X of shape (n_events, n_channels).
+        """
         temp_data = [None] * self.n_event
         temp_X =[]
         for i, i_stimu in enumerate(self.fres_list):
@@ -50,18 +72,22 @@ class TRCA(CCABase):
 
     def train(self,train_data,train_label):
         """
+        Trains the TRCA model using the provided training data and labels.
 
-        :param train_data:  shape (n_trials, n_channels, n_times)
-        :param train_label: shape (n_trials,)
-        :param fres_list:   list len(n_event)
-        :return:
+        Args:
+            train_data (numpy.ndarray): Training data of shape (n_trials, n_channels, n_times).
+            train_label (numpy.ndarray): Labels for training data of shape (n_trials,).
+
+        Returns:
+            numpy.ndarray: Weight matrix w_all of shape (n_filters, n_channels).
+            numpy.ndarray: Temporary matrix temp_x_all of shape (n_filters, n_trials).
         """
-        #准备数据
+        # Prepare data
         if self.filter_ is not None:
             train_data = filter_data(train_data, self.sfreq, self.filter_[0], self.filter_[1])
         train_data = self.filter_bank(train_data)
         self.n_filter = train_data.shape[0]
-        ###初始化w temp_X
+        # Initialize w temp_X
         w_all =[]
         temp_x_all=[]
         for i_train_data in  train_data:
@@ -75,14 +101,15 @@ class TRCA(CCABase):
         return w_all,temp_x_all
 
     def filter_bank(self, X):
-        '''
+        """
+        Applies a filter bank to the input EEG signals.
 
-        Parameters
-        ----------
-        X: Input EEG signals (n_trials, n_channels, n_points)
-        Returns: Output EEG signals of filter banks FB_X (n_fb, n_trials, n_channels, n_points)
-        -------
-        '''
+        Args:
+            X (numpy.ndarray): Input EEG signals of shape (n_trials, n_channels, n_points).
+
+        Returns:
+            numpy.ndarray: Filtered EEG signals of shape (n_fb, n_trials, n_channels, n_points).
+        """
         self.Nm = 10
         self.Nc = 10
         FB_X = np.zeros((self.Nm, X.shape[0], self.Nc, X.shape[-1]))
@@ -111,6 +138,15 @@ class TRCA(CCABase):
         return FB_X
 
     def classifier(self,test_data):
+        """
+        Classifies test data using the trained TRCA model.
+
+        Args:
+            test_data (numpy.ndarray): Test data of shape (n_trials, n_channels, n_times).
+
+        Returns:
+            numpy.ndarray: Predicted labels for test data.
+        """
         if self.filter_ is not None:
             test_data = filter_data(test_data, self.sfreq, self.filter_[0], self.filter_[1])
         test_data = self.filter_bank(test_data)
@@ -129,8 +165,6 @@ class TRCA(CCABase):
             coefficients_mean =  np.squeeze(np.dot(coefficients.T,self.w_band[:,None]))
             label = np.max(np.where(coefficients_mean == np.max(coefficients_mean)))
             result[test_idx] = label
-
-
         return result
 if __name__ == "__main__":
     from scut_ssvep_aperiod.load_dataset.dataset_lee import LoadDataLeeOne

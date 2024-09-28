@@ -1,7 +1,7 @@
 
-# Designer:Ethan Pan
-# Coder:God's hand
-# Time:2024/4/2 16:42
+# Original Designer:Ethan Pan
+# Mod Designer: Di Chen
+# Time:2024/09/25
 import numpy as np
 from scipy.linalg import qr
 from scipy.stats import pearsonr
@@ -14,21 +14,17 @@ from scut_ssvep_aperiod.utils.common_function import cal_acc
 
 
 def isPD(B):
-    """Returns true when input matrix is positive-definite, via Cholesky decompositon method.
+    """Checks if the input matrix is positive-definite using Cholesky decomposition.
 
-    Parameters
-    ----------
-    B : ndarray
-        Any matrix, shape (N, N)
+    This function determines whether the matrix B is positive-definite by attempting
+    to perform a Cholesky decomposition. If the decomposition succeeds, the matrix
+    is positive-definite; otherwise, it is not.
 
-    Returns
-    -------
-    bool
-        True if B is positve-definite.
+    Args:
+        B (ndarray): Any matrix, shape (N, N).
 
-    Notes
-    -----
-        Use numpy.linalg rather than scipy.linalg. In this case, scipy.linalg has unpredictable behaviors.
+    Returns:
+        bool: True if B is positive-definite, False otherwise.
     """
 
     try:
@@ -39,24 +35,17 @@ def isPD(B):
 
 
 def nearestPD(A):
-    """
-    Find the nearest positive-definite matrix to input.
+    """Finds the nearest positive-definite matrix to the input.
 
-    Parameters
-    ----------
-    A : ndarray
-        Any square matrxi, shape (N, N)
+    Args:
+        A (ndarray): Any square matrix, shape (N, N).
 
-    Returns
-    -------
-    A3 : ndarray
-        positive-definite matrix to A
+    Returns:
+        ndarray: Positive-definite matrix closest to A.
 
-    References
-    ----------
-    ..  https://www.mathworks.com/matlabcentral/fileexchange/42885-nearestspd
-    ..  N.J. Higham, "Computing a nearest symmetric positive semidefinite matrix" (1988):
-           https://doi.org/10.1016/0024-3795(88)90223-6
+    References:
+        N.J. Higham, "Computing a nearest symmetric positive semidefinite matrix" (1988):
+        https://doi.org/10.1016/0024-3795(88)90223-6
     """
 
     B = (A + A.T) / 2
@@ -94,78 +83,61 @@ def nearestPD(A):
 
 
 def robust_pattern(W, Cx, Cs):
+    """Transforms spatial filters to spatial patterns based on the method described in the literature.
+
+    This function constructs spatial patterns from spatial filters, which illustrates how to combine
+    information from different EEG channels to extract signals of interest. For neurophysiological
+    interpretation or visualization of weights, it is essential to derive activation patterns from
+    the obtained spatial filters.
+
+    Args:
+        W (ndarray): Spatial filters, shape (n_channels, n_filters).
+        Cx (ndarray): Covariance matrix of EEG data, shape (n_channels, n_channels).
+        Cs (ndarray): Covariance matrix of source data, shape (n_channels, n_channels).
+
+    Returns:
+        ndarray: Spatial patterns, shape (n_channels, n_patterns), where each column represents a
+        spatial pattern.
+
+    References:
+        Haufe, Stefan, et al. "On the interpretation of weight vectors of linear models in multivariate
+        neuroimaging." Neuroimage 87 (2014): 96-110.
+
+    Notes:
+        Use `linalg.solve` instead of `inv` to enhance numerical stability.
+        For more details, see:
+        - https://github.com/robintibor/fbcsp/blob/master/fbcsp/signalproc.py
+        - https://ww2.mathworks.cn/help/matlab/ref/mldivide.html
     """
-        Transform spatial filters to spatial patterns based on paper.
-        Referring to the method mentioned in article,the constructed spatial filter only shows how to combine
-        information from different channels to extract signals of interest from EEG signals, but if our goal is
-        neurophysiological interpretation or visualization of weights, activation patterns need to be constructed
-        from the obtained spatial filters.
-
-    Parameters
-    ----------
-    W : ndarray
-        Spatial filters, shape (n_channels, n_filters).
-    Cx : ndarray
-        Covariance matrix of eeg data, shape (n_channels, n_channels).
-    Cs : ndarray
-        Covariance matrix of source data, shape (n_channels, n_channels).
-
-    Returns
-    -------
-    A : ndarray
-        Spatial patterns, shape (n_channels, n_patterns), each column is a spatial pattern.
-
-    References
-    ----------
-    .. Haufe, Stefan, et al. "On the interpretation of weight vectors of linear models in multivariate neuroimaging.
-           Neuroimage 87 (2014): 96-110.
-    """
-    # use linalg.solve instead of inv, makes it more stable
-    # see https://github.com/robintibor/fbcsp/blob/master/fbcsp/signalproc.py
-    # and https://ww2.mathworks.cn/help/matlab/ref/mldivide.html
     A = solve(Cs.T, np.dot(Cx, W).T).T
     return A
 
 
 def xiang_dsp_kernel(X, y):
     """
-    DSP: Discriminal Spatial Patterns, only for two classes.
-    Import train data to solve spatial filters with DSP,
-    finds a projection matrix that maximize the between-class scatter matrix and
-    minimize the within-class scatter matrix. Currently only support for two types of data.
+    DSP: Discriminative Spatial Patterns, only for two classes.
 
-    Author: Swolf <swolfforever@gmail.com>
+    This function solves spatial filters with DSP by finding a projection matrix
+    that maximizes the between-class scatter matrix and minimizes the within-class
+    scatter matrix. Currently, it supports only two types of data.
 
-    Created on: 2021-1-07
+    Args:
+        X (ndarray): EEG train data (n_trials, n_channels, n_samples) with mean removed.
+        y (ndarray): Labels of EEG data (n_trials,).
 
-    Update log:
+    Returns:
+        tuple:
+            W (ndarray): Spatial filters (n_channels, n_filters).
+            D (ndarray): Eigenvalues in descending order.
+            M (ndarray): Mean value of all classes and trials (n_channel, n_samples).
+            A (ndarray): Spatial patterns (n_channels, n_filters).
 
-    Parameters
-    ----------
-    X : ndarray
-        EEG train data assuming removing mean, shape (n_trials, n_channels, n_samples)
-    y : ndarray
-        labels of EEG data, shape (n_trials, )
+    Raises:
+        ValueError: If the number of components exceeds the number of channels.
 
-    Returns
-    -------
-    W : ndarray
-        spatial filters, shape (n_channels, n_filters)
-    D : ndarray
-        eigenvalues in descending order
-    M : ndarray
-        mean value of all classes and trials, i.e. common mode signals, shape (n_channel, n_samples)
-    A : ndarray
-        spatial patterns, shape (n_channels, n_filters)
-
-    Notes
-    -----
-    the implementation removes regularization on within-class scatter matrix Sw.
-
-    References
-    ----------
-    .. Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in
-        a finger movement task." IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
+    References:
+        Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in a finger movement task."
+        IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
     """
     X, y = np.copy(X), np.copy(y)
     labels = np.unique(y)
@@ -210,40 +182,23 @@ def xiang_dsp_kernel(X, y):
 
 def xiang_dsp_feature(W, M, X, n_components):
     """
-    Return DSP features in paper.
+    Return DSP features as described in the paper.
 
-    Author: Swolf <swolfforever@gmail.com>
+    Args:
+        W (ndarray): Spatial filters (n_channels, n_filters).
+        M (ndarray): Common template for all classes (n_channel, n_samples).
+        X (ndarray): EEG test data (n_trials, n_channels, n_samples).
+        n_components (int, optional): Length of the spatial filters; first k components to use (default is 1).
 
-    Created on: 2021-1-07
+    Returns:
+        ndarray: Features (n_trials, n_components, n_samples).
 
-    Update log:
+    Raises:
+        ValueError: If n_components is greater than the number of channels.
 
-    Parameters
-    ----------
-    W : ndarray
-        spatial filters from csp_kernel, shape (n_channels, n_filters)
-    M : ndarray
-        common template for all classes, shape (n_channel, n_samples)
-    X : ndarray
-        eeg test data, shape (n_trials, n_channels, n_samples)
-    n_components : int, optional
-        length of the spatial filters, first k components to use, by default 1
-
-    Returns
-    -------
-    features: ndarray
-        features, shape (n_trials, n_components, n_samples)
-
-    Raises
-    ------
-    ValueError
-        n_components should less than half of the number of channels
-
-    Notes
-    References
-    ----------
-    Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in
-    a finger movement task." IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
+    References:
+        Liao, Xiang, et al. "Combining spatial filters for the classification of single-trial EEG in a finger movement task."
+        IEEE Transactions on Biomedical Engineering 54.5 (2007): 821-831.
     """
     W, M, X = np.copy(W), np.copy(M), np.copy(X)
     max_components = W.shape[1]
@@ -256,10 +211,15 @@ def xiang_dsp_feature(W, M, X, n_components):
 
 
 def proj_ref(Yf):
-    '''
-    :param Yf: Sin-Cosine reference signals (n_freq, 2 * num_harmonics, n_points)
-    :return:
-    '''
+    """
+    Calculate the projection matrix from Sin-Cosine reference signals.
+
+    Args:
+        Yf (ndarray): Sin-Cosine reference signals (n_freq, 2 * num_harmonics, n_points).
+
+    Returns:
+        ndarray: Projection matrix.
+    """
     Q, R = qr(Yf.T, mode="economic")
     # 计算投影矩阵P
     P = Q @ Q.T  # @ 表示矩阵乘法
@@ -267,17 +227,22 @@ def proj_ref(Yf):
 
 
 def lagging_aug(X, n_samples, lagging_len, P, training):
-    '''
-    Parameters
-    ----------
-    X: Input EEG signals (n_trials, n_channels, n_points)
-    n_samples: number of delayed sample points
-    lagging_len: lagging length
-    P: Projection matrix(n_points, n_points)
-    training: True -> training, False -> testing
-    Returns: Augmented EEG signals (n_trials, (lagging_len + 1) * n_channels, n_samples)
-    -------
-    '''
+    """
+    Augment EEG signals with lagging.
+
+    Args:
+        X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
+        n_samples (int): Number of delayed sample points.
+        lagging_len (int): Lagging length.
+        P (ndarray): Projection matrix (n_points, n_points).
+        training (bool): True for training, False for testing.
+
+    Returns:
+        ndarray: Augmented EEG signals (n_trials, (lagging_len + 1) * n_channels, n_samples).
+
+    Raises:
+        ValueError: If the length of X is not greater than lagging_len + n_samples.
+    """
     # Reshape X to (n_trials, n_channels, n_points)
     X = X.reshape((-1, *X.shape[-2:]))
     n_trials, n_channels, n_points = X.shape
@@ -299,22 +264,22 @@ def lagging_aug(X, n_samples, lagging_len, P, training):
 
 
 def tdca_feature(X, templates, W, M, Ps, lagging_len, n_components, training=False):
-    '''
-    get feature of tdca
-    Parameters
-    ----------
-    X: Input EEG signals (n_trials, n_channels, n_points)
-    templates: EEG template signals (n_freq, n_channels, n_points)
-    W: Spatial filters (n_channels, n_filters)
-    M: Common templates for all categories (n_channels, n_points)
-    Ps: Projection matrix (n_freq, n_channels, n_points)
-    lagging_len: lagging length
-    n_components: number of components
-    training: True -> training, False -> testing
+    """
+    Compute the TDCA feature.
 
-    Returns: Correlation coefficient vector: rhos (n_freq, )
-    -------
-    '''
+    Args:
+        X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
+        templates (ndarray): EEG template signals (n_freq, n_channels, n_points).
+        W (ndarray): Spatial filters (n_channels, n_filters).
+        M (ndarray): Common templates for all categories (n_channels, n_points).
+        Ps (list): Projection matrices (n_freq, n_channels, n_points).
+        lagging_len (int): Lagging length.
+        n_components (int): Number of components.
+        training (bool): True for training, False for testing.
+
+    Returns:
+        list: Correlation coefficients (n_freq,).
+    """
     rhos = []
     for Xk, P in zip(templates, Ps):
         a = xiang_dsp_feature(W, M, lagging_aug(X, P.shape[0], lagging_len, P, training=training),
@@ -327,8 +292,42 @@ def tdca_feature(X, templates, W, M, Ps, lagging_len, n_components, training=Fal
 
 
 class TDCA(CCABase):
-    def __init__(self, sfreq, ws, fres_list, n_harmonics,Nc = 10,Nm=1, passband = [6, 14, 22, 30, 38],
-                 stopband = [4, 10, 16, 24, 32],highcut_pass =40,highcut_stop=50,lagging_len=0):
+    """
+    Class for TDCA (Temporal Discriminative Component Analysis).
+
+    Attributes:
+        sfreq (float): Sampling frequency.
+        ws (int): Window size.
+        fres_list (list): Frequency list.
+        n_harmonics (int): Number of harmonics.
+        Nm (int): Number of channels.
+        Nc (int): Number of components.
+        lagging_len (int): Lagging length.
+        passband (list): Passband frequencies.
+        stopband (list): Stopband frequencies.
+        highcut_pass (float): Highcut pass frequency.
+        highcut_stop (float): Highcut stop frequency.
+    """
+    def __init__(self, sfreq, ws, fres_list, n_harmonics,Nc = 10,Nm=1,
+                 passband = [6, 14, 22, 30, 38],
+                 stopband = [4, 10, 16, 24, 32],
+                 highcut_pass =40,highcut_stop=50,lagging_len=0):
+        """
+        Initialize TDCA.
+
+        Args:
+            sfreq (float): Sampling frequency.
+            ws (int): Window size.
+            fres_list (list): Frequency list.
+            n_harmonics (int): Number of harmonics.
+            Nc (int): Number of channels.
+            Nm (int): Number of components.
+            passband (list): Passband frequencies.
+            stopband (list): Stopband frequencies.
+            highcut_pass (float): Highcut pass frequency.
+            highcut_stop (float): Highcut stop frequency.
+            lagging_len (int): Lagging length.
+        """
         super(TDCA, self).__init__(sfreq, ws, fres_list, n_harmonics)
         self.Nm = Nm
         self.Nc = Nc
@@ -343,14 +342,15 @@ class TDCA(CCABase):
 
 
     def filter_bank(self, X):
-        '''
+        """
+        Apply filter bank to EEG signals.
 
-        Parameters
-        ----------
-        X: Input EEG signals (n_trials, n_channels, n_points)
-        Returns: Output EEG signals of filter banks FB_X (n_fb, n_trials, n_channels, n_points)
-        -------
-        '''
+        Args:
+            X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
+
+        Returns:
+            ndarray: Output EEG signals of filter banks (n_fb, n_trials, n_channels, n_points).
+        """
         FB_X = np.zeros((self.Nm, X.shape[0], self.Nc, X.shape[-1]))
         nyq = self.sfreq / 2
         # passband = [6, 14, 22, 30, 38]
@@ -398,15 +398,16 @@ class TDCA(CCABase):
     #     return FB_X
 
     def train(self, X, y):
-        '''
-        Parameters
-        ----------
-        X: Input EEG signals (n_trials, n_channels, n_points)
-        y: Input labels (n_trials,)
-        Yf: Sin-Cosine reference signals (n_freq, 2 * num_harmonics, n_points)
-        Returns
-        -------
-        '''
+        """
+        Train the TDCA model on input EEG signals and labels.
+
+        Args:
+            X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
+            y (ndarray): Input labels (n_trials,).
+
+        Returns:
+            self: TDCA object.
+        """
         self.classes_ = np.unique(y)
         Yf = self.get_reference_signal()
         self.Ps = [proj_ref(Yf[i]) for i in range(len(self.classes_))]
@@ -439,13 +440,16 @@ class TDCA(CCABase):
         return self
 
     def transform(self, X, fb_i):
-        '''
-        Parameters
-        ----------
-        X: Input EEG signals (n_trials, n_channels, n_points)
-        Returns: rhos (n_trials, n_freq)
-        -------
-        '''
+        """
+        Transform input EEG signals into features.
+
+        Args:
+            X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
+            fb_i (int): Filter bank index.
+
+        Returns:
+            ndarray: Feature vectors (n_trials, n_freq).
+        """
         X -= np.mean(X, axis=-1, keepdims=True)
         X = X.reshape((-1, *X.shape[-2:]))
         rhos = [
@@ -457,13 +461,15 @@ class TDCA(CCABase):
         return rhos
 
     def classifier(self, X):
-        '''
-        Parameters
-        ----------
-        X: Input EEG signals (n_trials, n_channels, n_points)
-        Returns:  labels (n_trials, )
-        -------
-        '''
+        """
+       Classify input EEG signals.
+
+       Args:
+           X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
+
+       Returns:
+           ndarray: Predicted labels (n_trials,).
+       """
 
         if self.Nm == 1:
             sum_features = self.transform(X, 0)
@@ -479,7 +485,13 @@ class TDCA(CCABase):
         return pred_labels
 
     def calculate_ex(self):
-            return self.result_ex
+        """
+        Calculate features from the last transformation.
+
+        Returns:
+            ndarray: Extracted features.
+        """
+        return self.result_ex
 if __name__ == "__main__":
     from scut_ssvep_aperiod.load_dataset.dataset_lee import LoadDataLeeOne
     data_path = r"D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\session1\s1\sess01_subj01_EEG_SSVEP.mat"

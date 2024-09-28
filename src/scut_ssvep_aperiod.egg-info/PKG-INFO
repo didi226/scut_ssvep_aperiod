@@ -11,3 +11,4 @@ Requires-Dist: mne
 Requires-Dist: mne_icalabel
 Requires-Dist: scikit-learn
 Requires-Dist: scipy
+Requires-Dist: statsmodels

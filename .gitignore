@@ -11,5 +11,5 @@ gen
 *.xlsx
 *.gz
 *whl
-ssvep_scut_doc
+*.png
 src/scut_ssvep_aperiod/predict_resting_state

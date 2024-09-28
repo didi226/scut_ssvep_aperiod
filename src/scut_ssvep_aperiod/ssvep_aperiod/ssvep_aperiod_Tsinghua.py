@@ -7,22 +7,37 @@ import os
 def ssvep_classify(form_path, pro_ica=True, filter_para=None, reconstruct_=False,
                    reconstruct_type=0, classify_method="cca", psda_type="snr_hqy",freq_range=None):
 	"""
+	Classify SSVEP data using different classification methods.
 
-	:param form_path:              str             path of form (subject_id---root_directory---file_name)
-	:param info_path:              str             path of info (mat file for infromation to data)
-	:param pro_ica:                bool            whether to do ica in propresess
-	:param filter_para:            None/list       Default None  no filters
-	                                               [low_freq, high_freq]
+	Args:
+		form_path (str): Path to the Excel file containing form data (subject_id, root_directory, file_name).
+		pro_ica (bool, optional): Whether to perform ICA during preprocessing. Defaults to True.
+		filter_para (list, optional): Filter parameters [low_freq, high_freq]. Defaults to None (no filtering).
+		reconstruct_ (str, optional): Type of signal reconstruction. Defaults to None (no reconstruction).
+									  Options:
+										  "remove_aperiodic" - Reconstruct time signals and remove aperiodic components.
+										  "get_periodic" - Reconstruct time signals and retain periodic components.
+										  "get_aperiodic" - Reconstruct time signals and retain aperiodic components.
+		reconstruct_type (int, optional): Type of reconstruction for the signal phase. Defaults to 0 (original phase).
+										  Options:
+											  0 - With original phase.
+											  2 - With 0 phase.
+		classify_method (str, optional): Classification method to use. Defaults to "cca".
+										 Options:
+											 "psda"
+											 "cca"
+											 "fbcca"
+											 "trca"
+											 "tdca"
+		psda_type (str, optional): PSDA type, used when `classify_method` is "psda".
+								   Options:
+									   "snr_hqy"
+									   "snr_hqy_ave_re"
+									   "snr_hqy_ave_get". Defaults to "snr_hqy".
+		freq_range (list, optional): Frequency range for filtering. Defaults to None.
 
-	:param reconstruct_:          None/str        Default None  no reconstruct
-	                                              "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                              "get_periodic" ---- reconstruct time signals and get_periodic
-	                                              "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-
-	:param reconstruct_type:    int               the type of reconstruction
-	                                              0 ---- with original phase
-                                                  2 ---- with 0 phase
-	:return:
+	Returns:
+		np.ndarray: Array of accuracy scores for each subject.
 	"""
 	info_form = pd.read_excel(form_path)
 	unique_subject_ids = info_form['subject_id'].unique()

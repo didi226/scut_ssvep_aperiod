@@ -8,25 +8,32 @@ import os
 def ssvep_classify(form_path, info_path, pro_ica=True, filter_para=None, reconstruct_=False, reconstruct_type=0,
                    classify_method="cca", psda_type="snr_hqy",freq_range=None):
 	"""
+	Classifies SSVEP data using different classification methods and preprocessing options.
 
-	:param form_path:              str             path of form (subject_id---root_directory---file_name)
-	:param info_path:              str             path of info (mat file for infromation to data)
-	:param pro_ica:                bool            whether to do ica in propresess
-	:param filter_para:            None/list       Default None  no filters
-	                                               [low_freq, high_freq]
-	:param reconstruct_type:    int               the type of reconstruction
-	                                              0 ---- with original phase
-                                                  2 ---- with 0 phase
-    :param classify_method:     str               "psda"
-                                                  "cca"
-                                                  "fbcca"
-                                                  "trca"
-                                                  "tdca"
-	:param psda_type:           str               "snr_hqy_ave_re"
-	                                              "snr_hqy"
-	                                              "snr_hqy_ave_get"
+	Args:
+		form_path (str): Path to the form file, which contains subject information (subject_id, root_directory, file_name).
+		info_path (str): Path to the information file (e.g., .mat file) needed for data loading.
+		pro_ica (bool, optional): Whether to apply ICA preprocessing. Defaults to True.
+		filter_para (list or None, optional): Parameters for filtering [low_freq, high_freq]. Defaults to None (no filtering).
+		reconstruct_ (bool, optional): Whether to apply reconstruction. Defaults to False.
+		reconstruct_type (int, optional): Type of reconstruction to apply. Defaults to 0.
+			0: With original phase.
+			2: With zero phase.
+		classify_method (str, optional): Classification method to use. Options are:
+			- "psda"
+			- "cca"
+			- "fbcca"
+			- "trca"
+			- "tdca"
+			Defaults to "cca".
+		psda_type (str, optional): Type of PSDA (only applicable when `classify_method` is "psda"). Options are:
+			- "snr_hqy_ave_re"
+			- "snr_hqy"
+			- "snr_hqy_ave_get"
+		freq_range (list or None, optional): Frequency range for analysis. Defaults to None.
 
-	:return:
+	Returns:
+		np.ndarray: Array of classification accuracies for each subject.
 	"""
 	info_form = pd.read_excel(form_path)
 	unique_subject_ids = info_form['subject_id'].unique()

@@ -11,8 +11,11 @@ from scut_ssvep_aperiod.fooof_parameter.decode_rebuild import reconstruct_signal
 class LoadDataLeeOne(LoadDataBase):
 	def __init__(self, data_path, info_path=r"D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\info_ssvep_lee_dataset.mat"):
 		"""
-		:param data_path:  str       path of data
-		:param info_path:  str       path of info file(.mat)
+		Initializes the LoadDataLeeOne instance.
+
+		Args:
+			data_path (str): Path to the data.
+			info_path (str): Path to the info file (.mat).
 		"""
 		super(LoadDataLeeOne, self).__init__(data_path=data_path)
 		self.window_time = 4 - 0.14
@@ -20,10 +23,7 @@ class LoadDataLeeOne(LoadDataBase):
 		self._get_info()
 
 	def _get_info(self):
-		"""
-		get info from info file
-		:return:
-		"""
+		"""Gets the info from the info file."""
 		info_data = sio.loadmat(self.info_path)['info']
 		self.sample_rate = info_data['fs'][0][0][0][0]
 		self.ch_names = [item[0] for item in info_data['chan'][0][0][0]]
@@ -39,9 +39,22 @@ class LoadDataLeeOne(LoadDataBase):
 
 	def _load_data_from_npz(self, path):
 		"""
-		Load the data from a npz file (preprosess)
-		:param path:              str            path to the npz file
-		:return:
+		Loads the data from a npz file (preprocess).
+
+		Args:
+			path (str): Path to the npz file.
+
+		Attributes:
+			data_test (numpy.ndarray): Test data.
+			label_test (numpy.ndarray): Test labels.
+			n_epoch_test (int): Number of test epochs.
+			n_channel_test (int): Number of test channels.
+			sample_rate_test (int): Sample rate for test data.
+			data_train (numpy.ndarray): Training data.
+			label_train (numpy.ndarray): Training labels.
+			n_epoch_train (int): Number of training epochs.
+			n_channel_train (int): Number of training channels.
+			sample_rate_train (int): Sample rate for training data.
 		"""
 		loaded_data = np.load(path)
 		self.data_test = loaded_data['data_test']
@@ -58,25 +71,22 @@ class LoadDataLeeOne(LoadDataBase):
 	def _load_data_from_structure(self, file_data, pro_ica=True, filter_para=None, resample=None,
 	                              picks=['P7', 'P3', 'Pz', 'P4', 'P8', 'PO9', 'O1', 'Oz', 'O2', 'PO10']):
 		"""
-		read data from the structure in .mat
-		:param file_data:
-		:param pro_ica:                bool            whether to do ica in propresess
-	    :param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param reconstruct_:          None/str         Default None  no reconstruct
-	                                                   "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                                   "get_periodic" ---- reconstruct time signals and get_periodic
-	                                                   "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-		:param picks:                list              channels to select
-		                                               Default ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']
-		:return:
-		split_data                   numpy array       shape (n_epochs,n_channels,n_samples)
-	    label                        numpy array       shape (n_epochs,)
-		n_epoch                      int               the number of epochs
-		n_channel                    int               the number of channels
-		sample_rate                  float             the sampling rate after resampling
+		Reads data from the structure in .mat file.
+
+		Args:
+			file_data (dict): Data loaded from .mat file.
+			pro_ica (bool): Whether to perform ICA in preprocessing.
+			filter_para (None or list): Filter parameters, default is None (no filters).
+										 [low_freq, high_freq].
+			resample (None or int): Factor for resampling, default is None (no resample).
+			picks (list): Channels to select, default is ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10'].
+
+		Returns:
+			split_data (numpy.ndarray): Data split into shape (n_epochs, n_channels, n_samples).
+			label (numpy.ndarray): Labels of the data.
+			n_epoch (int): Number of epochs.
+			n_channel (int): Number of channels.
+			sample_rate (float): Sampling rate after resampling.
 		"""
 		sig_len = int(self.window_time * self.sample_rate)
 		x = file_data['x'][0][0].T
@@ -103,21 +113,19 @@ class LoadDataLeeOne(LoadDataBase):
 	def _load_resting_state_data_from_structure(self, file_data, pro_ica=True, filter_para=None, resample=None,
 	                                            picks=None):
 		"""
-		read data from the structure in .mat
-		:param file_data:
-		:param pro_ica:                bool            whether to do ica in propresess
-	    :param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param picks:                list              channels to select
-		                                               Default ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']
-		:return:
-		split_data                   numpy array       shape (n_epochs,n_channels,n_samples)
-	    label                        numpy array       shape (n_epochs,)
-		n_epoch                      int               the number of epochs
-		n_channel                    int               the number of channels
-		sample_rate                  float             the sampling rate after resampling
+		Reads resting state data from the structure in .mat file.
+
+		Args:
+			file_data (dict): Data loaded from .mat file.
+			pro_ica (bool): Whether to perform ICA in preprocessing.
+			filter_para (None or list): Filter parameters, default is None (no filters).
+										 [low_freq, high_freq].
+			resample (None or int): Factor for resampling, default is None (no resample).
+			picks (list): Channels to select, default is ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10'].
+
+		Returns:
+			pre_rest_data (numpy.ndarray): Pre-resting state data.
+			post_rest_data (numpy.ndarray): Post-resting state data.
 		"""
 		sig_len = int(self.window_time * self.sample_rate)
 		pre_rest_data = file_data['pre_rest'][0][0].T
@@ -138,19 +146,17 @@ class LoadDataLeeOne(LoadDataBase):
 	def _load_data_from_mat(self, pro_ica=True, filter_para=None, resample=None,
 	                        picks=['P7', 'P3', 'Pz', 'P4', 'P8', 'PO9', 'O1', 'Oz', 'O2', 'PO10']):
 		"""
-		Load dataset from mat file
-		:param pro_ica:                bool            whether to do ica in propresess
-		:param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param reconstruct_:           None/str         Default None  no reconstruct
-	                                                   "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                                   "get_periodic" ---- reconstruct time signals and get_periodic
-	                                                   "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-		:param picks:                  list             channels to select
-		                                                Default ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']
-		:return:
+		Loads dataset from .mat file.
+
+		Args:
+		    pro_ica (bool): Whether to perform ICA in preprocessing.
+		    filter_para (None or list): Filter parameters, default is None (no filters).
+		                                 [low_freq, high_freq].
+		    resample (None or int): Factor for resampling, default is None (no resample).
+		    picks (list): Channels to select, default is ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10'].
+
+		Returns:
+		    None: Loads data into instance variables.
 		"""
 		file_data_test = sio.loadmat(self.data_path)['EEG_SSVEP_test']
 		file_data_train = sio.loadmat(self.data_path)['EEG_SSVEP_train']
@@ -163,15 +169,18 @@ class LoadDataLeeOne(LoadDataBase):
 
 	def _load_resting_state_data_from_mat(self, pro_ica=True, filter_para=None, resample=None, picks=None):
 		"""
-		Load dataset from mat file
-		:param pro_ica:                bool            whether to do ica in propresess
-		:param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param picks:                  list             channels to select
-		                                                Default ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']
-		:return:
+		Load resting state dataset from a MAT file.
+
+		Args:
+			pro_ica (bool): If True, performs Independent Component Analysis (ICA) during preprocessing.
+			filter_para (list or None): Frequency filter parameters, specified as [low_freq, high_freq].
+										 Default is None (no filters).
+			resample (int or None): Resampling factor. If None, no resampling is performed.
+			picks (list): Channels to select. Default is
+						  ['P7', 'P3', 'Pz', 'P4', 'P8', 'PO9', 'O1', 'Oz', 'O2', 'PO10'].
+
+		Returns:
+			tuple: Preprocessed training and testing data for the resting state.
 		"""
 		file_data_test = sio.loadmat(self.data_path)['EEG_SSVEP_test']
 		file_data_train = sio.loadmat(self.data_path)['EEG_SSVEP_train']
@@ -189,19 +198,23 @@ class LoadDataLeeOne(LoadDataBase):
 	             reconstruct_type=0, freq_range=None,
 	             picks=['P7', 'P3', 'Pz', 'P4', 'P8', 'PO9', 'O1', 'Oz', 'O2', 'PO10']):
 		"""
-		get data after preprosess
-		:param pro_ica:                bool            whether to do ica in propresess
-		:param filter_para:            None/list       Default None  no filters
-	                                                   [low_freq, high_freq]
-		:param resample:               None/int        Default None no resample
-		                                               int the factor of resampling
-		:param reconstruct_:           None/str         Default None  no reconstruct
-	                                                   "remove_aperiodic" ---- reconstruct time signals and remove_aperiodic
-	                                                   "get_periodic" ---- reconstruct time signals and get_periodic
-	                                                   "get_aperiodic" ---- reconstruct time signals and get_aperiodic
-		:param picks:                  list             channels to select
-		                                                Default ['P7','P3','Pz','P4','P8','PO9','O1','Oz','O2','PO10']
-		:return:
+		Retrieve and preprocess EEG data.
+
+		Args:
+			pro_ica (bool): If True, performs Independent Component Analysis (ICA) during preprocessing.
+			filter_para (list or None): Frequency filter parameters, specified as [low_freq, high_freq].
+										 Default is None (no filters).
+			resample (int or None): Resampling factor. If None, no resampling is performed.
+			reconstruct_ (str or None): Reconstruction method. Options include:
+										 "remove_aperiodic", "get_periodic", "get_aperiodic".
+										 Default is None (no reconstruction).
+			reconstruct_type (int): Type of reconstruction phase invariance. Default is 0.
+			freq_range (None or list): Frequency range for filtering. Default is None (no filtering).
+			picks (list): Channels to select. Default is
+						  ['P7', 'P3', 'Pz', 'P4', 'P8', 'PO9', 'O1', 'Oz', 'O2', 'PO10'].
+
+		Returns:
+			tuple: Preprocessed training and testing data along with their labels.
 		"""
 		self.event_dict = {"12 Hz": 1, "8.57 Hz": 2, "6.67 Hz": 3, "5.45Hz": 4}
 		name_base = os.path.basename(self.data_path).replace('EEG_SSVEP.mat', '')
@@ -234,6 +247,20 @@ class LoadDataLeeOne(LoadDataBase):
 		return self.data_train, self.label_train, self.data_test, self.label_test
 
 	def get_data_resting_state(self, pro_ica=True, filter_para=None, resample=None, picks=None):
+		"""
+		Get resting state data after preprocessing.
+
+		Args:
+			pro_ica (bool): If True, performs Independent Component Analysis (ICA) during preprocessing.
+			filter_para (list or None): Frequency filter parameters, specified as [low_freq, high_freq].
+										 Default is None (no filters).
+			resample (int or None): Resampling factor. If None, no resampling is performed.
+			picks (list): Channels to select. Default is
+						  ['P7', 'P3', 'Pz', 'P4', 'P8', 'PO9', 'O1', 'Oz', 'O2', 'PO10'].
+
+		Returns:
+			tuple: Preprocessed training and testing data for the resting state.
+		"""
 		pre_data_train, post_data_train, pre_data_test, post_data_test = self._load_resting_state_data_from_mat(pro_ica,
 		                                                                                                        filter_para,
 		                                                                                                        resample,

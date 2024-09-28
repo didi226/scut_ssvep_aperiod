@@ -19,5 +19,6 @@ setuptools.setup(
                       'mne',
                       'mne_icalabel',
                       'scikit-learn',
-                      'scipy'],
+                      'scipy',
+                      'statsmodels'],
 )

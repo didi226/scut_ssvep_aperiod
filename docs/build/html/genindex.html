@@ -1,0 +1,1491 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; SSVEP-APERIOD 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css?v=572af1d6" />
+    <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=5ae071a5"></script>
+    <script src="_static/thebelab-helper.js"></script>
+    <script src="_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script>let toggleHintShow = 'Click to expand';</script>
+    <script>let toggleHintHide = 'Click to collapse';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="icon" href="_static/logo.svg"/>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">This is a community-supported SSVEP measure and aperiod analysis for EEG or other time series signal. If you'd like to contribute, check out  <a href='https://github.com/didi226/scut_ssvep_aperiod'>our GitHub repository</a>. Your contributions are welcome! </div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="_static/logo-dark.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">SSVEP-APERIOD Doc</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="example/index.html">
+    Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/didi226/scut_ssvep_aperiod" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="example/index.html">
+    Example
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/didi226/scut_ssvep_aperiod" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#scut_ssvep_aperiod.ssvep_method.cca.CCACommon._cca_classify">_cca_classify() (scut_ssvep_aperiod.ssvep_method.cca.CCACommon method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCACommon._cca_classify">(scut_ssvep_aperiod.ssvep_method.CCACommon method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#scut_ssvep_aperiod.ssvep_method.cca.CCACommon._cca_ex">_cca_ex() (scut_ssvep_aperiod.ssvep_method.cca.CCACommon method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCACommon._cca_ex">(scut_ssvep_aperiod.ssvep_method.CCACommon method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne._get_info">_get_info() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne._get_info">(scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne._get_info">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne._load_data_from_mat">_load_data_from_mat() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne._load_data_from_mat">(scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne._load_data_from_mat">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne._load_data_from_npz">_load_data_from_npz() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne._load_data_from_npz">(scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne._load_data_from_npz">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne._load_data_from_structure">_load_data_from_structure() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne._load_data_from_structure">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne._load_resting_state_data_from_mat">_load_resting_state_data_from_mat() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne._load_resting_state_data_from_mat">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne._load_resting_state_data_from_structure">_load_resting_state_data_from_structure() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne._load_resting_state_data_from_structure">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/utils/ttest_analysis/index.html#scut_ssvep_aperiod.utils.ttest_analysis.acc">acc (in module scut_ssvep_aperiod.utils.ttest_analysis)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.average_by_label">average_by_label() (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod">BuildPSDPeriod (class in scut_ssvep_aperiod.fooof_parameter.decode_rebuild)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#scut_ssvep_aperiod.utils.common_function.cal_acc">cal_acc() (in module scut_ssvep_aperiod.utils.common_function)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee_parameter/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter.cal_error_label_mean">cal_error_label_mean() (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.calculate_ex">calculate_ex() (scut_ssvep_aperiod.ssvep_method.cca.CCACommon method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCACommon.calculate_ex">(scut_ssvep_aperiod.ssvep_method.CCACommon method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.calculate_ex">(scut_ssvep_aperiod.ssvep_method.FBCCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.calculate_ex">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.calculate_ex">(scut_ssvep_aperiod.ssvep_method.TDCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.calculate_ex">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.calculate_fft">calculate_fft() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod static method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.calculate_snr">calculate_snr() (scut_ssvep_aperiod.ssvep_method.PSDA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.calculate_snr">(scut_ssvep_aperiod.ssvep_method.psda.PSDA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.calculate_snr_hqy">calculate_snr_hqy() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCABase">CCABase (class in scut_ssvep_aperiod.ssvep_method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase">(class in scut_ssvep_aperiod.ssvep_method.ssvep_methd_base)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCACommon">CCACommon (class in scut_ssvep_aperiod.ssvep_method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#scut_ssvep_aperiod.ssvep_method.cca.CCACommon">(class in scut_ssvep_aperiod.ssvep_method.cca)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.classifier">classifier() (scut_ssvep_aperiod.ssvep_method.TDCA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.classifier">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA.classifier">(scut_ssvep_aperiod.ssvep_method.TRCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA.classifier">(scut_ssvep_aperiod.ssvep_method.trca.TRCA method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.classify">classify() (scut_ssvep_aperiod.ssvep_method.cca.CCACommon method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCACommon.classify">(scut_ssvep_aperiod.ssvep_method.CCACommon method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.classify">(scut_ssvep_aperiod.ssvep_method.FBCCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.classify">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.classify">(scut_ssvep_aperiod.ssvep_method.PSDA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.classify">(scut_ssvep_aperiod.ssvep_method.psda.PSDA method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#scut_ssvep_aperiod.utils.common_function.D">D (in module scut_ssvep_aperiod.utils.common_function)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.data">data (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.data_path">data_path (in module scut_ssvep_aperiod.ssvep_method.fbcca)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.data_path">(in module scut_ssvep_aperiod.ssvep_method.psda)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.data_path">(in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.data_path">(in module scut_ssvep_aperiod.ssvep_method.trca)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#id0">(scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase attribute)</a>, <a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase.data_path">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.data_path">(scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne.data_path">(scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.data_path">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.data_psd">data_psd (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.data_test">data_test (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.data_test">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.data_to_fft">data_to_fft() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.data_train">data_train (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.data_train">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.deltaf">deltaf (scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.deltaf">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.deltaf">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.difference_of_two_max">difference_of_two_max() (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.estimate_psd_value">estimate_psd_value() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA">FBCCA (class in scut_ssvep_aperiod.ssvep_method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA">(class in scut_ssvep_aperiod.ssvep_method.fbcca)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.figure_">figure_ (scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.figure_">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.figure_">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/utils/ttest_analysis/index.html#scut_ssvep_aperiod.utils.ttest_analysis.file_root">file_root (in module scut_ssvep_aperiod.utils.ttest_analysis)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA.filter_">filter_ (scut_ssvep_aperiod.ssvep_method.TRCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA.filter_">(scut_ssvep_aperiod.ssvep_method.trca.TRCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.filter_bank">filter_bank() (scut_ssvep_aperiod.ssvep_method.FBCCA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.filter_bank">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.filter_bank">(scut_ssvep_aperiod.ssvep_method.TDCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.filter_bank">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA.filter_bank">(scut_ssvep_aperiod.ssvep_method.TRCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA.filter_bank">(scut_ssvep_aperiod.ssvep_method.trca.TRCA method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#scut_ssvep_aperiod.utils.common_function.filterbank">filterbank() (in module scut_ssvep_aperiod.utils.common_function)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCABase.find_correlation">find_correlation() (scut_ssvep_aperiod.ssvep_method.CCABase method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.find_correlation">(scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga.form_path_kang">form_path_kang (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.form_path_lee">form_path_lee (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee.form_path_lee">(in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee_parameter/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter.form_path_lee">(in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua.form_path_lee">(in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.fre_doi">fre_doi (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.freq_range">freq_range (scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.freq_range">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.freq_range">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.frequence">frequence (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#id2">fres_list (scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase.fres_list">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.fres_list">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.fres_list">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_aperiodic_value">get_aperiodic_value() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod static method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase.get_data">get_data() (scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#scut_ssvep_aperiod.load_dataset.dataset_kalunga.LoadDataKalungaOne.get_data">(scut_ssvep_aperiod.load_dataset.dataset_kalunga.LoadDataKalungaOne method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.get_data">(scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne.get_data">(scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.get_data">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#scut_ssvep_aperiod.load_dataset.dataset_kalunga.get_data_path_list">get_data_path_list() (in module scut_ssvep_aperiod.load_dataset.dataset_kalunga)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.get_data_resting_state">get_data_resting_state() (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.get_data_resting_state">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#scut_ssvep_aperiod.utils.common_function.get_filelist">get_filelist() (in module scut_ssvep_aperiod.utils.common_function)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_period_psd">get_period_psd() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_periodic_value">get_periodic_value() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod static method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.get_reconstructed_signal">get_reconstructed_signal() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCABase.get_reference_signal">get_reference_signal() (scut_ssvep_aperiod.ssvep_method.CCABase method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.get_reference_signal">(scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA.get_w">get_w() (scut_ssvep_aperiod.ssvep_method.TRCA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA.get_w">(scut_ssvep_aperiod.ssvep_method.trca.TRCA method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.harmonic">harmonic (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.high_cut_pass">high_cut_pass (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.high_cut_pass">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.high_cut_stop">high_cut_stop (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.high_cut_stop">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id3">highcut_pass (scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.highcut_pass">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id2">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.highcut_pass">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id4">highcut_stop (scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.highcut_stop">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id3">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.highcut_stop">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#scut_ssvep_aperiod.utils.common_function.ica_iclabel">ica_iclabel() (in module scut_ssvep_aperiod.utils.common_function)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.info_path">info_path (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.info_path">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.isPD">isPD() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.label_test">label_test (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.label_test">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.label_train">label_train (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.label_train">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.lagging_aug">lagging_aug() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id5">lagging_len (scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.lagging_len">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id4">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.lagging_len">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase">LoadDataBase (class in scut_ssvep_aperiod.load_dataset.dataset_base)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#scut_ssvep_aperiod.load_dataset.dataset_kalunga.LoadDataKalungaOne">LoadDataKalungaOne (class in scut_ssvep_aperiod.load_dataset.dataset_kalunga)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne">LoadDataLeeOne (class in scut_ssvep_aperiod.load_dataset)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne">(class in scut_ssvep_aperiod.load_dataset.dataset_lee)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne">LoadDataTHWOne (class in scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/index.html#module-scut_ssvep_aperiod">scut_ssvep_aperiod</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/fooof_parameter/index.html#module-scut_ssvep_aperiod.fooof_parameter">scut_ssvep_aperiod.fooof_parameter</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#module-scut_ssvep_aperiod.fooof_parameter.decode_rebuild">scut_ssvep_aperiod.fooof_parameter.decode_rebuild</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#module-scut_ssvep_aperiod.load_dataset">scut_ssvep_aperiod.load_dataset</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_base">scut_ssvep_aperiod.load_dataset.dataset_base</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_kalunga">scut_ssvep_aperiod.load_dataset.dataset_kalunga</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_lee">scut_ssvep_aperiod.load_dataset.dataset_lee</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable">scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/index.html#module-scut_ssvep_aperiod.ssvep_aperiod">scut_ssvep_aperiod.ssvep_aperiod</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee">scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga">scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee">scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee_parameter/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter">scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua">scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#module-scut_ssvep_aperiod.ssvep_method">scut_ssvep_aperiod.ssvep_method</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#module-scut_ssvep_aperiod.ssvep_method.cca">scut_ssvep_aperiod.ssvep_method.cca</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#module-scut_ssvep_aperiod.ssvep_method.fbcca">scut_ssvep_aperiod.ssvep_method.fbcca</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#module-scut_ssvep_aperiod.ssvep_method.psda">scut_ssvep_aperiod.ssvep_method.psda</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#module-scut_ssvep_aperiod.ssvep_method.ssvep_methd_base">scut_ssvep_aperiod.ssvep_method.ssvep_methd_base</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#module-scut_ssvep_aperiod.ssvep_method.tdca">scut_ssvep_aperiod.ssvep_method.tdca</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#module-scut_ssvep_aperiod.ssvep_method.trca">scut_ssvep_aperiod.ssvep_method.trca</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/utils/index.html#module-scut_ssvep_aperiod.utils">scut_ssvep_aperiod.utils</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#module-scut_ssvep_aperiod.utils.common_function">scut_ssvep_aperiod.utils.common_function</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/utils/ttest_analysis/index.html#module-scut_ssvep_aperiod.utils.ttest_analysis">scut_ssvep_aperiod.utils.ttest_analysis</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.n_channel_test">n_channel_test (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.n_channel_test">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.n_channel_train">n_channel_train (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.n_channel_train">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.n_components">n_components (scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.n_components">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.n_epoch_test">n_epoch_test (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.n_epoch_test">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.n_epoch_train">n_epoch_train (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.n_epoch_train">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#id3">n_event (scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase.n_event">[1]</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.n_fre">n_fre (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#scut_ssvep_aperiod.ssvep_method.cca.CCACommon.n_harmonics">n_harmonics (scut_ssvep_aperiod.ssvep_method.cca.CCACommon attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id0">(scut_ssvep_aperiod.ssvep_method.CCABase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCABase.n_harmonics">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.CCACommon.n_harmonics">(scut_ssvep_aperiod.ssvep_method.CCACommon attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#id0">(scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.CCABase.n_harmonics">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.TRCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA.n_harmonics">(scut_ssvep_aperiod.ssvep_method.trca.TRCA attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.n_times">n_times (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.Nc">Nc (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.Nc">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id1">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.Nc">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id0">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.Nc">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.nearestPD">nearestPD() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.Nf">Nf (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.Nf">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.Nf">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.Nf">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.Nm">Nm (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.Nm">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id2">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.Nm">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id1">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.Nm">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.pass_band">pass_band (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.pass_band">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id6">passband (scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.passband">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id5">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.passband">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase.preprocess">preprocess() (scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase static method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.proj_ref">proj_ref() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.psd_channel">psd_channel (scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.psd_channel">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_channel">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_original">psd_original() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr">psd_snr() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy">psd_snr_hqy() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psd_snr_hqy_ave_re">psd_snr_hqy_ave_re() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.psd_type">psd_type (scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.psd_type">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA">PSDA (class in scut_ssvep_aperiod.ssvep_method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA">(class in scut_ssvep_aperiod.ssvep_method.psda)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_classify">psda_classify() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.psda_ex">psda_ex() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP">PSDA_SSVEP (class in scut_ssvep_aperiod.ssvep_method.psda)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.psda_type">psda_type (scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.psda_type">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.reconstruct_signal">reconstruct_signal() (in module scut_ssvep_aperiod.fooof_parameter.decode_rebuild)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.remove_aperiodic_value">remove_aperiodic_value() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod static method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.robust_pattern">robust_pattern() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.sample_rate_test">sample_rate_test (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.sample_rate_test">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.sample_rate_train">sample_rate_train (scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.sample_rate_train">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.save_path_base">save_path_base (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.save_path_base">(scut_ssvep_aperiod.ssvep_method.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.save_path_base">(scut_ssvep_aperiod.ssvep_method.psda.PSDA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.save_path_base">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/index.html#module-scut_ssvep_aperiod">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.fooof_parameter
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/fooof_parameter/index.html#module-scut_ssvep_aperiod.fooof_parameter">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.fooof_parameter.decode_rebuild
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#module-scut_ssvep_aperiod.fooof_parameter.decode_rebuild">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.load_dataset
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#module-scut_ssvep_aperiod.load_dataset">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.load_dataset.dataset_base
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_base">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.load_dataset.dataset_kalunga
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_kalunga">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.load_dataset.dataset_lee
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_lee">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#module-scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_aperiod
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/index.html#module-scut_ssvep_aperiod.ssvep_aperiod">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee_parameter/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua/index.html#module-scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_method
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#module-scut_ssvep_aperiod.ssvep_method">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_method.cca
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/cca/index.html#module-scut_ssvep_aperiod.ssvep_method.cca">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    scut_ssvep_aperiod.ssvep_method.fbcca
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#module-scut_ssvep_aperiod.ssvep_method.fbcca">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_method.psda
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#module-scut_ssvep_aperiod.ssvep_method.psda">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_method.ssvep_methd_base
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#module-scut_ssvep_aperiod.ssvep_method.ssvep_methd_base">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_method.tdca
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#module-scut_ssvep_aperiod.ssvep_method.tdca">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.ssvep_method.trca
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#module-scut_ssvep_aperiod.ssvep_method.trca">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.utils
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/utils/index.html#module-scut_ssvep_aperiod.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.utils.common_function
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/utils/common_function/index.html#module-scut_ssvep_aperiod.utils.common_function">module</a>
+</li>
+      </ul></li>
+      <li>
+    scut_ssvep_aperiod.utils.ttest_analysis
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/utils/ttest_analysis/index.html#module-scut_ssvep_aperiod.utils.ttest_analysis">module</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.sfreq">sfreq (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.sfreq">(scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#id4">(scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase.sfreq">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.sfreq">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.sfreq">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/fooof_parameter/decode_rebuild/index.html#scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod.slope_estimate">slope_estimate() (scut_ssvep_aperiod.fooof_parameter.decode_rebuild.BuildPSDPeriod static method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.slope_estimation">slope_estimation() (scut_ssvep_aperiod.ssvep_method.PSDA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA.slope_estimation">(scut_ssvep_aperiod.ssvep_method.psda.PSDA method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP.snr_hqy_ave_get">snr_hqy_ave_get() (scut_ssvep_aperiod.ssvep_method.psda.PSDA_SSVEP method)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_average_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee.ssvep_classify">ssvep_classify() (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_average_lee)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_kalunga/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga.ssvep_classify">(in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_kalunga)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee.ssvep_classify">(in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_Tsinghua/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua.ssvep_classify">(in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_Tsinghua)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_aperiod/ssvep_aperiod_lee_parameter/index.html#scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter.ssvep_classify_parameters">ssvep_classify_parameters() (in module scut_ssvep_aperiod.ssvep_aperiod.ssvep_aperiod_lee_parameter)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#scut_ssvep_aperiod.load_dataset.dataset_kalunga.ssvep_data_kalunga">ssvep_data_kalunga (in module scut_ssvep_aperiod.load_dataset.dataset_kalunga)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.ssvep_data_lee">ssvep_data_lee (in module scut_ssvep_aperiod.load_dataset.dataset_lee)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.ssvep_data_lee">(in module scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase">SSVEPMethodBase (class in scut_ssvep_aperiod.ssvep_method.ssvep_methd_base)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.FBCCA.stop_band">stop_band (scut_ssvep_aperiod.ssvep_method.FBCCA attribute)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/fbcca/index.html#scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA.stop_band">(scut_ssvep_aperiod.ssvep_method.fbcca.FBCCA attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#id7">stopband (scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.stopband">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#id6">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.stopband">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#id1">T (scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase.T">[1]</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA">TDCA (class in scut_ssvep_aperiod.ssvep_method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA">(class in scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.tdca_feature">tdca_feature() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.train">train() (scut_ssvep_aperiod.ssvep_method.TDCA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.train">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA.train">(scut_ssvep_aperiod.ssvep_method.TRCA method)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA.train">(scut_ssvep_aperiod.ssvep_method.trca.TRCA method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.transform">transform() (scut_ssvep_aperiod.ssvep_method.TDCA method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.transform">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TRCA">TRCA (class in scut_ssvep_aperiod.ssvep_method)</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/trca/index.html#scut_ssvep_aperiod.ssvep_method.trca.TRCA">(class in scut_ssvep_aperiod.ssvep_method.trca)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#id1">window_time (scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase attribute)</a>, <a href="api/scut_ssvep_aperiod/load_dataset/dataset_base/index.html#scut_ssvep_aperiod.load_dataset.dataset_base.LoadDataBase.window_time">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#id0">(scut_ssvep_aperiod.load_dataset.dataset_kalunga.LoadDataKalungaOne attribute)</a>, <a href="api/scut_ssvep_aperiod/load_dataset/dataset_kalunga/index.html#scut_ssvep_aperiod.load_dataset.dataset_kalunga.LoadDataKalungaOne.window_time">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#id0">(scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne attribute)</a>, <a href="api/scut_ssvep_aperiod/load_dataset/dataset_lee/index.html#scut_ssvep_aperiod.load_dataset.dataset_lee.LoadDataLeeOne.window_time">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#id0">(scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne attribute)</a>, <a href="api/scut_ssvep_aperiod/load_dataset/dataset_Tsinghua_wearable/index.html#scut_ssvep_aperiod.load_dataset.dataset_Tsinghua_wearable.LoadDataTHWOne.window_time">[1]</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/load_dataset/index.html#id0">(scut_ssvep_aperiod.load_dataset.LoadDataLeeOne attribute)</a>, <a href="api/scut_ssvep_aperiod/load_dataset/index.html#scut_ssvep_aperiod.load_dataset.LoadDataLeeOne.window_time">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#id5">ws (scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase attribute)</a>, <a href="api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.ssvep_methd_base.SSVEPMethodBase.ws">[1]</a>
+
+      <ul>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.ws">(scut_ssvep_aperiod.ssvep_method.TDCA attribute)</a>
+</li>
+        <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.TDCA.ws">(scut_ssvep_aperiod.ssvep_method.tdca.TDCA attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_feature">xiang_dsp_feature() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca.xiang_dsp_kernel">xiang_dsp_kernel() (in module scut_ssvep_aperiod.ssvep_method.tdca)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, SCUT EEG  Community.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

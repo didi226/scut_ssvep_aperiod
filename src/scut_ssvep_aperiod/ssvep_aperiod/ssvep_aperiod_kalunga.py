@@ -1,11 +1,21 @@
 from scut_ssvep_aperiod.load_dataset.dataset_kalunga import LoadDataKalungaOne
 from scut_ssvep_aperiod.load_dataset.dataset_lee import LoadDataLeeOne
-from scut_ssvep_aperiod.ssvep_method.cca import CCA_Base
+from scut_ssvep_aperiod.ssvep_method.cca import CCACommon
 from scut_ssvep_aperiod.utils.common_function import cal_acc
 import pandas as pd
 import numpy as np
 import os
 def ssvep_classify(form_path, harmonic = 3):
+	"""
+	Classify SSVEP data using CCA with specified harmonics.
+
+	Args:
+		form_path (str): Path to the Excel file containing form data (subject_id, root_directory, file_name, effectiveness).
+		harmonic (int, optional): Number of harmonics to use in the CCA classification. Defaults to 3.
+
+	Returns:
+		np.ndarray: Array of accuracy scores for each subject.
+	"""
 	info_form = pd.read_excel(form_path)
 	unique_subject_ids = info_form['subject_id'].unique()
 	acc_all = np.zeros(len(unique_subject_ids))
@@ -27,7 +37,7 @@ def ssvep_classify(form_path, harmonic = 3):
 		pred_label = []
 		for i_data, i_label in zip(data_sub, Y_test):
 		# cca
-			ccaoriginal_classify = CCA_Base(Fs = datasetone.sample_rate, ws = datasetone.window_time)
+			ccaoriginal_classify = CCACommon(Fs = datasetone.sample_rate, ws = datasetone.window_time)
 			predict_label = ccaoriginal_classify.cca_classify(datasetone.freqs, i_data, num_harmonics = harmonic, ica_ = False)
 			pred_label.append(predict_label)
 			del ccaoriginal_classify

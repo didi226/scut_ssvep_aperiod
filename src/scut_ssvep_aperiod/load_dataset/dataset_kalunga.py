@@ -9,12 +9,39 @@ import random
 
 
 class LoadDataKalungaOne(LoadDataBase):
+	"""
+	Class for loading and preprocessing SSVEP data from the KalungaOne dataset.
+
+	Args:
+		data_path (str): Path to the dataset file.
+
+	Attributes:
+		window_time (float): The time window for data processing (default is 5 seconds).
+	"""
 	def __init__(self, data_path):
+		"""
+		Initializes the LoadDataKalungaOne instance with a specified data path and sets the window time.
+
+		Args:
+			data_path (str): The path to the data file.
+		"""
 		super(LoadDataKalungaOne, self).__init__(data_path = data_path)
 		self.window_time = 5
 
 
 	def get_data(self, ica_ = True, filter_para = None, resample = None):
+		"""
+	   Loads and preprocesses the EEG data, extracts epochs, and returns the data and labels.
+
+	   Args:
+		   ica_ (bool, optional): Whether to apply ICA for noise removal. Defaults to True.
+		   filter_para (list or None, optional): Frequency filter parameters. Defaults to None (no filtering applied).
+		   resample (int or None, optional): Optionally resample the data. Defaults to None.
+
+	   Returns:
+		   np.ndarray: The preprocessed EEG data with shape (n_epochs, n_channels, n_times).
+		   np.ndarray: Labels for the data indicating the event type (based on frequency).
+	   """
 		combine_raw = read_raw_fif(self.data_path, verbose = False, preload = True)
 		combine_raw.info.set_montage("standard_1020")
 		self.event_dict = {"13 Hz": 1, "17 Hz": 2, "21 Hz": 3}
@@ -35,6 +62,15 @@ class LoadDataKalungaOne(LoadDataBase):
 		return self.split_data, self.label
 
 def get_data_path_list(form_path):
+	"""
+	Randomly marks two sessions per subject as effective in the input Excel file.
+
+	Args:
+	    form_path (str): Path to the Excel file containing subject and session information.
+
+	Returns:
+	    None. The modified Excel file is saved with an 'effectiveness' column indicating selected sessions.
+	"""
 	seednum = 42
 	random.seed(seednum)
 	np.random.seed(seednum)
