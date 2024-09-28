@@ -120,7 +120,7 @@ class BuildPSDPeriod:
 		Get the values after removing aperiodic signals.
 
 		Args:
-			gaussian_values (numpy.ndarray): Empty matrix for storing results, shape (n_channel, n_freqs).
+			gaussian_values (numpy.ndarray): Matrix for storing results, shape (n_channel, n_freqs).
 			fg (FOOOF): FOOOF fitting class.
 			n_channel (int): Number of channels.
 			freqs (numpy.ndarray): Corresponding frequency points, shape (n_freqs).
@@ -128,10 +128,9 @@ class BuildPSDPeriod:
 			freq_range (list, optional): Frequency range for FOOOF fitting.
 
 		Returns:
-			tuple: A tuple containing:
-				- numpy.ndarray: Updated values after removing aperiodic signals.
-				- float: Standard error.
-				- float: R² value.
+			numpy.ndarray: Updated values after removing aperiodic signals.
+			float: Standard error.
+			float: R² value.
 		"""
 		offset_ex_list = fg.get_params('aperiodic_params')
 		error = fg.group_results[0].error

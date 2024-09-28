@@ -5,7 +5,8 @@ from scipy.stats import linregress
 import numpy as np
 import math
 class PSDA(SSVEPMethodBase):
-	"""Class for Power Spectral Density Analysis (PSDA) of SSVEP data.
+	"""
+	Class for Power Spectral Density Analysis (PSDA) of SSVEP data.
 
 	Args:
 		sfreq (float): Sampling frequency of the data.
@@ -32,7 +33,8 @@ class PSDA(SSVEPMethodBase):
 		self.figure_ = figure_
 		self.save_path_base = save_path_base
 	def classify(self, data):
-		"""Classifies the input data using PSDA.
+		"""
+		Classifies the input data using PSDA.
 
 		Args:
 			data (numpy.ndarray): Input data for classification.
@@ -53,7 +55,8 @@ class PSDA(SSVEPMethodBase):
 			pred_label[i], error[i], r_squa[i] = psd_classify.psda_classify(psda_type = self.psda_type)
 		return pred_label,error,r_squa
 	def slope_estimation(self,data):
-		"""Estimates the slope of the PSD for each trial.
+		"""
+		Estimates the slope of the PSD for each trial.
 
 		Args:
 			data (numpy.ndarray): Input data for slope estimation.
@@ -71,7 +74,8 @@ class PSDA(SSVEPMethodBase):
 			error[i], r_squa[i] = PSD_temp.slope_estimate(spectrum, freqs,self.freq_range)
 		return error,r_squa
 	def calculate_snr(self,data):
-		"""Calculates the signal-to-noise ratio (SNR) for each trial.
+		"""
+		Calculates the signal-to-noise ratio (SNR) for each trial.
 
 	   Args:
 		   data (numpy.ndarray): Input data for SNR calculation.
@@ -91,7 +95,8 @@ class PSDA(SSVEPMethodBase):
 			psd_ex[i], _,_ = psd_classify.psda_ex(psda_type = self.psda_type)
 		return psd_ex
 class PSDA_SSVEP:
-	"""Class for performing SSVEP-based PSD analysis.
+	"""
+	Class for performing SSVEP-based PSD analysis.
 
 	Args:
 		data_psd (numpy.ndarray): Input PSD data.
@@ -124,7 +129,8 @@ class PSDA_SSVEP:
 
 	@staticmethod
 	def estimate_psd_value(data_psd_i_channel, frequence, i_fre):
-		"""Estimates the PSD value for a specific frequency.
+		"""
+		Estimates the PSD value for a specific frequency.
 
 		Args:
 			data_psd_i_channel (numpy.ndarray): PSD values for a single channel.
@@ -146,7 +152,8 @@ class PSDA_SSVEP:
 		return psd_value
 
 	def calculate_snr(self, data_psd_channel, frequence, i_fre, deltaf):
-		"""Calculates the signal-to-noise ratio (SNR) for a specific frequency.
+		"""
+		Calculates the signal-to-noise ratio (SNR) for a specific frequency.
 
 		Args:
 			data_psd_channel (numpy.ndarray): PSD values for a specific channel.
@@ -163,7 +170,8 @@ class PSDA_SSVEP:
 		return snr
 
 	def calculate_snr_hqy(self, data_psd_channel, frequence, i_fre, deltaf):
-		"""Calculates the Signal-to-Noise Ratio (SNR) for a specific frequency.
+		"""
+		Calculates the Signal-to-Noise Ratio (SNR) for a specific frequency.
 
 		This method computes the SNR for a given frequency `i_fre` by finding the
 		nearest frequency in the data and using neighboring frequencies as a noise
@@ -207,14 +215,22 @@ class PSDA_SSVEP:
 		snr = 20 * math.log10(8*y/ (sum(denominator) - y-denominator_2))
 		return snr
 	def psda_ex(self, psda_type= "direct_compare"):
-		"""Executes the PSDA analysis based on the specified type.
-
-		Args:
-			psda_type (str): Type of PSDA method to use.
-
-		Returns:
-			tuple: PSD values, error, and R-squared value if applicable.
 		"""
+	   Executes the PSDA analysis based on the specified method type.
+
+	   Args:
+		   psda_type (str): The type of PSDA method to use. Options include:
+			   - "direct_compare": Direct comparison of PSD values.
+			   - "snr": Signal-to-noise ratio analysis.
+			   - "snr_hqy": SNR with high-quality estimates.
+			   - "snr_hqy_ave_re": SNR with high-quality averaging, returning error and R-squared.
+			   - "snr_hqy_ave_get": SNR high-quality averaging with different retrieval methods.
+
+	   Returns:
+		   numpy.ndarray: Computed PSD values.
+		   float: Error metric (0 if not applicable).
+		   float: R-squared value (0 if not applicable).
+	   """
 		error = 0
 		r_squa = 0
 		self.data_fft =np.sqrt(self.data_psd *(self.sfreq * self.n_times))
@@ -231,7 +247,8 @@ class PSDA_SSVEP:
 		return psd_values,error,r_squa
 
 	def psda_classify(self, psda_type= "direct_compare"):
-		"""Classifies based on the PSD analysis result.
+		"""
+		Classifies based on the PSD analysis result.
 
 		Args:
 			psda_type (str, optional): Type of PSD analysis to perform. Defaults to "direct_compare".
@@ -246,7 +263,8 @@ class PSDA_SSVEP:
 		return label,error,r_squa
 
 	def psd_original(self):
-		"""Calculates the Power Spectral Density (PSD) values for each frequency of interest.
+		"""
+		Calculates the Power Spectral Density (PSD) values for each frequency of interest.
 
 		If the psd_channel is not "ave", computes PSD for each channel and then averages. Otherwise, it averages across channels first.
 
@@ -272,7 +290,8 @@ class PSDA_SSVEP:
 		return label
 
 	def psd_snr(self):
-		"""Calculates the Signal-to-Noise Ratio (SNR) of the PSD for each frequency of interest.
+		"""
+		Calculates the Signal-to-Noise Ratio (SNR) of the PSD for each frequency of interest.
 
 		Returns:
 			indicators_values (ndarray): SNR values across frequencies for each channel.
@@ -299,7 +318,8 @@ class PSDA_SSVEP:
 		return indicators_values
 
 	def psd_snr_hqy(self):
-		"""Calculates the SNR of the PSD using a harmonic approach for each frequency of interest.
+		"""
+		Calculates the SNR of the PSD using a harmonic approach for each frequency of interest.
 
 		Returns:
 			indicators_values (ndarray): Harmonic SNR values across frequencies for each channel.
@@ -330,7 +350,8 @@ class PSDA_SSVEP:
 
 
 	def psd_snr_hqy_ave_re(self):
-		"""Calculates the harmonic SNR using the averaged PSD after removing the aperiodic component.
+		"""
+		Calculates the harmonic SNR using the averaged PSD after removing the aperiodic component.
 
 	   Returns:
 		   indicators_values (ndarray): Harmonic SNR values across frequencies.
@@ -354,7 +375,8 @@ class PSDA_SSVEP:
 		return indicators_values, error,r_squa
 
 	def snr_hqy_ave_get(self):
-		"""Calculates the harmonic SNR using the averaged PSD with the aperiodic component.
+		"""
+		Calculates the harmonic SNR using the averaged PSD with the aperiodic component.
 
 		Returns:
 			indicators_values (ndarray): Harmonic SNR values across frequencies.

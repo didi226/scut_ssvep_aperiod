@@ -1,7 +1,8 @@
 import numpy as np
 from sklearn.cross_decomposition import CCA
 class SSVEPMethodBase():
-	"""Base class for SSVEP methods.
+	"""
+	Base class for SSVEP methods.
 
 	Attributes:
 		sfreq (float): Sampling frequency of the data.
@@ -11,7 +12,8 @@ class SSVEPMethodBase():
 		n_event (int): Number of events (stimuli).
 	"""
 	def __init__(self,sfreq,ws,fres_list,):
-		"""Initializes the SSVEPMethodBase class.
+		"""
+		Initializes the SSVEPMethodBase class.
 
 		Args:
 			sfreq (float): Sampling frequency.
@@ -26,7 +28,8 @@ class SSVEPMethodBase():
 
 
 class CCABase(SSVEPMethodBase):
-	"""Class for Canonical Correlation Analysis (CCA) methods.
+	"""
+	Class for Canonical Correlation Analysis (CCA) methods.
 
 	Inherits from SSVEPMethodBase and adds harmonic analysis capabilities.
 
@@ -34,7 +37,8 @@ class CCABase(SSVEPMethodBase):
 		n_harmonics (int): Number of harmonics to consider for reference signals.
 	"""
 	def __init__(self, sfreq,ws,fres_list,n_harmonics):
-		"""Initializes the CCABase class.
+		"""
+		Initializes the CCABase class.
 
 		Args:
 			sfreq (float): Sampling frequency.
@@ -46,7 +50,8 @@ class CCABase(SSVEPMethodBase):
 		self.n_harmonics = n_harmonics
 
 	def get_reference_signal(self):
-		"""Generates reference signals for each frequency and harmonic.
+		"""
+		Generates reference signals for each frequency and harmonic.
 
 		Returns:
 			np.ndarray: An array of reference signals shaped as (n_events, n_harmonics * 2, T).
@@ -63,7 +68,8 @@ class CCABase(SSVEPMethodBase):
 		return reference_signals
 
 	def find_correlation(self, n_components, X, Y):
-		"""Finds the maximum correlation between data and reference signals.
+		"""
+		Finds the maximum correlation between data and reference signals.
 
 		Args:
 			n_components (int): Number of components for CCA.

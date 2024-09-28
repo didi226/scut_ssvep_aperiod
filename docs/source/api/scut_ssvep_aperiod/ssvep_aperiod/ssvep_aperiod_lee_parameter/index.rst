@@ -81,11 +81,11 @@ Module Contents
    :param freq_range: Frequency range for filtering. Defaults to None.
    :type freq_range: list, optional
 
-   :returns:         error_all (np.ndarray): Array of average classification errors for each subject and label category.
-                     r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.
-                     error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.
-                     r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.
-   :rtype: tuple
+   :returns: Array of average classification errors for each subject and label category.
+             r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.
+             error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.
+             r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.
+   :rtype: error_all (np.ndarray)
 
 
 

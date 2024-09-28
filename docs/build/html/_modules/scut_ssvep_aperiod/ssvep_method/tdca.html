@@ -427,23 +427,24 @@ document.write(`
 <div class="viewcode-block" id="isPD">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.isPD">[docs]</a>
 <span class="k">def</span> <span class="nf">isPD</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if the input matrix is positive-definite using Cholesky decomposition.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if the input matrix is positive-definite using Cholesky decomposition.</span>
 
 <span class="sd">    This function determines whether the matrix B is positive-definite by attempting</span>
 <span class="sd">    to perform a Cholesky decomposition. If the decomposition succeeds, the matrix</span>
+<span class="sd">    is positive-definite; otherwise, it is not.</span>
 <div class="viewcode-block" id="TDCA.sfreq">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.sfreq">[docs]</a>
-<span class="sd">    is positive-definite; otherwise, it is not.</span></div>
+</div>
 
 <div class="viewcode-block" id="TDCA.ws">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.ws">[docs]</a>
-</div>
+<span class="sd">    Args:</span></div>
 
-<span class="sd">    Args:</span>
+<span class="sd">        B (ndarray): Any matrix, shape (N, N).</span>
 <div class="viewcode-block" id="TDCA.fres_list">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.fres_list">[docs]</a>
-<span class="sd">        B (ndarray): Any matrix, shape (N, N).</span></div>
-
+</div>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True if B is positive-definite, False otherwise.</span>
@@ -452,15 +453,16 @@ document.write(`
     <span class="k">try</span><span class="p">:</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">except</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+    <span class="k">except</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">:</span></div>
 
-
+        <span class="k">return</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="nearestPD">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.nearestPD">[docs]</a>
+
 <span class="k">def</span> <span class="nf">nearestPD</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds the nearest positive-definite matrix to the input.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds the nearest positive-definite matrix to the input.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        A (ndarray): Any square matrix, shape (N, N).</span>
@@ -468,12 +470,12 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">        ndarray: Positive-definite matrix closest to A.</span>
 
+<span class="sd">    References:</span>
+<span class="sd">        N.J. Higham, &quot;Computing a nearest symmetric positive semidefinite matrix&quot; (1988):</span>
 <div class="viewcode-block" id="TDCA.n_harmonics">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.n_harmonics">[docs]</a>
-<span class="sd">    References:</span></div>
+<span class="sd">        https://doi.org/10.1016/0024-3795(88)90223-6</span></div>
 
-<span class="sd">        N.J. Higham, &quot;Computing a nearest symmetric positive semidefinite matrix&quot; (1988):</span>
-<span class="sd">        https://doi.org/10.1016/0024-3795(88)90223-6</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
@@ -505,16 +507,17 @@ document.write(`
     <span class="k">while</span> <span class="ow">not</span> <span class="n">isPD</span><span class="p">(</span><span class="n">A3</span><span class="p">):</span>
         <span class="n">mineig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">A3</span><span class="p">)))</span>
         <span class="n">A3</span> <span class="o">+=</span> <span class="n">eye</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">mineig</span> <span class="o">*</span> <span class="n">k</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">spacing</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">A3</span></div>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
 
-
+    <span class="k">return</span> <span class="n">A3</span>
 <div class="viewcode-block" id="robust_pattern">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.robust_pattern">[docs]</a>
+
+
 <span class="k">def</span> <span class="nf">robust_pattern</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">Cx</span><span class="p">,</span> <span class="n">Cs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transforms spatial filters to spatial patterns based on the method described in the literature.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transforms spatial filters to spatial patterns based on the method described in the literature.</span>
 
 <span class="sd">    This function constructs spatial patterns from spatial filters, which illustrates how to combine</span>
 <span class="sd">    information from different EEG channels to extract signals of interest. For neurophysiological</span>
@@ -538,15 +541,15 @@ document.write(`
 <span class="sd">        Use `linalg.solve` instead of `inv` to enhance numerical stability.</span>
 <span class="sd">        For more details, see:</span>
 <span class="sd">        - https://github.com/robintibor/fbcsp/blob/master/fbcsp/signalproc.py</span>
-<span class="sd">        - https://ww2.mathworks.cn/help/matlab/ref/mldivide.html</span>
+<span class="sd">        - https://ww2.mathworks.cn/help/matlab/ref/mldivide.html</span></div>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">Cs</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Cx</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-    <span class="k">return</span> <span class="n">A</span></div>
-
-
-
 <div class="viewcode-block" id="xiang_dsp_kernel">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.xiang_dsp_kernel">[docs]</a>
+    <span class="k">return</span> <span class="n">A</span>
+
+
 <span class="k">def</span> <span class="nf">xiang_dsp_kernel</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    DSP: Discriminative Spatial Patterns, only for two classes.</span>
@@ -608,15 +611,15 @@ document.write(`
 
     <span class="n">D</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">nearestPD</span><span class="p">(</span><span class="n">Sb</span><span class="p">),</span> <span class="n">nearestPD</span><span class="p">(</span><span class="n">Sw</span><span class="p">))</span>
     <span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">D</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># in descending order</span>
-    <span class="n">D</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">ix</span><span class="p">],</span> <span class="n">W</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">]</span>
+    <span class="n">D</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">ix</span><span class="p">],</span> <span class="n">W</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">]</span></div>
+
     <span class="n">A</span> <span class="o">=</span> <span class="n">robust_pattern</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">Sb</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Sb</span> <span class="o">@</span> <span class="n">W</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">W</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">A</span></div>
-
-
 
 <div class="viewcode-block" id="xiang_dsp_feature">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.xiang_dsp_feature">[docs]</a>
+    <span class="k">return</span> <span class="n">W</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">A</span>
+
+
 <span class="k">def</span> <span class="nf">xiang_dsp_feature</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">n_components</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return DSP features as described in the paper.</span>
@@ -641,15 +644,15 @@ document.write(`
     <span class="n">max_components</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">n_components</span> <span class="o">&gt;</span> <span class="n">max_components</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n_components should less than the number of channels&quot;</span><span class="p">)</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]))</span></div>
+
     <span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_components</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span> <span class="o">-</span> <span class="n">M</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">features</span></div>
-
-
-
 <div class="viewcode-block" id="proj_ref">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.proj_ref">[docs]</a>
+    <span class="k">return</span> <span class="n">features</span>
+
+
 <span class="k">def</span> <span class="nf">proj_ref</span><span class="p">(</span><span class="n">Yf</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the projection matrix from Sin-Cosine reference signals.</span>
@@ -660,15 +663,15 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">        ndarray: Projection matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">qr</span><span class="p">(</span><span class="n">Yf</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;economic&quot;</span><span class="p">)</span>
+    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">qr</span><span class="p">(</span><span class="n">Yf</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;economic&quot;</span><span class="p">)</span></div>
+
     <span class="c1"># 计算投影矩阵P</span>
     <span class="n">P</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">Q</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># @ 表示矩阵乘法</span>
-    <span class="k">return</span> <span class="n">P</span></div>
-
-
-
 <div class="viewcode-block" id="lagging_aug">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.lagging_aug">[docs]</a>
+    <span class="k">return</span> <span class="n">P</span>
+
+
 <span class="k">def</span> <span class="nf">lagging_aug</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">lagging_len</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Augment EEG signals with lagging.</span>
@@ -700,15 +703,15 @@ document.write(`
     <span class="k">else</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lagging_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
             <span class="n">aug_X</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">n_channels</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_channels</span><span class="p">,</span> <span class="p">:</span> <span class="n">n_samples</span> <span class="o">-</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="n">n_samples</span><span class="p">]</span>
+</div>
 
     <span class="n">aug_Xp</span> <span class="o">=</span> <span class="n">aug_X</span> <span class="o">@</span> <span class="n">P</span>
     <span class="n">aug_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">aug_X</span><span class="p">,</span> <span class="n">aug_Xp</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">aug_X</span></div>
-
-
-
 <div class="viewcode-block" id="tdca_feature">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.tdca_feature">[docs]</a>
+    <span class="k">return</span> <span class="n">aug_X</span>
+
+
 <span class="k">def</span> <span class="nf">tdca_feature</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">Ps</span><span class="p">,</span> <span class="n">lagging_len</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the TDCA feature.</span>
@@ -731,15 +734,15 @@ document.write(`
         <span class="n">a</span> <span class="o">=</span> <span class="n">xiang_dsp_feature</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">lagging_aug</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lagging_len</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">),</span>
                               <span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">Xk</span><span class="p">[:</span><span class="n">n_components</span><span class="p">,</span> <span class="p">:]</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span></div>
+
         <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">rhos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">rhos</span></div>
-
-
-
 <div class="viewcode-block" id="TDCA">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA">[docs]</a>
+    <span class="k">return</span> <span class="n">rhos</span>
+
+
 <span class="k">class</span> <span class="nc">TDCA</span><span class="p">(</span><span class="n">CCABase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for TDCA (Temporal Discriminative Component Analysis).</span>
@@ -775,50 +778,50 @@ document.write(`
 <span class="sd">            stopband (list): Stopband frequencies.</span>
 <span class="sd">            highcut_pass (float): Highcut pass frequency.</span>
 <span class="sd">            highcut_stop (float): Highcut stop frequency.</span>
-<span class="sd">            lagging_len (int): Lagging length.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TDCA</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sfreq</span><span class="p">,</span> <span class="n">ws</span><span class="p">,</span> <span class="n">fres_list</span><span class="p">,</span> <span class="n">n_harmonics</span><span class="p">)</span>
 <div class="viewcode-block" id="TDCA.Nm">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.Nm">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Nm</span> <span class="o">=</span> <span class="n">Nm</span></div>
+<span class="sd">            lagging_len (int): Lagging length.</span></div>
 
 <div class="viewcode-block" id="TDCA.Nc">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.Nc">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Nc</span> <span class="o">=</span> <span class="n">Nc</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="TDCA.Nf">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.Nf">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Nf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_event</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TDCA</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sfreq</span><span class="p">,</span> <span class="n">ws</span><span class="p">,</span> <span class="n">fres_list</span><span class="p">,</span> <span class="n">n_harmonics</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TDCA.lagging_len">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.lagging_len">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lagging_len</span> <span class="o">=</span> <span class="n">lagging_len</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nm</span> <span class="o">=</span> <span class="n">Nm</span></div>
 
 <div class="viewcode-block" id="TDCA.n_components">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.n_components">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">3</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nc</span> <span class="o">=</span> <span class="n">Nc</span></div>
 
 <div class="viewcode-block" id="TDCA.passband">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.passband">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">passband</span> <span class="o">=</span> <span class="n">passband</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_event</span></div>
 
 <div class="viewcode-block" id="TDCA.stopband">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.stopband">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stopband</span> <span class="o">=</span> <span class="n">stopband</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lagging_len</span> <span class="o">=</span> <span class="n">lagging_len</span></div>
 
 <div class="viewcode-block" id="TDCA.highcut_pass">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.highcut_pass">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">highcut_pass</span> <span class="o">=</span> <span class="n">highcut_pass</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">3</span></div>
 
 <div class="viewcode-block" id="TDCA.highcut_stop">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.highcut_stop">[docs]</a>
-        <span class="bp">self</span><span class="o">.</span><span class="n">highcut_stop</span> <span class="o">=</span> <span class="n">highcut_stop</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">passband</span> <span class="o">=</span> <span class="n">passband</span></div>
 
-
-
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopband</span> <span class="o">=</span> <span class="n">stopband</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highcut_pass</span> <span class="o">=</span> <span class="n">highcut_pass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">highcut_stop</span> <span class="o">=</span> <span class="n">highcut_stop</span>
 <div class="viewcode-block" id="TDCA.filter_bank">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.filter_bank">[docs]</a>
+
+
+
     <span class="k">def</span> <span class="nf">filter_bank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Apply filter bank to EEG signals.</span>
@@ -844,11 +847,11 @@ document.write(`
             <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">Wn</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">cheb1ord</span><span class="p">(</span><span class="n">Wp</span><span class="p">,</span> <span class="n">Ws</span><span class="p">,</span> <span class="n">gpass</span><span class="p">,</span> <span class="n">gstop</span><span class="p">)</span>
             <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">cheby1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">Rp</span><span class="p">,</span> <span class="n">Wn</span><span class="p">,</span> <span class="s1">&#39;bandpass&#39;</span><span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">padlen</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">FB_X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="n">FB_X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">data</span></div>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Nm</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">FB_X</span> <span class="o">=</span> <span class="n">X</span> <span class="p">[</span><span class="kc">None</span><span class="p">,:]</span>
-        <span class="k">return</span> <span class="n">FB_X</span></div>
-
+        <span class="k">return</span> <span class="n">FB_X</span>
     <span class="c1"># def filter_bank(self, X):</span>
     <span class="c1">#     &#39;&#39;&#39;</span>
     <span class="c1">#     Parameters</span>
@@ -873,11 +876,11 @@ document.write(`
     <span class="c1">#         [B, A] = signal.cheby1(N, Rp, Wn, &#39;bandpass&#39;)</span>
     <span class="c1">#         data = signal.filtfilt(B, A, X, padlen=3 * (max(len(B), len(A)) - 1)).copy()</span>
     <span class="c1">#         FB_X[i, :, :, :] = data</span>
+<div class="viewcode-block" id="TDCA.train">
+<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.train">[docs]</a>
     <span class="c1">#</span>
     <span class="c1">#     return FB_X</span>
 
-<div class="viewcode-block" id="TDCA.train">
-<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.train">[docs]</a>
     <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Train the TDCA model on input EEG signals and labels.</span>
@@ -915,14 +918,14 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
                 <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
                     <span class="n">xiang_dsp_feature</span><span class="p">(</span><span class="n">W_fbi</span><span class="p">,</span> <span class="n">M_fbi</span><span class="p">,</span> <span class="n">aug_X</span><span class="p">[</span><span class="n">aug_Y</span> <span class="o">==</span> <span class="n">label</span><span class="p">],</span> <span class="n">n_components</span><span class="o">=</span><span class="n">W_fbi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+                    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span></div>
+
                 <span class="p">]</span>
-            <span class="p">))</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
-
-
 <div class="viewcode-block" id="TDCA.transform">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.transform">[docs]</a>
+            <span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
     <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">fb_i</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Transform input EEG signals into features.</span>
@@ -939,24 +942,24 @@ document.write(`
         <span class="n">rhos</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">tdca_feature</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">templates</span><span class="p">[</span><span class="n">fb_i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">W</span><span class="p">[</span><span class="n">fb_i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">[</span><span class="n">fb_i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lagging_len</span><span class="p">,</span>
                          <span class="n">n_components</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">X</span>
+            <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">X</span></div>
+
         <span class="p">]</span>
-        <span class="n">rhos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">rhos</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">rhos</span></div>
-
-
 <div class="viewcode-block" id="TDCA.classifier">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.classifier">[docs]</a>
+        <span class="n">rhos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">rhos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rhos</span>
+
     <span class="k">def</span> <span class="nf">classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Classify input EEG signals.</span>
+<span class="sd">        Classify input EEG signals.</span>
 
-<span class="sd">       Args:</span>
+<span class="sd">        Args:</span>
 <span class="sd">           X (ndarray): Input EEG signals (n_trials, n_channels, n_points).</span>
 
-<span class="sd">       Returns:</span>
+<span class="sd">        Returns:</span>
 <span class="sd">           ndarray: Predicted labels (n_trials,).</span>
-<span class="sd">       &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Nm</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">sum_features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -966,30 +969,30 @@ document.write(`
             <span class="k">for</span> <span class="n">fb_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Nm</span><span class="p">):</span>
                 <span class="n">fb_weight</span> <span class="o">=</span> <span class="p">(</span><span class="n">fb_i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.25</span>
                 <span class="n">sum_features</span><span class="p">[</span><span class="n">fb_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fb_weight</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FB_X_Test</span><span class="p">[</span><span class="n">fb_i</span><span class="p">],</span> <span class="n">fb_i</span><span class="p">)</span>
-            <span class="n">sum_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sum_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">sum_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sum_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">result_ex</span> <span class="o">=</span> <span class="n">sum_features</span>
-        <span class="n">pred_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sum_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)]</span>
-        <span class="k">return</span> <span class="n">pred_labels</span></div>
-
-
 <div class="viewcode-block" id="TDCA.calculate_ex">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.TDCA.calculate_ex">[docs]</a>
+        <span class="n">pred_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sum_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">pred_labels</span>
+
     <span class="k">def</span> <span class="nf">calculate_ex</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate features from the last transformation.</span>
 
-<span class="sd">        Returns:</span>
+<span class="sd">        Returns:</span></div>
+</div>
+
 <span class="sd">            ndarray: Extracted features.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="data_path">
+<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.data_path">[docs]</a>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_ex</span></div>
-</div>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">scut_ssvep_aperiod.load_dataset.dataset_lee</span> <span class="kn">import</span> <span class="n">LoadDataLeeOne</span>
-<div class="viewcode-block" id="data_path">
-<a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/tdca/index.html#scut_ssvep_aperiod.ssvep_method.data_path">[docs]</a>
-    <span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\session1\s1\sess01_subj01_EEG_SSVEP.mat&quot;</span></div>
-
+    <span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\data\ssvep_dataset\MNE-lee2019-ssvep-data\session1\s1\sess01_subj01_EEG_SSVEP.mat&quot;</span>
     <span class="n">datasetone</span> <span class="o">=</span> <span class="n">LoadDataLeeOne</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
     <span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">test_label</span> <span class="o">=</span> <span class="n">datasetone</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">pro_ica</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">filter_para</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="n">resample</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">train_data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_label</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">test_data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_label</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>

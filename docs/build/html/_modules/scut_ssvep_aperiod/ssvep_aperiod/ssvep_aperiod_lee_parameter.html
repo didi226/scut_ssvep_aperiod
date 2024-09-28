@@ -459,11 +459,10 @@ document.write(`
 <span class="sd">		freq_range (list, optional): Frequency range for filtering. Defaults to None.</span>
 
 <span class="sd">	Returns:</span>
-<span class="sd">		tuple:</span>
-<span class="sd">			error_all (np.ndarray): Array of average classification errors for each subject and label category.</span>
-<span class="sd">			r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.</span>
-<span class="sd">			error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.</span>
-<span class="sd">			r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.</span>
+<span class="sd">		error_all (np.ndarray): Array of average classification errors for each subject and label category.</span>
+<span class="sd">		r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.</span>
+<span class="sd">		error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.</span>
+<span class="sd">		r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="n">info_form</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">form_path</span><span class="p">)</span>
 	<span class="n">unique_subject_ids</span> <span class="o">=</span> <span class="n">info_form</span><span class="p">[</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -505,18 +504,18 @@ document.write(`
 	                                          <span class="n">psda_type</span><span class="o">=</span><span class="s2">&quot;snr_hqy_ave_re&quot;</span><span class="p">,</span><span class="n">freq_range</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 	<span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="mf">60.0</span><span class="o">/</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="o">/</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="o">/</span><span class="mf">9.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="o">/</span><span class="mf">11.0</span><span class="p">]</span>
 
-	<span class="c1"># 将 error 数组转换为 pandas DataFrame</span>
+	<span class="c1"># Convert error array to pandas DataFrame</span>
 	<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
 	<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r_squa</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
 	<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">error_1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
 	<span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r_squa_1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
 
-	<span class="c1"># 指定保存的 Excel 文件名称</span>
+	<span class="c1"># Specify the name of the saved Excel file</span>
 	<span class="n">excel_filename</span> <span class="o">=</span> <span class="s1">&#39;error_r_squa_output.xlsx&#39;</span>
 
-	<span class="c1"># 使用 ExcelWriter 创建一个写入器对象</span>
+	<span class="c1"># Create a writer object using ExcelWriter</span>
 	<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">excel_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
-		<span class="c1"># 将每个 DataFrame 写入不同的工作表</span>
+		<span class="c1"># Write each DataFrame to a different worksheet</span>
 		<span class="n">df1</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 		<span class="n">df2</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;r_squa&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 		<span class="n">df3</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;error_1&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>

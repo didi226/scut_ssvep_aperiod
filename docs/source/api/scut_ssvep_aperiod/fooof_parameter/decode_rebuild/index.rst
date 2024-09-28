@@ -242,7 +242,7 @@ Module Contents
       
       Get the values after removing aperiodic signals.
 
-      :param gaussian_values: Empty matrix for storing results, shape (n_channel, n_freqs).
+      :param gaussian_values: Matrix for storing results, shape (n_channel, n_freqs).
       :type gaussian_values: numpy.ndarray
       :param fg: FOOOF fitting class.
       :type fg: FOOOF
@@ -255,13 +255,10 @@ Module Contents
       :param freq_range: Frequency range for FOOOF fitting.
       :type freq_range: list, optional
 
-      :returns:
-
-                A tuple containing:
-                        - numpy.ndarray: Updated values after removing aperiodic signals.
-                        - float: Standard error.
-                        - float: R² value.
-      :rtype: tuple
+      :returns: Updated values after removing aperiodic signals.
+                float: Standard error.
+                float: R² value.
+      :rtype: numpy.ndarray
 
 
 

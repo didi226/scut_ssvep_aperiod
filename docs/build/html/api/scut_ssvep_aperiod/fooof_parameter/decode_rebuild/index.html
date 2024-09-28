@@ -605,7 +605,7 @@ False: don not plot</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>gaussian_values</strong> (<a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2.dev0)"><em>numpy.ndarray</em></a>) – Empty matrix for storing results, shape (n_channel, n_freqs).</p></li>
+<li><p><strong>gaussian_values</strong> (<a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2.dev0)"><em>numpy.ndarray</em></a>) – Matrix for storing results, shape (n_channel, n_freqs).</p></li>
 <li><p><strong>fg</strong> (<em>FOOOF</em>) – FOOOF fitting class.</p></li>
 <li><p><strong>n_channel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of channels.</p></li>
 <li><p><strong>freqs</strong> (<a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2.dev0)"><em>numpy.ndarray</em></a>) – Corresponding frequency points, shape (n_freqs).</p></li>
@@ -614,18 +614,12 @@ False: don not plot</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>A tuple containing:</dt><dd><ul class="simple">
-<li><p>numpy.ndarray: Updated values after removing aperiodic signals.</p></li>
-<li><p>float: Standard error.</p></li>
-<li><p>float: R² value.</p></li>
-</ul>
-</dd>
-</dl>
-</p>
+<dd class="field-even"><p>Updated values after removing aperiodic signals.
+float: Standard error.
+float: R² value.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2.dev0)">numpy.ndarray</a></p>
 </dd>
 </dl>
 </dd></dl>

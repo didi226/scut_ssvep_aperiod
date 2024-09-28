@@ -414,7 +414,8 @@ document.write(`
 <div class="viewcode-block" id="SSVEPMethodBase">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.SSVEPMethodBase">[docs]</a>
 <span class="k">class</span> <span class="nc">SSVEPMethodBase</span><span class="p">():</span>
-<span class="w">	</span><span class="sd">&quot;&quot;&quot;Base class for SSVEP methods.</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Base class for SSVEP methods.</span>
 
 <span class="sd">	Attributes:</span>
 <span class="sd">		sfreq (float): Sampling frequency of the data.</span>
@@ -424,7 +425,8 @@ document.write(`
 <span class="sd">		n_event (int): Number of events (stimuli).</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">sfreq</span><span class="p">,</span><span class="n">ws</span><span class="p">,</span><span class="n">fres_list</span><span class="p">,):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes the SSVEPMethodBase class.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Initializes the SSVEPMethodBase class.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			sfreq (float): Sampling frequency.</span>
@@ -457,7 +459,8 @@ document.write(`
 <div class="viewcode-block" id="CCABase">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.CCABase">[docs]</a>
 <span class="k">class</span> <span class="nc">CCABase</span><span class="p">(</span><span class="n">SSVEPMethodBase</span><span class="p">):</span>
-<span class="w">	</span><span class="sd">&quot;&quot;&quot;Class for Canonical Correlation Analysis (CCA) methods.</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Class for Canonical Correlation Analysis (CCA) methods.</span>
 
 <span class="sd">	Inherits from SSVEPMethodBase and adds harmonic analysis capabilities.</span>
 
@@ -465,7 +468,8 @@ document.write(`
 <span class="sd">		n_harmonics (int): Number of harmonics to consider for reference signals.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sfreq</span><span class="p">,</span><span class="n">ws</span><span class="p">,</span><span class="n">fres_list</span><span class="p">,</span><span class="n">n_harmonics</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Initializes the CCABase class.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Initializes the CCABase class.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			sfreq (float): Sampling frequency.</span>
@@ -482,7 +486,8 @@ document.write(`
 <div class="viewcode-block" id="CCABase.get_reference_signal">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.CCABase.get_reference_signal">[docs]</a>
 	<span class="k">def</span> <span class="nf">get_reference_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Generates reference signals for each frequency and harmonic.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Generates reference signals for each frequency and harmonic.</span>
 
 <span class="sd">		Returns:</span>
 <span class="sd">			np.ndarray: An array of reference signals shaped as (n_events, n_harmonics * 2, T).</span>
@@ -502,7 +507,8 @@ document.write(`
 <div class="viewcode-block" id="CCABase.find_correlation">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/ssvep_methd_base/index.html#scut_ssvep_aperiod.ssvep_method.CCABase.find_correlation">[docs]</a>
 	<span class="k">def</span> <span class="nf">find_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Finds the maximum correlation between data and reference signals.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Finds the maximum correlation between data and reference signals.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			n_components (int): Number of components for CCA.</span>

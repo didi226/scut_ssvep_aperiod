@@ -418,7 +418,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA">[docs]</a>
 <span class="k">class</span> <span class="nc">PSDA</span><span class="p">(</span><span class="n">SSVEPMethodBase</span><span class="p">):</span>
-<span class="w">	</span><span class="sd">&quot;&quot;&quot;Class for Power Spectral Density Analysis (PSDA) of SSVEP data.</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Class for Power Spectral Density Analysis (PSDA) of SSVEP data.</span>
 
 <span class="sd">	Args:</span>
 <span class="sd">		sfreq (float): Sampling frequency of the data.</span>
@@ -471,7 +472,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA.classify">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.classify">[docs]</a>
 	<span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Classifies the input data using PSDA.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Classifies the input data using PSDA.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			data (numpy.ndarray): Input data for classification.</span>
@@ -495,7 +497,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA.slope_estimation">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.slope_estimation">[docs]</a>
 	<span class="k">def</span> <span class="nf">slope_estimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Estimates the slope of the PSD for each trial.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Estimates the slope of the PSD for each trial.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			data (numpy.ndarray): Input data for slope estimation.</span>
@@ -516,7 +519,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA.calculate_snr">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA.calculate_snr">[docs]</a>
 	<span class="k">def</span> <span class="nf">calculate_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the signal-to-noise ratio (SNR) for each trial.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the signal-to-noise ratio (SNR) for each trial.</span>
 
 <span class="sd">	   Args:</span>
 <span class="sd">		   data (numpy.ndarray): Input data for SNR calculation.</span>
@@ -540,7 +544,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP">[docs]</a>
 <span class="k">class</span> <span class="nc">PSDA_SSVEP</span><span class="p">:</span>
-<span class="w">	</span><span class="sd">&quot;&quot;&quot;Class for performing SSVEP-based PSD analysis.</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Class for performing SSVEP-based PSD analysis.</span>
 
 <span class="sd">	Args:</span>
 <span class="sd">		data_psd (numpy.ndarray): Input PSD data.</span>
@@ -611,7 +616,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.estimate_psd_value">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.estimate_psd_value">[docs]</a>
 	<span class="k">def</span> <span class="nf">estimate_psd_value</span><span class="p">(</span><span class="n">data_psd_i_channel</span><span class="p">,</span> <span class="n">frequence</span><span class="p">,</span> <span class="n">i_fre</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Estimates the PSD value for a specific frequency.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Estimates the PSD value for a specific frequency.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			data_psd_i_channel (numpy.ndarray): PSD values for a single channel.</span>
@@ -636,7 +642,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.calculate_snr">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.calculate_snr">[docs]</a>
 	<span class="k">def</span> <span class="nf">calculate_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_psd_channel</span><span class="p">,</span> <span class="n">frequence</span><span class="p">,</span> <span class="n">i_fre</span><span class="p">,</span> <span class="n">deltaf</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the signal-to-noise ratio (SNR) for a specific frequency.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the signal-to-noise ratio (SNR) for a specific frequency.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			data_psd_channel (numpy.ndarray): PSD values for a specific channel.</span>
@@ -656,7 +663,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.calculate_snr_hqy">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.calculate_snr_hqy">[docs]</a>
 	<span class="k">def</span> <span class="nf">calculate_snr_hqy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_psd_channel</span><span class="p">,</span> <span class="n">frequence</span><span class="p">,</span> <span class="n">i_fre</span><span class="p">,</span> <span class="n">deltaf</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the Signal-to-Noise Ratio (SNR) for a specific frequency.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the Signal-to-Noise Ratio (SNR) for a specific frequency.</span>
 
 <span class="sd">		This method computes the SNR for a given frequency `i_fre` by finding the</span>
 <span class="sd">		nearest frequency in the data and using neighboring frequencies as a noise</span>
@@ -703,14 +711,22 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.psda_ex">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.psda_ex">[docs]</a>
 	<span class="k">def</span> <span class="nf">psda_ex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psda_type</span><span class="o">=</span> <span class="s2">&quot;direct_compare&quot;</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Executes the PSDA analysis based on the specified type.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	   Executes the PSDA analysis based on the specified method type.</span>
 
-<span class="sd">		Args:</span>
-<span class="sd">			psda_type (str): Type of PSDA method to use.</span>
+<span class="sd">	   Args:</span>
+<span class="sd">		   psda_type (str): The type of PSDA method to use. Options include:</span>
+<span class="sd">			   - &quot;direct_compare&quot;: Direct comparison of PSD values.</span>
+<span class="sd">			   - &quot;snr&quot;: Signal-to-noise ratio analysis.</span>
+<span class="sd">			   - &quot;snr_hqy&quot;: SNR with high-quality estimates.</span>
+<span class="sd">			   - &quot;snr_hqy_ave_re&quot;: SNR with high-quality averaging, returning error and R-squared.</span>
+<span class="sd">			   - &quot;snr_hqy_ave_get&quot;: SNR high-quality averaging with different retrieval methods.</span>
 
-<span class="sd">		Returns:</span>
-<span class="sd">			tuple: PSD values, error, and R-squared value if applicable.</span>
-<span class="sd">		&quot;&quot;&quot;</span>
+<span class="sd">	   Returns:</span>
+<span class="sd">		   numpy.ndarray: Computed PSD values.</span>
+<span class="sd">		   float: Error metric (0 if not applicable).</span>
+<span class="sd">		   float: R-squared value (0 if not applicable).</span>
+<span class="sd">	   &quot;&quot;&quot;</span>
 		<span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
 		<span class="n">r_squa</span> <span class="o">=</span> <span class="mi">0</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">data_fft</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_psd</span> <span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sfreq</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_times</span><span class="p">))</span>
@@ -730,7 +746,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.psda_classify">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.psda_classify">[docs]</a>
 	<span class="k">def</span> <span class="nf">psda_classify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psda_type</span><span class="o">=</span> <span class="s2">&quot;direct_compare&quot;</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Classifies based on the PSD analysis result.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Classifies based on the PSD analysis result.</span>
 
 <span class="sd">		Args:</span>
 <span class="sd">			psda_type (str, optional): Type of PSD analysis to perform. Defaults to &quot;direct_compare&quot;.</span>
@@ -748,7 +765,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.psd_original">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.psd_original">[docs]</a>
 	<span class="k">def</span> <span class="nf">psd_original</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the Power Spectral Density (PSD) values for each frequency of interest.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the Power Spectral Density (PSD) values for each frequency of interest.</span>
 
 <span class="sd">		If the psd_channel is not &quot;ave&quot;, computes PSD for each channel and then averages. Otherwise, it averages across channels first.</span>
 
@@ -777,7 +795,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.psd_snr">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.psd_snr">[docs]</a>
 	<span class="k">def</span> <span class="nf">psd_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the Signal-to-Noise Ratio (SNR) of the PSD for each frequency of interest.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the Signal-to-Noise Ratio (SNR) of the PSD for each frequency of interest.</span>
 
 <span class="sd">		Returns:</span>
 <span class="sd">			indicators_values (ndarray): SNR values across frequencies for each channel.</span>
@@ -807,7 +826,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.psd_snr_hqy">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.psd_snr_hqy">[docs]</a>
 	<span class="k">def</span> <span class="nf">psd_snr_hqy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the SNR of the PSD using a harmonic approach for each frequency of interest.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the SNR of the PSD using a harmonic approach for each frequency of interest.</span>
 
 <span class="sd">		Returns:</span>
 <span class="sd">			indicators_values (ndarray): Harmonic SNR values across frequencies for each channel.</span>
@@ -841,7 +861,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.psd_snr_hqy_ave_re">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.psd_snr_hqy_ave_re">[docs]</a>
 	<span class="k">def</span> <span class="nf">psd_snr_hqy_ave_re</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the harmonic SNR using the averaged PSD after removing the aperiodic component.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the harmonic SNR using the averaged PSD after removing the aperiodic component.</span>
 
 <span class="sd">	   Returns:</span>
 <span class="sd">		   indicators_values (ndarray): Harmonic SNR values across frequencies.</span>
@@ -868,7 +889,8 @@ document.write(`
 <div class="viewcode-block" id="PSDA_SSVEP.snr_hqy_ave_get">
 <a class="viewcode-back" href="../../../api/scut_ssvep_aperiod/ssvep_method/psda/index.html#scut_ssvep_aperiod.ssvep_method.PSDA_SSVEP.snr_hqy_ave_get">[docs]</a>
 	<span class="k">def</span> <span class="nf">snr_hqy_ave_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">		</span><span class="sd">&quot;&quot;&quot;Calculates the harmonic SNR using the averaged PSD with the aperiodic component.</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Calculates the harmonic SNR using the averaged PSD with the aperiodic component.</span>
 
 <span class="sd">		Returns:</span>
 <span class="sd">			indicators_values (ndarray): Harmonic SNR values across frequencies.</span>

@@ -73,7 +73,7 @@ Module Contents
    .. py:method:: calculate_snr(data)
 
       
-      Calculates the signal-to-noise ratio (SNR) for each trial.
+           Calculates the signal-to-noise ratio (SNR) for each trial.
 
       :param data: Input data for SNR calculation.
       :type data: numpy.ndarray
@@ -428,7 +428,7 @@ Module Contents
    .. py:method:: psd_snr_hqy_ave_re()
 
       
-      Calculates the harmonic SNR using the averaged PSD after removing the aperiodic component.
+           Calculates the harmonic SNR using the averaged PSD after removing the aperiodic component.
 
       :returns: Harmonic SNR values across frequencies.
                 error (float): Error value from PSD analysis.
@@ -487,13 +487,20 @@ Module Contents
    .. py:method:: psda_ex(psda_type='direct_compare')
 
       
-      Executes the PSDA analysis based on the specified type.
+      Executes the PSDA analysis based on the specified method type.
 
-      :param psda_type: Type of PSDA method to use.
+      :param psda_type: The type of PSDA method to use. Options include:
+                        - "direct_compare": Direct comparison of PSD values.
+                        - "snr": Signal-to-noise ratio analysis.
+                        - "snr_hqy": SNR with high-quality estimates.
+                        - "snr_hqy_ave_re": SNR with high-quality averaging, returning error and R-squared.
+                        - "snr_hqy_ave_get": SNR high-quality averaging with different retrieval methods.
       :type psda_type: str
 
-      :returns: PSD values, error, and R-squared value if applicable.
-      :rtype: tuple
+      :returns: Computed PSD values.
+                float: Error metric (0 if not applicable).
+                float: R-squared value (0 if not applicable).
+      :rtype: numpy.ndarray
 
 
 

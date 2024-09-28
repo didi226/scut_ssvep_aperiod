@@ -14,7 +14,8 @@ from scut_ssvep_aperiod.utils.common_function import cal_acc
 
 
 def isPD(B):
-    """Checks if the input matrix is positive-definite using Cholesky decomposition.
+    """
+    Checks if the input matrix is positive-definite using Cholesky decomposition.
 
     This function determines whether the matrix B is positive-definite by attempting
     to perform a Cholesky decomposition. If the decomposition succeeds, the matrix
@@ -35,7 +36,8 @@ def isPD(B):
 
 
 def nearestPD(A):
-    """Finds the nearest positive-definite matrix to the input.
+    """
+    Finds the nearest positive-definite matrix to the input.
 
     Args:
         A (ndarray): Any square matrix, shape (N, N).
@@ -83,7 +85,8 @@ def nearestPD(A):
 
 
 def robust_pattern(W, Cx, Cs):
-    """Transforms spatial filters to spatial patterns based on the method described in the literature.
+    """
+    Transforms spatial filters to spatial patterns based on the method described in the literature.
 
     This function constructs spatial patterns from spatial filters, which illustrates how to combine
     information from different EEG channels to extract signals of interest. For neurophysiological
@@ -462,14 +465,14 @@ class TDCA(CCABase):
 
     def classifier(self, X):
         """
-       Classify input EEG signals.
+        Classify input EEG signals.
 
-       Args:
+        Args:
            X (ndarray): Input EEG signals (n_trials, n_channels, n_points).
 
-       Returns:
+        Returns:
            ndarray: Predicted labels (n_trials,).
-       """
+        """
 
         if self.Nm == 1:
             sum_features = self.transform(X, 0)

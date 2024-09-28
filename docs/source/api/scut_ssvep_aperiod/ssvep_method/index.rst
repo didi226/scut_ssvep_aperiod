@@ -473,7 +473,7 @@ Package Contents
    .. py:method:: calculate_snr(data)
 
       
-      Calculates the signal-to-noise ratio (SNR) for each trial.
+           Calculates the signal-to-noise ratio (SNR) for each trial.
 
       :param data: Input data for SNR calculation.
       :type data: numpy.ndarray

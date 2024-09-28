@@ -553,7 +553,7 @@ document.write(`
 <span class="sd">		Get the values after removing aperiodic signals.</span>
 
 <span class="sd">		Args:</span>
-<span class="sd">			gaussian_values (numpy.ndarray): Empty matrix for storing results, shape (n_channel, n_freqs).</span>
+<span class="sd">			gaussian_values (numpy.ndarray): Matrix for storing results, shape (n_channel, n_freqs).</span>
 <span class="sd">			fg (FOOOF): FOOOF fitting class.</span>
 <span class="sd">			n_channel (int): Number of channels.</span>
 <span class="sd">			freqs (numpy.ndarray): Corresponding frequency points, shape (n_freqs).</span>
@@ -561,10 +561,9 @@ document.write(`
 <span class="sd">			freq_range (list, optional): Frequency range for FOOOF fitting.</span>
 
 <span class="sd">		Returns:</span>
-<span class="sd">			tuple: A tuple containing:</span>
-<span class="sd">				- numpy.ndarray: Updated values after removing aperiodic signals.</span>
-<span class="sd">				- float: Standard error.</span>
-<span class="sd">				- float: R² value.</span>
+<span class="sd">			numpy.ndarray: Updated values after removing aperiodic signals.</span>
+<span class="sd">			float: Standard error.</span>
+<span class="sd">			float: R² value.</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">offset_ex_list</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="s1">&#39;aperiodic_params&#39;</span><span class="p">)</span>
 		<span class="n">error</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">group_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">error</span>

@@ -43,11 +43,10 @@ def ssvep_classify_parameters(form_path, info_path, pro_ica=True, filter_para=No
 		freq_range (list, optional): Frequency range for filtering. Defaults to None.
 
 	Returns:
-		tuple:
-			error_all (np.ndarray): Array of average classification errors for each subject and label category.
-			r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.
-			error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.
-			r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.
+		error_all (np.ndarray): Array of average classification errors for each subject and label category.
+		r_squa_all (np.ndarray): Array of average R-square values for each subject and label category.
+		error_all_1 (np.ndarray): Array of slope estimation errors for each subject and label category.
+		r_squa_all_1 (np.ndarray): Array of slope estimation R-square values for each subject and label category.
 	"""
 	info_form = pd.read_excel(form_path)
 	unique_subject_ids = info_form['subject_id'].unique()
@@ -85,18 +84,18 @@ if __name__ == "__main__":
 	                                          psda_type="snr_hqy_ave_re",freq_range=None)
 	column_names = [60.0/5.0, 60.0/7.0, 60.0/9.0, 60.0/11.0]
 
-	# 将 error 数组转换为 pandas DataFrame
+	# Convert error array to pandas DataFrame
 	df1 = pd.DataFrame(error, columns=column_names)
 	df2 = pd.DataFrame(r_squa, columns=column_names)
 	df3 = pd.DataFrame(error_1, columns=column_names)
 	df4 = pd.DataFrame(r_squa_1, columns=column_names)
 
-	# 指定保存的 Excel 文件名称
+	# Specify the name of the saved Excel file
 	excel_filename = 'error_r_squa_output.xlsx'
 
-	# 使用 ExcelWriter 创建一个写入器对象
+	# Create a writer object using ExcelWriter
 	with pd.ExcelWriter(excel_filename) as writer:
-		# 将每个 DataFrame 写入不同的工作表
+		# Write each DataFrame to a different worksheet
 		df1.to_excel(writer, sheet_name='error', index=False)
 		df2.to_excel(writer, sheet_name='r_squa', index=False)
 		df3.to_excel(writer, sheet_name='error_1', index=False)
