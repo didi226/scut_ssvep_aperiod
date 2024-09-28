@@ -23,3 +23,10 @@ sphinxext-rediraffe
 sphinx_design
 sphinx_copybutton
 sphinx-autoapi
+fooof
+mne
+numpy
+mne_icalabel
+scikit-learn
+scipy
+statsmodels
